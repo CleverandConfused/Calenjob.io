@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalenJob | Drive-Time-Aware Scheduling for Contractors</title>
+    <meta name="description" content="A calendar that understands location and drive time. Built for plumbers, electricians, and mobile tradespeople who need realistic, geography-aware daily schedules.">
+    <meta name="keywords" content="contractor scheduling, drive time calendar, field service scheduling, plumber scheduling app, electrician scheduling, trade scheduling software">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a2e;
+            --ink-light: #3d3d5c;
+            --ink-muted: #6b6b8d;
+            --surface: #ffffff;
+            --surface-warm: #faf9f7;
+            --surface-cool: #f0f4f8;
+            --accent: #2563eb;
+            --accent-dark: #1d4ed8;
+            --accent-light: #dbeafe;
+            --accent-glow: #eff6ff;
+            --success: #16a34a;
+            --success-light: #dcfce7;
+            --border: #e2e5ea;
+            --border-light: #f0f0f3;
+            --radius: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--ink);
+            background: var(--surface);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            transition: box-shadow 0.3s;
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .logo-text {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+        }
+
+        /* HERO */
+        .hero {
+            padding: 140px 24px 80px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--accent-glow) 0%, var(--surface) 100%);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 28px;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 600;
+            line-height: 1.12;
+            letter-spacing: -0.025em;
+            max-width: 720px;
+            margin: 0 auto 20px;
+            color: var(--ink);
+            animation: fadeUp 0.6s 0.1s ease both;
+        }
+
+        .hero p {
+            font-size: clamp(17px, 2vw, 19px);
+            color: var(--ink-muted);
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.65;
+            animation: fadeUp 0.6s 0.2s ease both;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            animation: fadeUp 0.6s 0.3s ease both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(37,99,235,0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--surface);
+            color: var(--ink);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--ink-muted);
+            transform: translateY(-1px);
+        }
+
+        /* HERO VISUAL */
+        .hero-visual {
+            max-width: 960px;
+            margin: 60px auto 0;
+            animation: fadeUp 0.8s 0.4s ease both;
+        }
+
+        .hero-mockup {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        .mockup-bar {
+            height: 44px;
+            background: var(--surface-warm);
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 8px;
+        }
+
+        .mockup-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border);
+        }
+
+        .mockup-content {
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            min-height: 340px;
+        }
+
+        .mockup-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .mockup-sidebar-item {
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--ink-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mockup-sidebar-item.active {
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            font-weight: 500;
+        }
+
+        .mockup-sidebar-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            background: var(--border-light);
+            flex-shrink: 0;
+        }
+
+        .mockup-sidebar-item.active .mockup-sidebar-icon {
+            background: var(--accent);
+            opacity: 0.3;
+        }
+
+        .mockup-calendar {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .mockup-cal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .mockup-cal-title {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .mockup-cal-nav {
+            display: flex;
+            gap: 6px;
+        }
+
+        .mockup-cal-nav span {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: var(--ink-muted);
+        }
+
+        .cal-event {
+            display: flex;
+            align-items: stretch;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: var(--surface-warm);
+            border-left: 3px solid var(--accent);
+            font-size: 13px;
+        }
+
+        .cal-event.drive {
+            border-left-color: var(--success);
+            background: var(--success-light);
+        }
+
+        .cal-time {
+            color: var(--ink-muted);
+            font-size: 12px;
+            min-width: 70px;
+            padding-top: 1px;
+        }
+
+        .cal-details {
+            flex: 1;
+        }
+
+        .cal-title {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .cal-meta {
+            font-size: 12px;
+            color: var(--ink-muted);
+        }
+
+        .cal-drive-label {
+            font-size: 12px;
+            color: var(--success);
+            font-weight: 500;
+        }
+
+        /* SECTIONS SHARED */
+        section {
+            padding: 100px 24px;
+        }
+
+        .section-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .section-heading {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            font-size: 17px;
+            color: var(--ink-muted);
+            max-width: 560px;
+            line-height: 1.65;
+        }
+
+        /* HOW IT WORKS */
+        .how-it-works {
+            background: var(--surface-warm);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 56px;
+        }
+
+        .step-card {
+            background: var(--surface);
+            padding: 32px 28px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .step-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--accent-light);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .step-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .step-card p {
+            font-size: 15px;
+            color: var(--ink-muted);
+            line-height: 1.6;
+        }
+
+        /* FEATURES */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .feature-card {
+            padding: 28px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            background: var(--surface);
+            transition: box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .feature-icon.blue {
+            background: var(--accent-light);
+        }
+
+        .feature-icon.green {
+            background: var(--success-light);
+        }
+
+        .feature-icon.warm {
+            background: #fef3c7;
+        }
+
+        .feature-icon.purple {
+            background: #ede9fe;
+        }
+
+        .feature-card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: var(--ink-muted);
+            line-height: 1.6;
+        }
+
+        /* BUILT FOR */
+        .built-for {
+            background: var(--surface-warm);
+        }
+
+        .trades-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 36px;
+        }
+
+        .trade-tag {
+            padding: 10px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--ink-light);
+            transition: all 0.2s;
+        }
+
+        .trade-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .built-for-quote {
+            margin-top: 48px;
+            padding: 32px;
+            background: var(--surface);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--ink-light);
+            line-height: 1.6;
+        }
+
+        .built-for-quote span {
+            display: block;
+            margin-top: 12px;
+            font-size: 14px;
+            font-style: normal;
+            color: var(--ink-muted);
+        }
+
+        /* PRICING TEASER */
+        .pricing-section {
+            text-align: center;
+        }
+
+        .pricing-card {
+            max-width: 480px;
+            margin: 48px auto 0;
+            padding: 40px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .pricing-card .price-label {
+            font-size: 14px;
+            color: var(--ink-muted);
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .price-range {
+            font-family: 'Fraunces', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        .pricing-card .price-per {
+            font-size: 15px;
+            color: var(--ink-muted);
+            margin-bottom: 24px;
+        }
+
+        .pricing-card .price-includes {
+            text-align: left;
+            list-style: none;
+            margin-bottom: 28px;
+        }
+
+        .pricing-card .price-includes li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--ink-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .pricing-card .price-includes li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-card .check {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* CTA / SIGNUP */
+        .cta-section {
+            background: var(--ink);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section .section-label {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .cta-section .section-heading {
+            color: white;
+        }
+
+        .cta-section .section-sub {
+            color: rgba(255,255,255,0.65);
+            margin: 0 auto 40px;
+        }
+
+        .signup-form {
+            max-width: 480px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .signup-form input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: var(--radius);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .signup-form input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .signup-form input:focus {
+            border-color: var(--accent);
+        }
+
+        .signup-form button {
+            padding: 14px 28px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .signup-form button:hover {
+            background: var(--accent-dark);
+        }
+
+        .signup-form button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .signup-note {
+            margin-top: 16px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .signup-success {
+            display: none;
+            padding: 20px;
+            background: rgba(22, 163, 74, 0.15);
+            border: 1px solid rgba(22, 163, 74, 0.3);
+            border-radius: var(--radius);
+            color: #86efac;
+            font-size: 15px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .signup-success.show {
+            display: block;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 48px 24px;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: var(--ink-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--ink-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--ink);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .mockup-content {
+                grid-template-columns: 1fr;
+            }
+
+            .mockup-sidebar {
+                flex-direction: row;
+                overflow-x: auto;
+            }
+
+            .mockup-sidebar-item {
+                white-space: nowrap;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .signup-form {
+                flex-direction: column;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .hero {
+                padding: 120px 24px 60px;
+            }
+
+            section {
+                padding: 72px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <span class="logo-text">CalenJob</span>
+            </a>
+            <a href="#signup" class="nav-cta">Join the Waitlist</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-badge"><span class="dot"></span> Coming soon for iOS, Android &amp; Web</div>
+        <h1>Your calendar should know how long it takes to get there.</h1>
+        <p>CalenJob adds real drive times between your jobs automatically, so your schedule reflects your actual day. Built for contractors who are always on the road.</p>
+        <div class="hero-cta-group">
+            <a href="#signup" class="btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Get Early Access
+            </a>
+            <a href="#how-it-works" class="btn-secondary">See How It Works</a>
+        </div>
+
+        <!-- MOCKUP -->
+        <div class="hero-visual">
+            <div class="hero-mockup">
+                <div class="mockup-bar">
+                    <span class="mockup-dot"></span>
+                    <span class="mockup-dot"></span>
+                    <span class="mockup-dot"></span>
+                </div>
+                <div class="mockup-content">
+                    <div class="mockup-sidebar">
+                        <div class="mockup-sidebar-item active">
+                            <span class="mockup-sidebar-icon"></span>
+                            Today
+                        </div>
+                        <div class="mockup-sidebar-item">
+                            <span class="mockup-sidebar-icon"></span>
+                            Week View
+                        </div>
+                        <div class="mockup-sidebar-item">
+                            <span class="mockup-sidebar-icon"></span>
+                            Map View
+                        </div>
+                        <div class="mockup-sidebar-item">
+                            <span class="mockup-sidebar-icon"></span>
+                            Mileage Log
+                        </div>
+                    </div>
+                    <div class="mockup-calendar">
+                        <div class="mockup-cal-header">
+                            <span class="mockup-cal-title">Tuesday, March 24</span>
+                            <div class="mockup-cal-nav">
+                                <span>&larr;</span>
+                                <span>&rarr;</span>
+                            </div>
+                        </div>
+                        <div class="cal-event">
+                            <div class="cal-time">8:00 AM</div>
+                            <div class="cal-details">
+                                <div class="cal-title">Water heater install</div>
+                                <div class="cal-meta">742 Elm St, Westfield</div>
+                            </div>
+                        </div>
+                        <div class="cal-event drive">
+                            <div class="cal-time">10:00 AM</div>
+                            <div class="cal-details">
+                                <div class="cal-drive-label">&#x1F697; 22 min drive + 15 min buffer</div>
+                                <div class="cal-meta">8.4 mi via Route 22</div>
+                            </div>
+                        </div>
+                        <div class="cal-event">
+                            <div class="cal-time">10:37 AM</div>
+                            <div class="cal-details">
+                                <div class="cal-title">Faucet repair</div>
+                                <div class="cal-meta">159 Oak Ave, Springfield</div>
+                            </div>
+                        </div>
+                        <div class="cal-event drive">
+                            <div class="cal-time">11:45 AM</div>
+                            <div class="cal-details">
+                                <div class="cal-drive-label">&#x1F697; 18 min drive + 15 min buffer</div>
+                                <div class="cal-meta">5.2 mi via Main St</div>
+                            </div>
+                        </div>
+                        <div class="cal-event">
+                            <div class="cal-time">12:18 PM</div>
+                            <div class="cal-details">
+                                <div class="cal-title">Sump pump inspection</div>
+                                <div class="cal-meta">88 Maple Dr, Springfield</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-inner">
+            <div class="section-label fade-in">How It Works</div>
+            <h2 class="section-heading fade-in">Schedule with real geography in mind.</h2>
+            <p class="section-sub fade-in">CalenJob fits into how you already plan your day. Just add the address and let the app handle the rest.</p>
+
+            <div class="steps-grid">
+                <div class="step-card fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Add a job with an address</h3>
+                    <p>Create a calendar event tied to a real location. Residential, commercial, wherever the work is.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">2</div>
+                    <h3>Drive time fills in automatically</h3>
+                    <p>CalenJob calculates the commute from your previous stop and inserts it into your schedule, plus a customizable buffer you control.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">3</div>
+                    <h3>See your real day on a map</h3>
+                    <p>View your stops on a map, drag to reorder, and spot inefficient routes before you leave the house.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+        <div class="section-inner">
+            <div class="section-label fade-in">Features</div>
+            <h2 class="section-heading fade-in">Everything a contractor calendar needs. Nothing it doesn't.</h2>
+            <p class="section-sub fade-in">CalenJob is not field service management software. It is a calendar that actually works for people who drive to every job.</p>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon blue">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Automatic drive time</h3>
+                    <p>Every event gets a calculated commute from the previous stop. Add your own buffer on top for loading, parking, or just breathing room.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon green">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <h3>Area blocks</h3>
+                    <p>Reserve a day for a specific part of town. If you try to book something outside that zone, CalenJob warns you before your schedule gets scattered.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon warm">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3>Mileage and cost tracking</h3>
+                    <p>Every trip is logged with distance and a custom per-mile rate. See daily, monthly, and yearly totals for taxes and business planning.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon purple">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Multi-calendar views</h3>
+                    <p>See your schedule alongside crew members or other contractors. Great for small teams that need visibility without complicated software.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon blue">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+                    </div>
+                    <h3>Map-based reordering</h3>
+                    <p>View all your stops on a map and rearrange them visually. You see the geography, you make the call. No black-box routing required.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon green">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                    </div>
+                    <h3>Recurring events and blocks</h3>
+                    <p>Set up weekly maintenance clients, lunch breaks, admin time, or anything else that repeats. CalenJob builds around them.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUILT FOR -->
+    <section class="built-for" id="trades">
+        <div class="section-inner">
+            <div class="section-label fade-in">Built For</div>
+            <h2 class="section-heading fade-in">Any trade that drives to the job site.</h2>
+            <p class="section-sub fade-in">If your workday involves traveling from address to address, CalenJob keeps your schedule honest.</p>
+
+            <div class="trades-list fade-in">
+                <span class="trade-tag">Plumbers</span>
+                <span class="trade-tag">Electricians</span>
+                <span class="trade-tag">HVAC Technicians</span>
+                <span class="trade-tag">Window Cleaners</span>
+                <span class="trade-tag">Handymen</span>
+                <span class="trade-tag">Painters</span>
+                <span class="trade-tag">Landscapers</span>
+                <span class="trade-tag">Carpet Cleaners</span>
+                <span class="trade-tag">Pest Control</span>
+                <span class="trade-tag">Locksmiths</span>
+                <span class="trade-tag">Appliance Repair</span>
+                <span class="trade-tag">Mobile Detailers</span>
+            </div>
+
+            <div class="built-for-quote fade-in">
+                "I used to just guess how long it would take to get between jobs. By noon I was already running behind and stacking apologies to every customer after the first one."
+                <span>The problem CalenJob solves</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING TEASER -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-inner">
+            <div class="section-label fade-in">Pricing</div>
+            <h2 class="section-heading fade-in">Simple, affordable, no surprises.</h2>
+            <p class="section-sub fade-in" style="margin: 0 auto;">One plan that includes everything. No per-feature tiers or hidden costs.</p>
+
+            <div class="pricing-card fade-in">
+                <div class="price-label">Starting at</div>
+                <div class="price-range">$15/mo</div>
+                <div class="price-per">per user, billed monthly</div>
+                <ul class="price-includes">
+                    <li><span class="check">&#10003;</span> Automatic drive time calculations</li>
+                    <li><span class="check">&#10003;</span> Customizable commute buffers</li>
+                    <li><span class="check">&#10003;</span> Area blocking and warnings</li>
+                    <li><span class="check">&#10003;</span> Map view with drag-to-reorder</li>
+                    <li><span class="check">&#10003;</span> Mileage and cost tracking</li>
+                    <li><span class="check">&#10003;</span> Multi-calendar support</li>
+                    <li><span class="check">&#10003;</span> Recurring events and time blocks</li>
+                </ul>
+                <a href="#signup" class="btn-primary" style="width: 100%; justify-content: center;">Join the Waitlist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / SIGNUP -->
+    <section class="cta-section" id="signup">
+        <div class="section-inner">
+            <div class="section-label fade-in">Early Access</div>
+            <h2 class="section-heading fade-in">Be the first to schedule smarter.</h2>
+            <p class="section-sub fade-in">Join the waitlist and we will let you know when CalenJob is ready. No spam, just one email when it launches.</p>
+
+            <div class="signup-form fade-in" id="signupForm">
+                <input type="email" id="emailInput" placeholder="you@company.com" required>
+                <button type="button" id="signupBtn" onclick="submitSignup()">Join Waitlist</button>
+            </div>
+            <div class="signup-success" id="signupSuccess">
+                &#10003; You're on the list. We will be in touch when CalenJob is ready to go.
+            </div>
+            <p class="signup-note fade-in">No credit card required. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; 2026 CalenJob. All rights reserved.</div>
+            <div class="footer-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#" id="contactLink" onclick="return false;">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Email obfuscation
+        (function() {
+            var u = 'hel' + 'lo';
+            var d = 'calen' + 'job' + '.com';
+            var link = document.getElementById('contactLink');
+            link.href = 'mai' + 'lto:' + u + '@' + d;
+            link.onclick = null;
+        })();
+
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Fade-in on scroll
+        const faders = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        faders.forEach(el => fadeObserver.observe(el));
+
+        // Signup
+        // REPLACE_WITH_YOUR_APPS_SCRIPT_URL
+        const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+
+        function submitSignup() {
+            const email = document.getElementById('emailInput').value.trim();
+            const btn = document.getElementById('signupBtn');
+
+            if (!email || !email.includes('@')) {
+                document.getElementById('emailInput').style.borderColor = '#ef4444';
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Joining...';
+
+            // If Apps Script URL is not configured, just show success
+            if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+                showSuccess();
+                return;
+            }
+
+            fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'email=' + encodeURIComponent(email)
+            })
+            .then(() => showSuccess())
+            .catch(() => showSuccess()); // no-cors won't return readable response
+        }
+
+        function showSuccess() {
+            document.getElementById('signupForm').style.display = 'none';
+            const success = document.getElementById('signupSuccess');
+            success.classList.add('show');
+        }
+
+        // Enter key on email input
+        document.getElementById('emailInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') submitSignup();
+            this.style.borderColor = 'rgba(255,255,255,0.15)';
+        });
+    </script>
+
+</body>
+</html>
