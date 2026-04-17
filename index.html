@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CalenJob | Drive-Time-Aware Scheduling for Contractors</title>
-    <meta name="description" content="A calendar that understands location and drive time. Built for plumbers, electricians, and mobile tradespeople who need realistic, geography-aware daily schedules.">
-    <meta name="keywords" content="contractor scheduling, drive time calendar, field service scheduling, plumber scheduling app, electrician scheduling, trade scheduling software">
+    <title>CalenJob — Drive Time Calculator &amp; Mileage Tracker for Contractors</title>
+    <meta name="description" content="A calendar that understands drive time. Automatic traffic-aware commutes, customer booking that factors in your route, smart departure alerts, and mileage tracking. Built for anyone driving from job to job. Coming soon to iPhone.">
+    <meta name="keywords" content="contractor scheduling app, drive time calculator, mileage tracker for contractors, plumber scheduling app, electrician scheduling, HVAC scheduling, tradesman planner">
+    <link rel="canonical" href="https://calenjob.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calenjob.com/">
+    <meta property="og:title" content="CalenJob — Drive Time Calculator &amp; Mileage Tracker for Contractors">
+    <meta property="og:description" content="A calendar that understands drive time. Automatic traffic-aware commutes, smart departure alerts, and mileage tracking. Built for contractors, coming soon to iPhone.">
+    <meta property="og:site_name" content="CalenJob">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CalenJob — Drive Time Calculator for Contractors">
+    <meta name="twitter:description" content="Automatic drive time between your jobs. Smart departure alerts. Mileage tracking for taxes. Coming soon to iPhone.">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "CalenJob",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "iOS",
+      "description": "Drive-time-aware scheduling calendar for mobile tradespeople. Automatically calculates traffic-aware drive time between job sites, sends departure alerts, and tracks mileage for tax deductions and client billing.",
+      "offers": {
+        "@type": "Offer",
+        "price": "14.99",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "14.99",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M"
+        }
+      },
+      "url": "https://calenjob.com"
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap" rel="stylesheet">
@@ -103,6 +141,23 @@
             font-weight: 600;
             font-size: 20px;
             letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            color: var(--ink-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--ink);
         }
 
         .nav-cta {
@@ -593,24 +648,49 @@
             box-shadow: var(--shadow-md);
         }
 
-        .pricing-card .price-label {
-            font-size: 14px;
-            color: var(--ink-muted);
-            margin-bottom: 8px;
+        .pricing-trial-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: var(--success-light);
+            color: var(--success);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
         .pricing-card .price-range {
             font-family: 'Source Serif 4', serif;
-            font-size: 36px;
+            font-size: 40px;
             font-weight: 700;
             color: var(--ink);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
+            letter-spacing: -0.02em;
         }
 
         .pricing-card .price-per {
             font-size: 15px;
             color: var(--ink-muted);
+            margin-bottom: 10px;
+        }
+
+        .pricing-card .price-annual {
+            font-size: 14px;
+            color: var(--ink-light);
             margin-bottom: 24px;
+            padding: 10px 14px;
+            background: var(--accent-glow);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .pricing-card .price-annual strong {
+            color: var(--accent-dark);
+            font-weight: 600;
         }
 
         .pricing-card .price-includes {
@@ -793,6 +873,14 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
+            .nav-links {
+                gap: 16px;
+            }
+
+            .nav-link.desktop-only {
+                display: none;
+            }
+
             .mockup-content {
                 grid-template-columns: 1fr;
             }
@@ -838,21 +926,25 @@
     <!-- NAV -->
     <nav id="nav">
         <div class="nav-inner">
-            <a href="#" class="logo">
+            <a href="/" class="logo">
                 <div class="logo-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
                 <span class="logo-text">CalenJob</span>
             </a>
-            <a href="#signup" class="nav-cta">Join the Waitlist</a>
+            <div class="nav-links">
+                <a href="#features" class="nav-link desktop-only">Features</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="#signup" class="nav-cta">Join the Waitlist</a>
+            </div>
         </div>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-badge"><span class="dot"></span> Coming soon for iOS, Android &amp; Web</div>
+        <div class="hero-badge"><span class="dot"></span> Coming soon to iPhone</div>
         <h1>Your calendar should include the drive, not just the job.</h1>
-        <p>CalenJob adds real drive times between your jobs automatically, so your schedule reflects your actual day. Built for contractors who are always on the road.</p>
+        <p>CalenJob adds real drive times between your jobs automatically. Plan your day, or let customers book into it. The commute is handled either way. Built for anyone driving from job to job.</p>
         <div class="hero-cta-group">
             <a href="#signup" class="btn-primary">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -947,18 +1039,18 @@
             <div class="steps-grid">
                 <div class="step-card fade-in">
                     <div class="step-number">1</div>
-                    <h3>Add a job with an address</h3>
-                    <p>Create a calendar event tied to a real location. Residential, commercial, wherever the work is.</p>
+                    <h3>Add a job, or share your booking link</h3>
+                    <p>Create a calendar event tied to a real address. Or send a customer your public booking link and let them pick a slot that fits your day.</p>
                 </div>
                 <div class="step-card fade-in">
                     <div class="step-number">2</div>
                     <h3>Drive time fills in automatically</h3>
-                    <p>CalenJob calculates the commute from your previous stop and inserts it into your schedule, plus a customizable buffer you control.</p>
+                    <p>CalenJob calculates the commute from your previous stop using live traffic data and inserts it into your schedule, plus a customizable buffer you control.</p>
                 </div>
                 <div class="step-card fade-in">
                     <div class="step-number">3</div>
-                    <h3>See your real day on a map</h3>
-                    <p>View your stops on a map, drag to reorder, and spot inefficient routes before you leave the house.</p>
+                    <h3>Get a heads-up when to leave</h3>
+                    <p>A push notification tells you it is time to head to the next job. No more watching the clock or guessing at rush hour.</p>
                 </div>
             </div>
         </div>
@@ -977,42 +1069,42 @@
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     </div>
                     <h3>Automatic drive time</h3>
-                    <p>Every event gets a calculated commute from the previous stop. Add your own buffer on top for loading, parking, or just breathing room.</p>
+                    <p>Every job gets a calculated commute from the previous stop, using live traffic data. Add your own buffer on top for loading, parking, or just breathing room.</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon green">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     </div>
-                    <h3>Area blocks</h3>
-                    <p>Reserve a day for a specific part of town. If you try to book something outside that zone, CalenJob warns you before your schedule gets scattered.</p>
+                    <h3>Smart departure alerts</h3>
+                    <p>Push notifications remind you when it is time to leave for the next job. Stop running late, stop apologizing to customers.</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon warm">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                     </div>
                     <h3>Mileage and cost tracking</h3>
-                    <p>Every trip is logged with distance and a custom per-mile rate. See daily, monthly, and yearly totals for taxes and business planning.</p>
+                    <p>Every trip is logged with distance and your own custom per-mile rate. See daily, monthly, and yearly totals for tax deductions and client billing.</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon purple">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 16l2 2 4-4"/></svg>
                     </div>
-                    <h3>Multi-calendar views</h3>
-                    <p>See your schedule alongside crew members or other contractors. Great for small teams that need visibility without complicated software.</p>
+                    <h3>Customer booking</h3>
+                    <p>Send customers a link to your public booking page. When they pick a time, CalenJob factors in the drive from your previous job. Your day stays honest even when customers are the ones adding the appointment.</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon blue">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
                     </div>
-                    <h3>Map-based reordering</h3>
-                    <p>View all your stops on a map and rearrange them visually. You see the geography, you make the call. No black-box routing required.</p>
+                    <h3>Interactive route map</h3>
+                    <p>See your whole day plotted on a map with the drive route drawn between stops. Switch between standard, satellite, and hybrid views.</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon green">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
                     </div>
-                    <h3>Recurring events and blocks</h3>
-                    <p>Set up weekly maintenance clients, lunch breaks, admin time, or anything else that repeats. CalenJob builds around them.</p>
+                    <h3>Recurring schedules</h3>
+                    <p>Weekly maintenance clients, standing appointments, and regular routes build themselves. Set it once, and CalenJob fills in the calendar.</p>
                 </div>
             </div>
         </div>
@@ -1022,8 +1114,8 @@
     <section class="built-for" id="trades">
         <div class="section-inner">
             <div class="section-label fade-in">Built For</div>
-            <h2 class="section-heading fade-in">Any trade that drives to the job site.</h2>
-            <p class="section-sub fade-in">If your workday involves traveling from address to address, CalenJob keeps your schedule honest.</p>
+            <h2 class="section-heading fade-in">Anyone who drives from job to job.</h2>
+            <p class="section-sub fade-in">Contractors, mobile service providers, inspectors, home health workers. If your workday is a string of addresses, CalenJob keeps your schedule honest.</p>
 
             <div class="trades-list fade-in">
                 <span class="trade-tag">Plumbers</span>
@@ -1042,7 +1134,7 @@
 
             <div class="built-for-quote fade-in">
                 "I used to just guess how long it would take to get between jobs. By noon I was already running behind and stacking apologies to every customer after the first one."
-                <span>The problem CalenJob solves</span>
+                <span>The problem we hear most</span>
             </div>
         </div>
     </section>
@@ -1055,17 +1147,18 @@
             <p class="section-sub fade-in" style="margin: 0 auto;">One plan that includes everything. No per-feature tiers or hidden costs.</p>
 
             <div class="pricing-card fade-in">
-                <div class="price-label">Starting at</div>
-                <div class="price-range">$15/mo</div>
-                <div class="price-per">per user, billed monthly</div>
+                <div class="pricing-trial-badge">14-Day Free Trial</div>
+                <div class="price-range">$14.99<span style="font-size:20px;color:var(--ink-muted);font-weight:500;">/mo</span></div>
+                <div class="price-per">billed monthly</div>
+                <div class="price-annual">Or <strong>$119.99/year</strong> (save 33%)</div>
                 <ul class="price-includes">
-                    <li><span class="check">&#10003;</span> Automatic drive time calculations</li>
+                    <li><span class="check">&#10003;</span> Automatic drive time with live traffic</li>
+                    <li><span class="check">&#10003;</span> Customer booking page with drive time built in</li>
                     <li><span class="check">&#10003;</span> Customizable commute buffers</li>
-                    <li><span class="check">&#10003;</span> Area blocking and warnings</li>
-                    <li><span class="check">&#10003;</span> Map view with drag-to-reorder</li>
-                    <li><span class="check">&#10003;</span> Mileage and cost tracking</li>
-                    <li><span class="check">&#10003;</span> Multi-calendar support</li>
-                    <li><span class="check">&#10003;</span> Recurring events and time blocks</li>
+                    <li><span class="check">&#10003;</span> Smart departure alerts</li>
+                    <li><span class="check">&#10003;</span> Mileage tracking with custom per-mile rate</li>
+                    <li><span class="check">&#10003;</span> Interactive route map</li>
+                    <li><span class="check">&#10003;</span> Recurring schedules</li>
                 </ul>
                 <a href="#signup" class="btn-primary" style="width: 100%; justify-content: center;">Join the Waitlist</a>
             </div>
@@ -1086,7 +1179,7 @@
             <div class="signup-success" id="signupSuccess">
                 &#10003; You're on the list. We will be in touch when CalenJob is ready to go.
             </div>
-            <p class="signup-note fade-in">No credit card required. Unsubscribe anytime.</p>
+            <p class="signup-note fade-in">One email when we launch. You can reply and unsubscribe anytime.</p>
         </div>
     </section>
 
@@ -1097,13 +1190,14 @@
             <div class="footer-links">
                 <a href="#features">Features</a>
                 <a href="#pricing">Pricing</a>
+                <a href="/about/">About</a>
                 <a href="#" id="contactLink" onclick="return false;">Contact</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Email obfuscation
+        // Email obfuscation (keeps scrapers off the source)
         (function() {
             var u = 'hel' + 'lo';
             var d = 'calen' + 'job' + '.com';
@@ -1131,8 +1225,14 @@
 
         faders.forEach(el => fadeObserver.observe(el));
 
-        // Signup
-        // REPLACE_WITH_YOUR_APPS_SCRIPT_URL
+        // ============================================================
+        // WAITLIST SIGNUP
+        // ------------------------------------------------------------
+        // When your Google Apps Script Web App is deployed, replace
+        // YOUR_APPS_SCRIPT_URL_HERE below with the deployment URL
+        // (it looks like: https://script.google.com/macros/s/XXXX/exec).
+        // Until then, the form shows a success message without posting.
+        // ============================================================
         const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
 
         function submitSignup() {
@@ -1157,7 +1257,7 @@
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: 'email=' + encodeURIComponent(email)
+                body: 'email=' + encodeURIComponent(email) + '&source=homepage'
             })
             .then(() => showSuccess())
             .catch(() => showSuccess()); // no-cors won't return readable response
