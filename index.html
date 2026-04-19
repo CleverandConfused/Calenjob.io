@@ -298,6 +298,43 @@
             animation: fadeUp 0.8s 0.4s ease both;
         }
 
+        /* REAL APP SCREENSHOTS */
+        .screenshot-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 720px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .phone-frame {
+            background: #1C1917;
+            padding: 8px;
+            border-radius: 32px;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease;
+        }
+
+        .phone-frame:hover {
+            transform: translateY(-4px);
+        }
+
+        .phone-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+        }
+
+        @media (max-width: 680px) {
+            .screenshot-pair {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                gap: 20px;
+            }
+        }
+
         .hero-mockup {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -408,14 +445,14 @@
             gap: 12px;
             padding: 10px 14px;
             border-radius: 8px;
-            background: #EEF2F8;
-            border-left: 3px solid #5B7FA8;
+            background: #BFCCE0;
+            border-left: 5px solid #1F3A5C;
             font-size: 13px;
         }
 
         .cal-event.drive {
-            border-left-color: #D17849;
-            background: #FBF3EC;
+            border-left: 4px solid #A84A1C;
+            background: #F5DCC8;
         }
 
         .cal-time {
@@ -430,19 +467,23 @@
         }
 
         .cal-title {
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 2px;
-            color: #1C1917;
+            color: #0F1E33;
         }
 
-        .cal-meta {
+        .cal-event .cal-meta {
             font-size: 12px;
-            color: #78716C;
+            color: #2D3D52;
+        }
+
+        .cal-event.drive .cal-meta {
+            color: #5C4F44;
         }
 
         .cal-drive-label {
             font-size: 12px;
-            color: #9C6346;
+            color: #7A3514;
             font-weight: 600;
         }
 
@@ -967,77 +1008,14 @@
             <a href="#how-it-works" class="btn-secondary">See How It Works</a>
         </div>
 
-        <!-- MOCKUP -->
+        <!-- REAL APP SCREENSHOTS -->
         <div class="hero-visual">
-            <div class="hero-mockup">
-                <div class="mockup-bar">
-                    <span class="mockup-dot"></span>
-                    <span class="mockup-dot"></span>
-                    <span class="mockup-dot"></span>
+            <div class="screenshot-pair">
+                <div class="phone-frame">
+                    <img src="dashboard-app.jpg" alt="CalenJob dashboard showing jobs, miles, commute time, and route map for a day in Denver" loading="lazy">
                 </div>
-                <div class="mockup-content">
-                    <div class="mockup-sidebar">
-                        <div class="mockup-sidebar-item active">
-                            <span class="mockup-sidebar-icon"></span>
-                            Today
-                        </div>
-                        <div class="mockup-sidebar-item">
-                            <span class="mockup-sidebar-icon"></span>
-                            Week View
-                        </div>
-                        <div class="mockup-sidebar-item">
-                            <span class="mockup-sidebar-icon"></span>
-                            Map View
-                        </div>
-                        <div class="mockup-sidebar-item">
-                            <span class="mockup-sidebar-icon"></span>
-                            Mileage Log
-                        </div>
-                    </div>
-                    <div class="mockup-calendar">
-                        <div class="mockup-cal-header">
-                            <span class="mockup-cal-title">Tuesday, March 24</span>
-                            <div class="mockup-cal-nav">
-                                <span>&larr;</span>
-                                <span>&rarr;</span>
-                            </div>
-                        </div>
-                        <div class="cal-event">
-                            <div class="cal-time">8:00 AM</div>
-                            <div class="cal-details">
-                                <div class="cal-title">Water heater install</div>
-                                <div class="cal-meta">742 Elm St, Westfield</div>
-                            </div>
-                        </div>
-                        <div class="cal-event drive">
-                            <div class="cal-time">10:00 AM</div>
-                            <div class="cal-details">
-                                <div class="cal-drive-label">&#x1F697; 22 min drive + 15 min buffer</div>
-                                <div class="cal-meta">8.4 mi via Route 22</div>
-                            </div>
-                        </div>
-                        <div class="cal-event">
-                            <div class="cal-time">10:37 AM</div>
-                            <div class="cal-details">
-                                <div class="cal-title">Faucet repair</div>
-                                <div class="cal-meta">159 Oak Ave, Springfield</div>
-                            </div>
-                        </div>
-                        <div class="cal-event drive">
-                            <div class="cal-time">11:45 AM</div>
-                            <div class="cal-details">
-                                <div class="cal-drive-label">&#x1F697; 18 min drive + 15 min buffer</div>
-                                <div class="cal-meta">5.2 mi via Main St</div>
-                            </div>
-                        </div>
-                        <div class="cal-event">
-                            <div class="cal-time">12:18 PM</div>
-                            <div class="cal-details">
-                                <div class="cal-title">Sump pump inspection</div>
-                                <div class="cal-meta">88 Maple Dr, Springfield</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="phone-frame">
+                    <img src="calendar-app.jpg" alt="CalenJob calendar view showing water heater install, faucet repair, sump pump inspection, and water softener install with drive time blocks between them" loading="lazy">
                 </div>
             </div>
         </div>
