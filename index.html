@@ -1241,8 +1241,7 @@
 
             const body = new URLSearchParams({
                 email: email,
-                source: 'homepage',
-                userAgent: navigator.userAgent || ''
+                source: 'homepage'
             }).toString();
 
             fetch(APPS_SCRIPT_URL, {
