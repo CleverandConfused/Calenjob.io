@@ -1217,40 +1217,42 @@
 
         // ============================================================
         // WAITLIST SIGNUP
-        // ------------------------------------------------------------
-        // When your Google Apps Script Web App is deployed, replace
-        // YOUR_APPS_SCRIPT_URL_HERE below with the deployment URL
-        // (it looks like: https://script.google.com/macros/s/XXXX/exec).
-        // Until then, the form shows a success message without posting.
+        // Posts to Google Apps Script, which appends to the waitlist
+        // Google Sheet. Uses no-cors mode, which means we can't read the
+        // response — but Apps Script successfully receives the POST.
         // ============================================================
-        const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxf5xzA49nGNZrs7LXZ69oy_d5Sc_dn94QiJH07Sjj_RyGTTEuQ5f7TBdrU0NHKEMggBg/exec';
 
         function submitSignup() {
-            const email = document.getElementById('emailInput').value.trim();
+            const input = document.getElementById('emailInput');
+            const email = input.value.trim();
             const btn = document.getElementById('signupBtn');
 
-            if (!email || !email.includes('@')) {
-                document.getElementById('emailInput').style.borderColor = '#ef4444';
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                input.style.borderColor = '#ef4444';
+                input.focus();
                 return;
             }
 
             btn.disabled = true;
             btn.textContent = 'Joining...';
 
-            // If Apps Script URL is not configured, just show success
-            if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
-                showSuccess();
-                return;
-            }
+            const body = new URLSearchParams({
+                email: email,
+                source: 'homepage',
+                userAgent: navigator.userAgent || ''
+            }).toString();
 
             fetch(APPS_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: 'email=' + encodeURIComponent(email) + '&source=homepage'
+                body: body
             })
             .then(() => showSuccess())
-            .catch(() => showSuccess()); // no-cors won't return readable response
+            .catch(() => showSuccess()); // no-cors fires then regardless
         }
 
         function showSuccess() {
