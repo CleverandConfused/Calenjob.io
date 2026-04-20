@@ -1,0 +1,24 @@
+{
+  "name": "CalenJob",
+  "short_name": "CalenJob",
+  "description": "A calendar that understands drive time. Automatic traffic-aware commutes, smart departure alerts, and mileage tracking for contractors.",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#166534",
+  "background_color": "#fffbeb",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/"
+}
