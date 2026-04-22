@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CalenJob Sitemap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #fffbeb;
+    color: #1c1917;
+    padding: 40px 24px;
+    line-height: 1.5;
+  }
+  .page { max-width: 980px; margin: 0 auto; }
+  h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .sub {
+    color: #78716c;
+    font-size: 15px;
+    margin-bottom: 36px;
+  }
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 36px 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e7e5e4;
+  }
+
+  .tree {
+    background: white;
+    border-radius: 14px;
+    padding: 32px 36px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+    overflow-x: auto;
+  }
+
+  .root {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: #166534;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .file-row {
+    display: grid;
+    grid-template-columns: 280px 280px 1fr;
+    gap: 20px;
+    padding: 14px 0;
+    border-top: 1px solid #f5f5f4;
+    align-items: baseline;
+  }
+  @media (max-width: 760px) {
+    .file-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+  }
+  .file-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: #1c1917;
+    font-weight: 600;
+  }
+  .file-url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #166534;
+  }
+  .file-desc {
+    font-size: 14px;
+    color: #57534e;
+  }
+
+  .header-row {
+    display: grid;
+    grid-template-columns: 280px 280px 1fr;
+    gap: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 4px;
+    border-bottom: 2px solid #e7e5e4;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #78716c;
+    font-weight: 700;
+  }
+  @media (max-width: 760px) { .header-row { display: none; } }
+
+  .section-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #166534;
+    margin: 24px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #e7e5e4;
+  }
+  .section-title:first-of-type { margin-top: 0; }
+
+  .key {
+    background: #fef3c7;
+    border-left: 3px solid #d97706;
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #78350f;
+    margin-top: 20px;
+    line-height: 1.6;
+  }
+  .key strong { color: #78350f; }
+  .key code {
+    background: white;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>CalenJob Sitemap</h1>
+  <p class="sub">Flat structure. Every page has a unique filename. Only the homepage is called <code style="font-family:'JetBrains Mono',monospace;background:#fef3c7;padding:1px 6px;border-radius:3px;font-size:13px;">index.html</code>.</p>
+
+  <div class="tree">
+    <div class="root">calenjob.com/</div>
+
+    <div class="header-row">
+      <div>File</div>
+      <div>URL</div>
+      <div>What it does</div>
+    </div>
+
+    <div class="section-title">Pages</div>
+
+    <div class="file-row">
+      <div class="file-name">index.html</div>
+      <div class="file-url">calenjob.com/</div>
+      <div class="file-desc">Homepage. Hero, app screenshots, features, pricing, signup form.</div>
+    </div>
+
+    <div class="file-row">
+      <div class="file-name">about.html</div>
+      <div class="file-url">calenjob.com/about.html</div>
+      <div class="file-desc">About page. The CalenJob story, the pest-control family origin, who you are.</div>
+    </div>
+
+    <div class="file-row">
+      <div class="file-name">blog.html</div>
+      <div class="file-url">calenjob.com/blog.html</div>
+      <div class="file-desc">Blog list page. Lists all published posts plus the "Coming Soon" pipeline.</div>
+    </div>
+
+    <div class="file-row">
+      <div class="file-name">why-contractors-run-late.html</div>
+      <div class="file-url">calenjob.com/why-contractors-run-late.html</div>
+      <div class="file-desc">First blog post. "The Real Reason Service Techs Run Late."</div>
+    </div>
+
+    <div class="section-title">Brand assets (referenced by HTML)</div>
+
+    <div class="file-row">
+      <div class="file-name">favicon.ico</div>
+      <div class="file-url">calenjob.com/favicon.ico</div>
+      <div class="file-desc">Browser tab icon. Multi-resolution (16, 32, 48 in one file).</div>
+    </div>
+
+    <div class="file-row">
+      <div class="file-name">favicon-16.png</div>
+      <div class="file-url">calenjob.com/favicon-16.png</div>
+      <div class="file-desc">PNG favicon fallback for modern browsers.</div>
+    </div>
+
+    <div class="file-row">
+      <div class="file-name">favicon-32.png</div>
+      <div class="file-url">calenjob.com/favicon-32.png</div>
+      <div class="file-desc">PNG favicon fallback for high-DPI displays.</div>
+    </div>
+
+    <div class="file-row">
+      <div class="file-name">nav-logo-64.png</div>
+      <div class="file-url">calenjob.com/nav-logo-64.png</div>
+      <div class="file-desc">CJ icon shown in the navbar of every page.</div>
+    </div>
+
+    <div class="section-title">Hero screenshots (referenced by index.html)</div>
+
+    <div class="file-row">
+      <div class="file-name">dashboard-app.jpg</div>
+      <div class="file-url">calenjob.com/dashboard-app.jpg</div>
+      <div class="file-desc">App dashboard screenshot in the homepage hero (left side).</div>
+    </div>
+
+    <div class="file-row">
+      <div class="file-name">calendar-app.jpg</div>
+      <div class="file-url">calenjob.com/calendar-app.jpg</div>
+      <div class="file-desc">App calendar screenshot in the homepage hero (right side).</div>
+    </div>
+
+    <div class="key">
+      <strong>How they connect:</strong> Every page links to <code>/about.html</code>, <code>/blog.html</code>, and <code>/</code> from the navbar and footer. The blog list page links to each individual post. Add new blog posts as new flat files (e.g. <code>2026-mileage-deduction.html</code>) and add a card to <code>blog.html</code> pointing at it.
+    </div>
+  </div>
+
+  <h2>Connection map</h2>
+  <div class="tree">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;color:#44403c;">
+      <strong style="color:#166534;">index.html</strong> (homepage)<br>
+      <span style="color:#d97706;">&nbsp;&nbsp;&#x251C;&#x2500; links to &rarr;</span> <span style="color:#1c1917;">about.html</span>, <span style="color:#1c1917;">blog.html</span><br>
+      <span style="color:#d97706;">&nbsp;&nbsp;&#x2514;&#x2500; scroll to &rarr;</span> #features, #pricing, #signup<br>
+      <br>
+      <strong style="color:#166534;">about.html</strong> (the CalenJob story)<br>
+      <span style="color:#d97706;">&nbsp;&nbsp;&#x2514;&#x2500; links to &rarr;</span> <span style="color:#1c1917;">index.html</span>, <span style="color:#1c1917;">blog.html</span><br>
+      <br>
+      <strong style="color:#166534;">blog.html</strong> (post list)<br>
+      <span style="color:#d97706;">&nbsp;&nbsp;&#x251C;&#x2500; links to &rarr;</span> <span style="color:#1c1917;">index.html</span>, <span style="color:#1c1917;">about.html</span><br>
+      <span style="color:#d97706;">&nbsp;&nbsp;&#x2514;&#x2500; links to each post &rarr;</span> <span style="color:#1c1917;">why-contractors-run-late.html</span><br>
+      <br>
+      <strong style="color:#166534;">why-contractors-run-late.html</strong> (the post)<br>
+      <span style="color:#d97706;">&nbsp;&nbsp;&#x2514;&#x2500; links back to &rarr;</span> <span style="color:#1c1917;">index.html</span>, <span style="color:#1c1917;">about.html</span>, <span style="color:#1c1917;">blog.html</span>
+    </div>
+  </div>
+
+  <h2>How to add the next blog post</h2>
+  <div class="tree" style="font-size:14px;line-height:1.7;color:#44403c;">
+    <ol style="padding-left:20px;">
+      <li style="margin-bottom:10px;">Create a new file at the root, e.g. <code style="font-family:'JetBrains Mono',monospace;background:#fef3c7;padding:1px 6px;border-radius:3px;">2026-mileage-deduction.html</code></li>
+      <li style="margin-bottom:10px;">Copy the structure of <code style="font-family:'JetBrains Mono',monospace;background:#fef3c7;padding:1px 6px;border-radius:3px;">why-contractors-run-late.html</code> as a template.</li>
+      <li style="margin-bottom:10px;">Update the title, content, canonical URL, and OG tags to match the new post.</li>
+      <li style="margin-bottom:10px;">Open <code style="font-family:'JetBrains Mono',monospace;background:#fef3c7;padding:1px 6px;border-radius:3px;">blog.html</code>, copy the existing post-card block, paste it above the existing one, and update href / title / excerpt / date.</li>
+      <li>Move one of the "Coming Soon" cards to the published list when you publish each post.</li>
+    </ol>
+  </div>
+
+</div>
+</body>
+</html>

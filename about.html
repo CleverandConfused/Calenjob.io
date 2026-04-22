@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About CalenJob &mdash; Why We Built It</title>
+    <meta name="description" content="CalenJob was built by one developer who watched a family member in pest control struggle every morning with drive time between jobs. Here is the story, and what the app does differently.">
+    <link rel="canonical" href="https://calenjob.com/about.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=2">
+    <meta name="theme-color" content="#166534">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://calenjob.com/about.html">
+    <meta property="og:title" content="About CalenJob &mdash; Why We Built It">
+    <meta property="og:description" content="The story behind a drive-time-aware calendar for contractors, and what makes it different from the $50+ field service platforms.">
+    <meta property="og:site_name" content="CalenJob">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Honest Money palette */
+            --ink: #1c1917;
+            --ink-light: #44403c;
+            --ink-muted: #78716c;
+            --surface: #ffffff;
+            --surface-warm: #fffbeb;
+            --accent: #166534;
+            --accent-dark: #14532d;
+            --accent-light: #dfebe0;
+            --accent-glow: #f0fdf4;
+            --cta: #2f7d32;
+            --cta-dark: #256428;
+            --success: #2f7d32;
+            --success-light: #dfebe0;
+            --copper: #d97706;
+            --copper-light: #fef3c7;
+            --border: #e7e5e4;
+            --border-light: #f5f5f4;
+            --radius: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--ink);
+            background: var(--surface);
+            line-height: 1.6;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            transition: box-shadow 0.3s;
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background-image: url('/nav-logo-64.png');
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            font-family: 'Source Serif 4', serif;
+            font-weight: 600;
+            font-size: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            color: var(--ink-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover, .nav-link.current {
+            color: var(--ink);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 20px;
+            background: var(--cta);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .nav-cta:hover {
+            background: var(--cta-dark);
+            transform: translateY(-1px);
+        }
+
+        /* ARTICLE */
+        .article-hero {
+            padding: 140px 24px 60px;
+            background: linear-gradient(180deg, var(--accent-glow) 0%, var(--surface) 100%);
+            text-align: center;
+        }
+
+        .article-label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .article-hero h1 {
+            font-family: 'Source Serif 4', serif;
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            max-width: 720px;
+            margin: 0 auto 18px;
+        }
+
+        .article-hero p {
+            font-size: 18px;
+            color: var(--ink-muted);
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+
+        .article-body {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+
+        .article-body p {
+            font-size: 17px;
+            line-height: 1.75;
+            color: var(--ink-light);
+            margin-bottom: 22px;
+        }
+
+        .article-body h2 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+            margin-top: 44px;
+            margin-bottom: 16px;
+            color: var(--ink);
+        }
+
+        .article-body ul {
+            list-style: none;
+            margin: 20px 0 28px;
+            padding: 0;
+        }
+
+        .article-body ul li {
+            padding: 10px 0 10px 28px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--ink-light);
+            position: relative;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .article-body ul li:last-child {
+            border-bottom: none;
+        }
+
+        .article-body ul.checks li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .article-body ul.crosses li::before {
+            content: "\2212";
+            position: absolute;
+            left: 0;
+            color: var(--ink-muted);
+            font-weight: 700;
+        }
+
+        .pull-quote {
+            margin: 36px 0;
+            padding: 24px 28px;
+            background: var(--surface-warm);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+            font-family: 'Source Serif 4', serif;
+            font-size: 20px;
+            line-height: 1.5;
+            color: var(--ink);
+            font-style: italic;
+        }
+
+        .signature {
+            margin-top: 44px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border-light);
+            font-size: 15px;
+            color: var(--ink-muted);
+        }
+
+        .signature strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        /* CTA BAND */
+        .cta-band {
+            padding: 72px 24px;
+            background: var(--ink);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-band h2 {
+            font-family: 'Source Serif 4', serif;
+            font-size: clamp(26px, 3.5vw, 36px);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-band p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 28px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-band .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--cta);
+            color: white;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+            box-shadow: 0 2px 8px rgba(22,163,74,0.25);
+        }
+
+        .cta-band .btn-primary:hover {
+            background: var(--cta-dark);
+            transform: translateY(-1px);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 48px 24px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: var(--ink-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--ink-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--ink);
+        }
+
+        @media (max-width: 768px) {
+            .article-hero {
+                padding: 120px 24px 40px;
+            }
+
+            .article-body {
+                padding: 40px 24px 60px;
+            }
+
+            .article-body p {
+                font-size: 16px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <div class="logo-icon" aria-label="CalenJob icon"></div>
+                <span class="logo-text">CalenJob</span>
+            </a>
+            <div class="nav-links">
+                <a href="/#features" class="nav-link">Features</a>
+                <a href="/about.html" class="nav-link current">About</a>
+                <a href="/blog.html" class="nav-link">Blog</a>
+                <a href="/#signup" class="nav-cta">Join the Waitlist</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ARTICLE HERO -->
+    <section class="article-hero">
+        <div class="article-label">About</div>
+        <h1>A calendar that understands drive time.</h1>
+        <p>Here is what it does, why we built it, and who is behind it.</p>
+    </section>
+
+    <!-- ARTICLE BODY -->
+    <article class="article-body">
+
+        <h2>What CalenJob is</h2>
+
+        <p>CalenJob is a drive-time-aware calendar for anyone who drives from job to job. You add a job with an address, or let a customer book one through your page on calenjob.com. The app calculates traffic-based drive time from your previous stop and inserts it into your schedule. When it is time to leave, a push notification tells you. At the end of the week, your mileage log is already filled out.</p>
+
+        <p>It is a decision-support tool, not a field service management platform. You stay in control of your schedule. The app removes the mental burden of estimating travel time and prevents unrealistic planning.</p>
+
+        <ul class="checks">
+            <li>Automatic traffic-aware drive time between every job</li>
+            <li>A public booking page customers use to schedule with you, with drive time factored in automatically</li>
+            <li>Push notifications when it is time to leave for the next stop</li>
+            <li>Mileage tracking with your own custom per-mile rate</li>
+            <li>A route map that shows your whole day at a glance</li>
+            <li>Recurring schedules for weekly maintenance clients</li>
+        </ul>
+
+        <p><strong>What it is not:</strong></p>
+
+        <ul class="crosses">
+            <li>An invoicing or CRM tool</li>
+            <li>A full field service platform like Jobber or ServiceTitan</li>
+            <li>A dispatching platform for managing crews</li>
+            <li>$50 per month</li>
+        </ul>
+
+        <p>One tool, one problem, done well. At $14.99 a month, or $119.99 a year, the price is small enough to feel automatic and the feature set is narrow enough to stay out of your way.</p>
+
+        <h2>Why we created it</h2>
+
+        <p>A family member of mine runs a pest control company. Watching how he plans his day taught me something that most software misses: the hardest part of the job is not the job. It is the drive time between the jobs.</p>
+
+        <p>Every morning he would open Google Maps, type in each address one by one, check traffic, do mental math, and try to figure out when he needed to leave each stop to make the next appointment. Miss an estimate by ten minutes and he would be apologizing to the next customer. Stack a few of those, and by two in the afternoon the whole day was a scramble.</p>
+
+        <p>That kept bothering me. Drive time is not a side problem for anyone who drives from job to job. It is the thing. And it was being solved with a notepad, a clock on the dashboard, and three separate apps that did not talk to each other.</p>
+
+        <p>So I went looking. Reddit threads on r/plumbing, r/electricians, r/HVAC. Facebook groups for contractors. Trade-specific forums. The same complaint came up over and over: manually cross-referencing Google Maps and the calendar eats real hours every week. Nobody wants to tap through live traffic data between every job, but nobody had a better option either.</p>
+
+        <p>The software that actually solved it &mdash; Jobber, Housecall Pro, ServiceTitan &mdash; cost $50 to $200 per month and came bundled with invoicing, a CRM, dispatching, client portals, and a dozen other features most independent tradespeople do not need. They were paying for all of it to get the scheduling piece.</p>
+
+        <div class="pull-quote">
+            There was a gap. A simple calendar that understood drive time. Nothing more.
+        </div>
+
+        <h2>Who we are, and why we care</h2>
+
+        <p>CalenJob is built by one developer (me, Sam) in my evenings and weekends. It is a solo indie project, which means every decision about what goes in the app and what stays out is made by one person who actually has to answer to the users. No feature bloat by committee. No quarterly priorities shifting under pressure from a sales team.</p>
+
+        <p>Why do I care? I watched a family member lose hours every week to a problem a calendar should have solved years ago. Independent tradespeople deserve tools that respect their time and their wallet. And I would rather build something small and useful for a specific group of people, and get it right, than ship something generic to everyone.</p>
+
+        <p>If something in the app breaks or does not feel right, you can email me directly. It gets fixed.</p>
+
+        <div class="signature">
+            &mdash; <strong>Sam</strong>, founder of CalenJob<br>
+            <a href="#" id="contactLink" onclick="return false;" style="color:var(--accent);text-decoration:none;">hello@calenjob.com</a>
+        </div>
+
+    </article>
+
+    <!-- CTA BAND -->
+    <section class="cta-band">
+        <h2>Be on the list when CalenJob ships.</h2>
+        <p>The first version launches on iPhone. Drop your email and I will let you know the day it goes live.</p>
+        <a href="/#signup" class="btn-primary">Join the Waitlist</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; 2026 CalenJob. All rights reserved.</div>
+            <div class="footer-links">
+                <a href="/#features">Features</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/about.html">About</a>
+                <a href="/blog.html">Blog</a>
+                <a href="#" id="footerContact" onclick="return false;">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Email obfuscation
+        (function() {
+            var u = 'hel' + 'lo';
+            var d = 'calen' + 'job' + '.com';
+            var addr = 'mai' + 'lto:' + u + '@' + d;
+            var link1 = document.getElementById('contactLink');
+            var link2 = document.getElementById('footerContact');
+            if (link1) { link1.href = addr; link1.onclick = null; }
+            if (link2) { link2.href = addr; link2.onclick = null; }
+        })();
+
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        });
+    </script>
+
+</body>
+</html>
