@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog — Writing for mobile tradespeople | CalenJob</title>
-    <meta name="description" content="Honest writing for plumbers, electricians, HVAC technicians, and anyone else who drives between jobs. Time management, scheduling, mileage tracking, and the realities of the trades.">
-    <meta name="keywords" content="contractor blog, tradesman time management, plumber scheduling advice, electrician business blog, HVAC technician resources">
+    <title>Blog — CalenJob</title>
+    <meta name="description" content="Practical writing for plumbers, electricians, HVAC technicians, and anyone else who drives between jobs. Scheduling, mileage, and the realities of the trades.">
     <link rel="canonical" href="https://calenjob.com/blog.html">
 
     <!-- Favicon -->
@@ -14,11 +13,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=2">
     <meta name="theme-color" content="#166534">
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://calenjob.com/blog.html">
-    <meta property="og:title" content="CalenJob Blog — Writing for mobile tradespeople">
-    <meta property="og:description" content="Scheduling, time management, and the realities of the trades. Written for contractors who spend their day driving between jobs.">
+    <meta property="og:title" content="Blog — CalenJob">
+    <meta property="og:description" content="Scheduling, mileage, and the realities of the trades. Written for contractors who drive between jobs.">
     <meta property="og:site_name" content="CalenJob">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,35 +51,37 @@
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: var(--ink);
-            background: var(--surface-warm);
+        html {
+            scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.6;
         }
 
-        /* NAV */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--ink);
+            background: var(--surface-warm);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAV — copied from homepage */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 251, 235, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             z-index: 100;
-            transition: box-shadow 0.2s ease, background 0.2s ease;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            transition: box-shadow 0.3s;
         }
-        nav.scrolled {
-            box-shadow: 0 1px 0 var(--border);
-            background: rgba(255, 251, 235, 0.95);
-        }
+        nav.scrolled { box-shadow: var(--shadow-sm); }
         .nav-inner {
-            max-width: 1200px;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 18px 24px;
+            padding: 0 24px;
+            height: 64px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -104,350 +104,237 @@
         }
         .logo-text {
             font-family: 'Source Serif 4', serif;
-            font-size: 20px;
             font-weight: 600;
-            letter-spacing: -0.01em;
+            font-size: 20px;
+            letter-spacing: -0.02em;
         }
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 28px;
+            gap: 24px;
         }
         .nav-link {
+            font-size: 14px;
             color: var(--ink-light);
             text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
             transition: color 0.2s;
         }
-        .nav-link:hover { color: var(--accent); }
-        .nav-link.current {
-            color: var(--accent);
-            font-weight: 600;
-        }
+        .nav-link:hover { color: var(--ink); }
+        .nav-link.current { color: var(--ink); font-weight: 600; }
         .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 20px;
             background: var(--ink);
             color: white;
-            text-decoration: none;
-            padding: 9px 18px;
-            border-radius: 8px;
+            border: none;
+            border-radius: var(--radius);
+            font-family: 'DM Sans', sans-serif;
             font-size: 14px;
-            font-weight: 600;
-            transition: background 0.2s, transform 0.1s;
-            box-shadow: var(--shadow-sm);
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
         }
         .nav-cta:hover {
             background: #000;
             transform: translateY(-1px);
         }
 
-        /* BLOG HERO */
-        .blog-hero {
-            padding: 140px 24px 60px;
-            background:
-                radial-gradient(ellipse at 20% 0%, var(--accent-glow) 0%, transparent 55%),
-                linear-gradient(180deg, var(--surface-warm) 0%, var(--surface-warm) 70%, #faf5dd 100%);
-            text-align: center;
-        }
-        .blog-hero-inner {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-        .blog-eyebrow {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--copper);
-            background: var(--copper-light);
-            padding: 6px 14px;
-            border-radius: 100px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 20px;
-        }
-        .blog-title {
-            font-family: 'Source Serif 4', serif;
-            font-size: clamp(40px, 6vw, 64px);
-            font-weight: 700;
-            line-height: 1.05;
-            letter-spacing: -0.035em;
-            color: var(--ink);
-            margin-bottom: 18px;
-        }
-        .blog-sub {
-            font-size: 19px;
-            color: var(--ink-light);
-            line-height: 1.55;
-            max-width: 580px;
-            margin: 0 auto;
-        }
-
-        /* POSTS GRID */
-        .posts-section {
-            background: var(--surface);
-            padding: 72px 24px 60px;
-        }
-        .posts-inner {
+        /* PAGE HEADER */
+        .page-header {
+            padding: 120px 24px 48px;
             max-width: 900px;
             margin: 0 auto;
         }
-        .posts-section-label {
+        .page-header h1 {
             font-family: 'Source Serif 4', serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--ink-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 28px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            margin-bottom: 14px;
+        }
+        .page-header p {
+            font-size: 18px;
+            color: var(--ink-light);
+            line-height: 1.55;
+            max-width: 620px;
         }
 
+        /* ARTICLE CARDS */
+        .posts {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
         .post-card {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-            padding: 28px 0;
-            border-bottom: 1px solid var(--border);
+            display: block;
             text-decoration: none;
             color: inherit;
-            transition: transform 0.15s ease;
+            padding: 32px 0;
+            border-top: 1px solid var(--border);
         }
-        .post-card:last-child { border-bottom: none; }
-        .post-card:hover {
-            transform: translateX(4px);
+        .post-card:last-child {
+            border-bottom: 1px solid var(--border);
         }
-        .post-card:hover .post-card-title {
+        .post-card:hover .post-title {
             color: var(--accent);
         }
-
-        .post-card-meta {
+        .post-meta {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 13px;
+            margin-bottom: 10px;
+            font-size: 14px;
             color: var(--ink-muted);
-            margin-bottom: 4px;
         }
-        .post-card-category {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 700;
+        .post-category {
+            font-size: 12px;
+            font-weight: 600;
             color: var(--copper);
-            background: var(--copper-light);
-            padding: 4px 10px;
-            border-radius: 100px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
         }
-        .post-card-date {
-            font-size: 13px;
-            color: var(--ink-muted);
-        }
-        .post-card-readtime {
-            font-size: 13px;
-            color: var(--ink-muted);
-        }
-        .post-card-meta .dot {
+        .post-dot {
             width: 3px;
             height: 3px;
             border-radius: 50%;
             background: var(--ink-muted);
-            opacity: 0.5;
+            opacity: 0.4;
         }
-
-        .post-card-title {
+        .post-title {
             font-family: 'Source Serif 4', serif;
-            font-size: clamp(26px, 3vw, 32px);
+            font-size: clamp(22px, 3vw, 28px);
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.25;
             letter-spacing: -0.02em;
             color: var(--ink);
             margin-bottom: 10px;
-            transition: color 0.15s ease;
+            transition: color 0.15s;
         }
-        .post-card-excerpt {
+        .post-excerpt {
             font-size: 16px;
             color: var(--ink-light);
             line-height: 1.6;
             max-width: 680px;
+            margin-bottom: 14px;
         }
-        .post-card-read {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+        .post-read {
             font-size: 14px;
             font-weight: 600;
             color: var(--accent);
-            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
-        .post-card-read svg {
-            transition: transform 0.15s ease;
-        }
-        .post-card:hover .post-card-read svg {
+        .post-card:hover .post-read svg {
             transform: translateX(3px);
         }
-
-        /* UPCOMING POSTS */
-        .upcoming-section {
-            background: var(--surface-warm);
-            padding: 60px 24px 80px;
-        }
-        .upcoming-inner {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .upcoming-label {
-            font-family: 'Source Serif 4', serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--ink-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 28px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
-        }
-        .upcoming-card {
-            padding: 22px 0;
-            border-bottom: 1px dashed var(--border);
-            display: flex;
-            align-items: start;
-            justify-content: space-between;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-        .upcoming-card:last-child { border-bottom: none; }
-        .upcoming-card-main {
-            flex: 1;
-            min-width: 260px;
-        }
-        .upcoming-card-title {
-            font-family: 'Source Serif 4', serif;
-            font-size: 19px;
-            font-weight: 600;
-            color: var(--ink-light);
-            line-height: 1.3;
-            margin-bottom: 4px;
-        }
-        .upcoming-card-desc {
-            font-size: 14px;
-            color: var(--ink-muted);
-            line-height: 1.55;
-        }
-        .upcoming-tag {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--ink-muted);
-            background: var(--border-light);
-            padding: 4px 10px;
-            border-radius: 100px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            white-space: nowrap;
-            flex-shrink: 0;
+        .post-read svg {
+            transition: transform 0.15s;
         }
 
-        /* SIGNUP CTA */
-        .signup-section {
-            background: linear-gradient(180deg, var(--accent-glow) 0%, var(--surface-warm) 100%);
+        /* CTA / SIGNUP — copied from homepage */
+        .cta-section {
+            background: var(--ink);
+            color: white;
+            text-align: center;
             padding: 80px 24px;
         }
-        .signup-inner {
+        .cta-inner {
             max-width: 560px;
             margin: 0 auto;
-            text-align: center;
         }
-        .signup-eyebrow {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--copper);
+        .cta-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.5);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.06em;
             margin-bottom: 14px;
         }
-        .signup-title {
+        .cta-heading {
             font-family: 'Source Serif 4', serif;
             font-size: clamp(26px, 3.5vw, 36px);
             font-weight: 700;
             line-height: 1.15;
             letter-spacing: -0.02em;
-            color: var(--ink);
-            margin-bottom: 16px;
+            color: white;
+            margin-bottom: 14px;
         }
-        .signup-sub {
+        .cta-sub {
             font-size: 16px;
-            color: var(--ink-light);
-            margin-bottom: 28px;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 32px;
             line-height: 1.6;
         }
         .signup-form {
+            max-width: 480px;
+            margin: 0 auto;
             display: flex;
             gap: 10px;
-            max-width: 440px;
-            margin: 0 auto;
         }
         .signup-form input {
             flex: 1;
-            padding: 13px 16px;
+            padding: 14px 18px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: var(--radius);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-family: 'DM Sans', sans-serif;
             font-size: 15px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: white;
-            font-family: inherit;
-            color: var(--ink);
+            outline: none;
             transition: border-color 0.2s;
         }
-        .signup-form input:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
+        .signup-form input::placeholder { color: rgba(255,255,255,0.4); }
+        .signup-form input:focus { border-color: var(--cta); }
         .signup-form button {
-            padding: 13px 22px;
+            padding: 14px 28px;
             background: var(--cta);
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 600;
+            border-radius: var(--radius);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
             cursor: pointer;
-            font-family: inherit;
-            transition: background 0.2s, transform 0.1s;
-            box-shadow: var(--shadow-sm);
+            transition: background 0.2s;
+            white-space: nowrap;
         }
-        .signup-form button:hover {
-            background: var(--cta-dark);
-            transform: translateY(-1px);
-        }
-        .signup-form button:disabled {
-            opacity: 0.6;
-            cursor: default;
-            transform: none;
+        .signup-form button:hover { background: var(--cta-dark); }
+        .signup-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+        .signup-note {
+            margin-top: 16px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
         }
         .signup-success {
             display: none;
-            padding: 16px 22px;
-            background: var(--success-light);
-            color: var(--accent-dark);
-            border-radius: 10px;
-            font-weight: 500;
+            padding: 20px;
+            background: rgba(22, 163, 74, 0.15);
+            border: 1px solid rgba(22, 163, 74, 0.3);
+            border-radius: var(--radius);
+            color: #86efac;
+            font-size: 15px;
+            max-width: 480px;
+            margin: 0 auto;
         }
         .signup-success.show { display: block; }
 
-        /* FOOTER */
+        /* FOOTER — copied from homepage */
         footer {
-            padding: 40px 24px;
+            padding: 48px 24px;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
             background: var(--surface-warm);
-            border-top: 1px solid var(--border);
         }
         .footer-inner {
-            max-width: 1200px;
+            max-width: 1080px;
             margin: 0 auto;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
+            align-items: center;
         }
         .footer-copy {
             font-size: 14px;
@@ -463,198 +350,132 @@
             text-decoration: none;
             transition: color 0.2s;
         }
-        .footer-links a:hover { color: var(--accent); }
+        .footer-links a:hover { color: var(--ink); }
 
-        @media (max-width: 640px) {
-            .blog-hero { padding: 120px 24px 40px; }
-            .posts-section { padding: 56px 24px 40px; }
-            .upcoming-section { padding: 48px 24px 64px; }
+        @media (max-width: 768px) {
+            .nav-links { gap: 16px; }
+            .nav-link.desktop-only { display: none; }
             .signup-form { flex-direction: column; }
-            .footer-inner { flex-direction: column; gap: 14px; }
-            .desktop-only { display: none; }
+            .footer-inner { flex-direction: column; gap: 16px; }
+            .page-header { padding: 100px 24px 36px; }
         }
     </style>
 </head>
 <body>
 
-<nav id="nav">
-    <div class="nav-inner">
-        <a href="/" class="logo">
-            <div class="logo-icon" aria-label="CalenJob icon"></div>
-            <span class="logo-text">CalenJob</span>
-        </a>
-        <div class="nav-links">
-            <a href="/#features" class="nav-link desktop-only">Features</a>
-            <a href="/about.html" class="nav-link">About</a>
-            <a href="/blog.html" class="nav-link current">Blog</a>
-            <a href="/#signup" class="nav-cta">Join the Waitlist</a>
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <div class="logo-icon" aria-label="CalenJob icon"></div>
+                <span class="logo-text">CalenJob</span>
+            </a>
+            <div class="nav-links">
+                <a href="/#features" class="nav-link desktop-only">Features</a>
+                <a href="/about.html" class="nav-link">About</a>
+                <a href="/blog.html" class="nav-link current">Blog</a>
+                <a href="/#signup" class="nav-cta">Join the Waitlist</a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<!-- BLOG HERO -->
-<section class="blog-hero">
-    <div class="blog-hero-inner">
-        <div class="blog-eyebrow">The CalenJob Blog</div>
-        <h1 class="blog-title">Writing for people who drive for a living.</h1>
-        <p class="blog-sub">Scheduling, time management, mileage, and the honest realities of the trades. Short reads for plumbers, electricians, HVAC techs, handymen, and anyone else whose day is a string of addresses.</p>
+    <div class="page-header">
+        <h1>Blog</h1>
     </div>
-</section>
 
-<!-- PUBLISHED POSTS -->
-<section class="posts-section">
-    <div class="posts-inner">
-        <div class="posts-section-label">Latest</div>
+    <div class="posts">
 
         <a href="/why-contractors-run-late.html" class="post-card">
-            <div class="post-card-meta">
-                <span class="post-card-category">Field Service Reality</span>
-                <span class="post-card-date">April 19, 2026</span>
-                <span class="dot"></span>
-                <span class="post-card-readtime">5 min read</span>
+            <div class="post-meta">
+                <span class="post-category">The Problem We're Solving</span>
+                <span class="post-dot"></span>
+                <span>April 19, 2026</span>
+                <span class="post-dot"></span>
+                <span>5 min read</span>
             </div>
-            <h2 class="post-card-title">The Real Reason Service Techs Run Late (It's Not Your Fault)</h2>
-            <p class="post-card-excerpt">Calendars built for office workers do not know about distance or traffic. Drive time estimates come from memory. Job durations are guesses. The scheduling infrastructure most service technicians are handed was built for a workday that looks nothing like theirs.</p>
-            <span class="post-card-read">
-                Read the post
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </span>
+            <h2 class="post-title">Your Calendar Doesn't Know Where Your Jobs Are. That's the Whole Problem.</h2>
+            <p class="post-excerpt">Every calendar app treats appointments as time slots. None of them account for the drive between them. Here is the gap in every scheduling tool and the app we built to fill it.</p>
+            <span class="post-read">Read article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </a>
 
     </div>
-</section>
 
-<!-- UPCOMING / CONTENT ROADMAP -->
-<section class="upcoming-section">
-    <div class="upcoming-inner">
-        <div class="upcoming-label">Coming Soon</div>
-
-        <div class="upcoming-card">
-            <div class="upcoming-card-main">
-                <div class="upcoming-card-title">How Much Time Does a Contractor Lose to Bad Scheduling?</div>
-                <div class="upcoming-card-desc">The real math on how much unbillable time gets eaten by drive-time mis-estimates, booking conflicts, and crosstown jobs. Backed by industry research.</div>
+    <section class="cta-section" id="signup">
+        <div class="cta-inner">
+            <div class="cta-label">Early Access</div>
+            <h2 class="cta-heading">Be the first to schedule smarter.</h2>
+            <p class="cta-sub">Join the waitlist and we will let you know when CalenJob is ready. No spam, just one email when it launches.</p>
+            <div class="signup-form" id="signupForm">
+                <input type="email" id="emailInput" placeholder="you@company.com" required>
+                <button type="button" id="signupBtn" onclick="submitSignup()">Join Waitlist</button>
             </div>
-            <span class="upcoming-tag">In the works</span>
-        </div>
-
-        <div class="upcoming-card">
-            <div class="upcoming-card-main">
-                <div class="upcoming-card-title">2026 IRS Standard Mileage Rate for Contractors</div>
-                <div class="upcoming-card-desc">A plain-English guide to the 2026 rate, what counts as deductible, and how to track it without buying MileIQ.</div>
+            <div class="signup-success" id="signupSuccess">
+                &#10003; You're on the list. We will be in touch when CalenJob is ready to go.
             </div>
-            <span class="upcoming-tag">In the works</span>
+            <p class="signup-note">One email when we launch. You can reply and unsubscribe anytime.</p>
         </div>
+    </section>
 
-        <div class="upcoming-card">
-            <div class="upcoming-card-main">
-                <div class="upcoming-card-title">Best Scheduling Apps for Solo Plumbers: Honest Comparison</div>
-                <div class="upcoming-card-desc">Jobber, Housecall Pro, Google Calendar, and CalenJob compared side by side. No affiliate hype. The honest strengths and weaknesses of each.</div>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; 2026 CalenJob. All rights reserved.</div>
+            <div class="footer-links">
+                <a href="/#features">Features</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/about.html">About</a>
+                <a href="/blog.html">Blog</a>
+                <a href="#" id="contactLink" onclick="return false;">Contact</a>
             </div>
-            <span class="upcoming-tag">In the works</span>
         </div>
+    </footer>
 
-        <div class="upcoming-card">
-            <div class="upcoming-card-main">
-                <div class="upcoming-card-title">Stop Accepting Jobs You Cannot Physically Get To</div>
-                <div class="upcoming-card-desc">Why grouping jobs by geographic zone earns more than trying to cover the whole metro, and how to build a weekly zone rotation that actually works.</div>
-            </div>
-            <span class="upcoming-tag">In the works</span>
-        </div>
+    <script>
+        (function() {
+            var u = 'hel' + 'lo';
+            var d = 'calen' + 'job' + '.com';
+            var link = document.getElementById('contactLink');
+            link.href = 'mai' + 'lto:' + u + '@' + d;
+            link.onclick = null;
+        })();
 
-    </div>
-</section>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        });
 
-<!-- SIGNUP -->
-<section class="signup-section" id="signup">
-    <div class="signup-inner">
-        <div class="signup-eyebrow">Get on the waitlist</div>
-        <h2 class="signup-title">Be first when CalenJob launches</h2>
-        <p class="signup-sub">A calendar built for people who drive between jobs. Launching soon on iPhone.</p>
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxf5xzA49nGNZrs7LXZ69oy_d5Sc_dn94QiJH07Sjj_RyGTTEuQ5f7TBdrU0NHKEMggBg/exec';
 
-        <form class="signup-form" id="signupForm" onsubmit="submitSignup(); return false;">
-            <input type="email" id="emailInput" placeholder="you@yourcompany.com" required>
-            <button type="submit" id="signupBtn">Join Waitlist</button>
-        </form>
-        <div class="signup-success" id="signupSuccess">
-            You are on the list. We will email you as soon as the app is live.
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <div class="footer-inner">
-        <div class="footer-copy">&copy; 2026 CalenJob. All rights reserved.</div>
-        <div class="footer-links">
-            <a href="/#features">Features</a>
-            <a href="/#pricing">Pricing</a>
-            <a href="/about.html">About</a>
-            <a href="/blog.html">Blog</a>
-            <a href="#" id="contactLink" onclick="return false;">Contact</a>
-        </div>
-    </div>
-</footer>
-
-<script>
-    // Email obfuscation
-    (function() {
-        var u = 'hel' + 'lo';
-        var d = 'calen' + 'job' + '.com';
-        var link = document.getElementById('contactLink');
-        link.href = 'mai' + 'lto:' + u + '@' + d;
-        link.onclick = null;
-    })();
-
-    // Nav scroll effect
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    // Waitlist signup
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxf5xzA49nGNZrs7LXZ69oy_d5Sc_dn94QiJH07Sjj_RyGTTEuQ5f7TBdrU0NHKEMggBg/exec';
-
-    function submitSignup() {
-        const input = document.getElementById('emailInput');
-        const email = input.value.trim();
-        const btn = document.getElementById('signupBtn');
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email || !emailRegex.test(email)) {
-            input.style.borderColor = '#ef4444';
-            input.focus();
-            return;
+        function submitSignup() {
+            const input = document.getElementById('emailInput');
+            const email = input.value.trim();
+            const btn = document.getElementById('signupBtn');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                input.style.borderColor = '#ef4444';
+                input.focus();
+                return;
+            }
+            btn.disabled = true;
+            btn.textContent = 'Joining...';
+            fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ email: email, source: 'blog-index' }).toString()
+            })
+            .then(() => showSuccess())
+            .catch(() => showSuccess());
         }
 
-        btn.disabled = true;
-        btn.textContent = 'Joining...';
+        function showSuccess() {
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('signupSuccess').classList.add('show');
+        }
 
-        const body = new URLSearchParams({
-            email: email,
-            source: 'blog-index'
-        }).toString();
-
-        fetch(APPS_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: body
-        })
-        .then(() => showSuccess())
-        .catch(() => showSuccess());
-    }
-
-    function showSuccess() {
-        document.getElementById('signupForm').style.display = 'none';
-        const success = document.getElementById('signupSuccess');
-        success.classList.add('show');
-    }
-
-    document.getElementById('emailInput').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') { e.preventDefault(); submitSignup(); }
-        this.style.borderColor = '';
-    });
-</script>
+        document.getElementById('emailInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') submitSignup();
+            this.style.borderColor = 'rgba(255,255,255,0.15)';
+        });
+    </script>
 
 </body>
 </html>

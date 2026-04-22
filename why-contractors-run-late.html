@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Real Reason Service Techs Run Late (It's Not Your Fault) | CalenJob</title>
-    <meta name="description" content="Calendars ignore geography. Drive time estimates come from memory. Job durations are guesses. The scheduling infrastructure most service technicians are handed was built for office workers, not for the road.">
-    <meta name="keywords" content="why contractors run late, service technician running behind, contractor schedule too packed, drive time between service calls, field service scheduling problems, calendar for tradespeople">
+    <title>Your Calendar Doesn't Know Where Your Jobs Are. That's the Whole Problem. | CalenJob</title>
+    <meta name="description" content="Every calendar app treats appointments as time slots. None of them account for the drive between them. CalenJob does. Here is the problem and how we built the fix.">
+    <meta name="keywords" content="calendar for contractors, drive time between jobs, contractor scheduling app, mileage tracking for contractors, plumber scheduling, HVAC scheduling, tradesman calendar">
     <link rel="canonical" href="https://calenjob.com/why-contractors-run-late.html">
 
     <!-- Favicon -->
@@ -14,35 +14,25 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=2">
     <meta name="theme-color" content="#166534">
 
-    <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://calenjob.com/why-contractors-run-late.html">
-    <meta property="og:title" content="The Real Reason Service Techs Run Late (It's Not Your Fault)">
-    <meta property="og:description" content="Calendars built for office workers do not know about distance or traffic. That design gap is where late arrivals in the trades actually come from.">
+    <meta property="og:title" content="Your Calendar Doesn't Know Where Your Jobs Are">
+    <meta property="og:description" content="Every calendar treats appointments as time slots. None account for the drive between them. CalenJob does.">
     <meta property="og:site_name" content="CalenJob">
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="The Real Reason Service Techs Run Late">
-    <meta name="twitter:description" content="Late arrivals are a scheduling infrastructure problem, not a time management problem.">
+    <meta name="twitter:title" content="Your Calendar Doesn't Know Where Your Jobs Are">
+    <meta name="twitter:description" content="The gap in every scheduling tool, and the app we built to fill it.">
 
-    <!-- Article structured data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "The Real Reason Service Techs Run Late (It's Not Your Fault)",
-      "description": "Calendars built for office workers do not know about distance or traffic. That design gap is where late arrivals in the trades actually come from.",
-      "author": {
-        "@type": "Organization",
-        "name": "CalenJob"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "CalenJob",
-        "url": "https://calenjob.com"
-      },
+      "headline": "Your Calendar Doesn't Know Where Your Jobs Are. That's the Whole Problem.",
+      "description": "Every calendar app treats appointments as time slots. None of them account for the drive between them. CalenJob does.",
       "datePublished": "2026-04-19",
+      "author": { "@type": "Organization", "name": "CalenJob" },
+      "publisher": { "@type": "Organization", "name": "CalenJob" },
       "url": "https://calenjob.com/why-contractors-run-late.html",
       "mainEntityOfPage": "https://calenjob.com/why-contractors-run-late.html"
     }
@@ -80,35 +70,37 @@
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: var(--ink);
-            background: var(--surface-warm);
+        html {
+            scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.6;
         }
 
-        /* NAV */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--ink);
+            background: var(--surface-warm);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAV — copied from homepage */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 251, 235, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             z-index: 100;
-            transition: box-shadow 0.2s ease, background 0.2s ease;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            transition: box-shadow 0.3s;
         }
-        nav.scrolled {
-            box-shadow: 0 1px 0 var(--border);
-            background: rgba(255, 251, 235, 0.95);
-        }
+        nav.scrolled { box-shadow: var(--shadow-sm); }
         .nav-inner {
-            max-width: 1200px;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 18px 24px;
+            padding: 0 24px;
+            height: 64px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -128,37 +120,41 @@
             background-size: cover;
             background-position: center;
             flex-shrink: 0;
-            box-shadow: var(--shadow-sm);
         }
         .logo-text {
             font-family: 'Source Serif 4', serif;
-            font-size: 20px;
             font-weight: 600;
-            letter-spacing: -0.01em;
+            font-size: 20px;
+            letter-spacing: -0.02em;
         }
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 28px;
+            gap: 24px;
         }
         .nav-link {
+            font-size: 14px;
             color: var(--ink-light);
             text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
             transition: color 0.2s;
         }
-        .nav-link:hover { color: var(--accent); }
+        .nav-link:hover { color: var(--ink); }
+        .nav-link.current { color: var(--ink); font-weight: 600; }
         .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 20px;
             background: var(--ink);
             color: white;
-            text-decoration: none;
-            padding: 9px 18px;
-            border-radius: 8px;
+            border: none;
+            border-radius: var(--radius);
+            font-family: 'DM Sans', sans-serif;
             font-size: 14px;
-            font-weight: 600;
-            transition: background 0.2s, transform 0.1s;
-            box-shadow: var(--shadow-sm);
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
         }
         .nav-cta:hover {
             background: #000;
@@ -166,296 +162,213 @@
         }
 
         /* ARTICLE HEADER */
-        .article-hero {
-            padding: 140px 24px 60px;
-            background:
-                radial-gradient(ellipse at 20% 0%, var(--accent-glow) 0%, transparent 55%),
-                linear-gradient(180deg, var(--surface-warm) 0%, var(--surface-warm) 70%, #faf5dd 100%);
-            position: relative;
-        }
-        .article-hero-inner {
-            max-width: 760px;
+        .article-header {
+            padding: 120px 24px 0;
+            max-width: 720px;
             margin: 0 auto;
         }
-
-        .breadcrumb {
+        .article-breadcrumb {
             font-size: 14px;
             color: var(--ink-muted);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .breadcrumb a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .breadcrumb a:hover { text-decoration: underline; }
-        .breadcrumb-sep { color: var(--ink-muted); opacity: 0.6; }
-
-        .article-category {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--copper);
-            background: var(--copper-light);
-            padding: 6px 12px;
-            border-radius: 100px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
             margin-bottom: 24px;
         }
-
-        .article-title {
+        .article-breadcrumb a {
+            color: var(--ink-muted);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .article-breadcrumb a:hover { color: var(--ink); }
+        .article-breadcrumb-sep { opacity: 0.5; margin: 0 8px; }
+        .article-category {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--copper);
+            margin-bottom: 12px;
+        }
+        .article-header h1 {
             font-family: 'Source Serif 4', serif;
-            font-size: clamp(32px, 5vw, 52px);
+            font-size: clamp(32px, 5vw, 46px);
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.12;
             letter-spacing: -0.03em;
             color: var(--ink);
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
-
         .article-meta {
-            display: flex;
-            align-items: center;
-            gap: 16px;
             font-size: 14px;
             color: var(--ink-muted);
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
         }
-        .article-meta-dot { opacity: 0.5; }
+        .article-meta-dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--ink-muted);
+            opacity: 0.4;
+        }
 
         /* ARTICLE BODY */
         .article-body {
-            background: var(--surface);
-            padding: 56px 24px 80px;
-        }
-        .article-body-inner {
             max-width: 720px;
             margin: 0 auto;
-            font-size: 18px;
+            padding: 40px 24px 64px;
+        }
+        .article-body p {
+            font-size: 17px;
+            line-height: 1.75;
+            color: var(--ink-light);
+            margin-bottom: 24px;
+        }
+        .article-body .lede {
+            font-size: 19px;
+            line-height: 1.65;
+            color: var(--ink);
+        }
+        .article-body h2 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--ink);
+            margin: 48px 0 18px;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+        }
+        .article-body h3 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--ink);
+            margin: 36px 0 12px;
+            line-height: 1.3;
+        }
+        .article-body strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+        .article-body ul {
+            margin: 0 0 24px 20px;
+            font-size: 17px;
             line-height: 1.75;
             color: var(--ink-light);
         }
-
-        .lede {
-            font-family: 'Source Serif 4', serif;
-            font-size: 22px;
-            line-height: 1.55;
-            color: var(--ink);
-            font-weight: 400;
-            margin-bottom: 32px;
-            font-style: italic;
-            border-left: 3px solid var(--copper);
-            padding-left: 20px;
-        }
-
-        .article-body-inner p {
-            margin-bottom: 24px;
-        }
-
-        .article-body-inner h2 {
-            font-family: 'Source Serif 4', serif;
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            color: var(--ink);
-            margin: 56px 0 20px;
-        }
-
-        .article-body-inner h3 {
-            font-family: 'Source Serif 4', serif;
-            font-size: 22px;
-            font-weight: 600;
-            line-height: 1.3;
-            color: var(--ink);
-            margin: 36px 0 14px;
-        }
-
-        .article-body-inner strong {
-            color: var(--ink);
-            font-weight: 600;
-        }
-
-        .article-body-inner ul {
-            margin: 16px 0 32px 0;
-            padding-left: 4px;
-            list-style: none;
-        }
-        .article-body-inner ul li {
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 12px;
-        }
-        .article-body-inner ul li::before {
-            content: "";
-            position: absolute;
-            left: 6px;
-            top: 14px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--copper);
-        }
-
-        /* KEY FRAME: the three-minute fix steps */
-        .fix-card {
-            background: var(--accent-glow);
-            border-left: 4px solid var(--accent);
-            border-radius: var(--radius);
-            padding: 24px 28px;
-            margin: 20px 0;
-        }
-        .fix-card-label {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
+        .article-body li {
             margin-bottom: 8px;
         }
-        .fix-card-heading {
-            font-family: 'Source Serif 4', serif;
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 10px;
-        }
-        .fix-card p {
-            margin: 0;
-            font-size: 16px;
-            line-height: 1.65;
-            color: var(--ink-light);
-        }
-
-        /* PULL QUOTE */
         .pull-quote {
             font-family: 'Source Serif 4', serif;
-            font-size: 26px;
-            line-height: 1.4;
+            font-size: 22px;
+            line-height: 1.5;
             color: var(--ink);
-            text-align: center;
-            margin: 48px auto;
-            padding: 32px 24px;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            max-width: 640px;
-            font-weight: 500;
-            letter-spacing: -0.01em;
+            border-left: 3px solid var(--copper);
+            padding: 16px 0 16px 24px;
+            margin: 40px 0;
+            font-style: italic;
         }
 
-        /* CTA SECTION */
+        /* CTA / SIGNUP — copied from homepage */
         .cta-section {
-            background: linear-gradient(180deg, var(--accent-glow) 0%, var(--surface-warm) 100%);
+            background: var(--ink);
+            color: white;
+            text-align: center;
             padding: 80px 24px;
         }
         .cta-inner {
-            max-width: 640px;
+            max-width: 560px;
             margin: 0 auto;
-            text-align: center;
         }
-        .cta-eyebrow {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--copper);
+        .cta-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.5);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 16px;
+            letter-spacing: 0.06em;
+            margin-bottom: 14px;
         }
-        .cta-title {
+        .cta-heading {
             font-family: 'Source Serif 4', serif;
-            font-size: clamp(28px, 4vw, 40px);
+            font-size: clamp(26px, 3.5vw, 36px);
             font-weight: 700;
             line-height: 1.15;
             letter-spacing: -0.02em;
-            color: var(--ink);
-            margin-bottom: 20px;
+            color: white;
+            margin-bottom: 14px;
         }
         .cta-sub {
-            font-size: 17px;
-            color: var(--ink-light);
+            font-size: 16px;
+            color: rgba(255,255,255,0.65);
             margin-bottom: 32px;
             line-height: 1.6;
         }
-
         .signup-form {
-            display: flex;
-            gap: 10px;
             max-width: 480px;
             margin: 0 auto;
+            display: flex;
+            gap: 10px;
         }
         .signup-form input {
             flex: 1;
             padding: 14px 18px;
-            font-size: 16px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: white;
-            font-family: inherit;
-            color: var(--ink);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: var(--radius);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            outline: none;
             transition: border-color 0.2s;
         }
-        .signup-form input:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
+        .signup-form input::placeholder { color: rgba(255,255,255,0.4); }
+        .signup-form input:focus { border-color: var(--cta); }
         .signup-form button {
-            padding: 14px 24px;
+            padding: 14px 28px;
             background: var(--cta);
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: var(--radius);
+            font-family: 'DM Sans', sans-serif;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
-            font-family: inherit;
-            transition: background 0.2s, transform 0.1s;
-            box-shadow: var(--shadow-sm);
+            transition: background 0.2s;
+            white-space: nowrap;
         }
-        .signup-form button:hover {
-            background: var(--cta-dark);
-            transform: translateY(-1px);
+        .signup-form button:hover { background: var(--cta-dark); }
+        .signup-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+        .signup-note {
+            margin-top: 16px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
         }
-        .signup-form button:disabled {
-            opacity: 0.6;
-            cursor: default;
-            transform: none;
-        }
-
         .signup-success {
             display: none;
-            padding: 18px 24px;
-            background: var(--success-light);
-            color: var(--accent-dark);
-            border-radius: 10px;
-            font-weight: 500;
+            padding: 20px;
+            background: rgba(22, 163, 74, 0.15);
+            border: 1px solid rgba(22, 163, 74, 0.3);
+            border-radius: var(--radius);
+            color: #86efac;
+            font-size: 15px;
+            max-width: 480px;
+            margin: 0 auto;
         }
         .signup-success.show { display: block; }
 
-        .signup-fine {
-            font-size: 13px;
-            color: var(--ink-muted);
-            margin-top: 16px;
-        }
-
-        /* FOOTER */
+        /* FOOTER — copied from homepage */
         footer {
-            padding: 40px 24px;
+            padding: 48px 24px;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
             background: var(--surface-warm);
-            border-top: 1px solid var(--border);
         }
         .footer-inner {
-            max-width: 1200px;
+            max-width: 1080px;
             margin: 0 auto;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
+            align-items: center;
         }
         .footer-copy {
             font-size: 14px;
@@ -471,216 +384,176 @@
             text-decoration: none;
             transition: color 0.2s;
         }
-        .footer-links a:hover { color: var(--accent); }
+        .footer-links a:hover { color: var(--ink); }
 
-        @media (max-width: 640px) {
-            .article-hero { padding: 120px 24px 48px; }
-            .article-body { padding: 40px 24px 60px; }
-            .article-body-inner { font-size: 17px; }
-            .lede { font-size: 19px; padding-left: 16px; }
-            .article-body-inner h2 { font-size: 26px; margin-top: 44px; }
-            .article-body-inner h3 { font-size: 20px; }
-            .pull-quote { font-size: 21px; padding: 24px 12px; margin: 36px auto; }
+        @media (max-width: 768px) {
+            .nav-links { gap: 16px; }
+            .nav-link.desktop-only { display: none; }
             .signup-form { flex-direction: column; }
-            .footer-inner { flex-direction: column; gap: 14px; }
-            .desktop-only { display: none; }
+            .footer-inner { flex-direction: column; gap: 16px; }
+            .article-header { padding: 100px 24px 0; }
         }
     </style>
 </head>
 <body>
 
-<nav id="nav">
-    <div class="nav-inner">
-        <a href="/" class="logo">
-            <div class="logo-icon" aria-label="CalenJob icon"></div>
-            <span class="logo-text">CalenJob</span>
-        </a>
-        <div class="nav-links">
-            <a href="/#features" class="nav-link desktop-only">Features</a>
-            <a href="/about.html" class="nav-link">About</a>
-            <a href="/blog.html" class="nav-link current">Blog</a>
-            <a href="#signup" class="nav-cta">Join the Waitlist</a>
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <div class="logo-icon" aria-label="CalenJob icon"></div>
+                <span class="logo-text">CalenJob</span>
+            </a>
+            <div class="nav-links">
+                <a href="/#features" class="nav-link desktop-only">Features</a>
+                <a href="/about.html" class="nav-link">About</a>
+                <a href="/blog.html" class="nav-link current">Blog</a>
+                <a href="/#signup" class="nav-cta">Join the Waitlist</a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<!-- ARTICLE HERO -->
-<section class="article-hero">
-    <div class="article-hero-inner">
-        <div class="breadcrumb">
+    <div class="article-header">
+        <div class="article-breadcrumb">
             <a href="/">Home</a>
-            <span class="breadcrumb-sep">/</span>
+            <span class="article-breadcrumb-sep">/</span>
             <a href="/blog.html">Blog</a>
-            <span class="breadcrumb-sep">/</span>
-            <span>Why Service Techs Run Late</span>
+            <span class="article-breadcrumb-sep">/</span>
+            <span>Your Calendar Doesn't Know Where Your Jobs Are</span>
         </div>
-        <span class="article-category">Field Service Reality</span>
-        <h1 class="article-title">The Real Reason Service Techs Run Late (It's Not Your Fault)</h1>
+        <div class="article-category">The Problem We're Solving</div>
+        <h1>Your Calendar Doesn't Know Where Your Jobs Are. That's the Whole Problem.</h1>
         <div class="article-meta">
             <span>April 19, 2026</span>
-            <span class="article-meta-dot">·</span>
+            <span class="article-meta-dot"></span>
             <span>5 min read</span>
         </div>
     </div>
-</section>
 
-<!-- ARTICLE BODY -->
-<article class="article-body">
-    <div class="article-body-inner">
+    <article class="article-body">
 
-        <p class="lede">Ask any customer why their plumber, electrician, or HVAC tech ran late, and you will get a character answer. Unreliable. Disorganized. Does not value anyone's time. Ask the tech, and you will get a structural one. The schedule was never going to work, the drive was longer than the calendar claimed, and the previous job took twice its estimate because that is what plumbing does. Both sides are frustrated. Only one of them is looking at the actual mechanics.</p>
+        <p class="lede">Every calendar app on the market treats an appointment as a time slot. 9 AM, water heater install. 11:15 AM, faucet repair. 1:30 PM, sump pump inspection. The times are there. The durations are there. What is missing is the thing that matters most for anyone who drives to work: the space between them.</p>
 
-        <p>Late arrivals in the trades are almost never a time management problem. They are a scheduling infrastructure problem, and the infrastructure most service technicians are handed is built for a workday that looks nothing like theirs.</p>
+        <p>Google Calendar, Apple Calendar, Outlook, and every scheduling tool built on top of them assume that getting from one appointment to the next costs nothing. For someone working in an office, that is true. The next meeting is down the hall. For a plumber driving across town, an electrician crossing a metro area, or an HVAC tech covering a 40-mile service radius, that assumption breaks the entire day.</p>
 
-        <h2>The calendar was built for office workers</h2>
+        <h2>The gap nobody built for</h2>
 
-        <p>Google Calendar, Outlook, Apple Calendar, and every tool built on top of them share an assumption: moving from one appointment to the next is free. A 10 AM meeting ends, you walk down the hall, and you are on time for the 10:30. The software does not need to know anything about distance, traffic, or geography, because for the person it was designed to serve, distance is a non-issue.</p>
+        <p>A typical service day has four or five jobs. Each job has an address. Between those addresses is a drive that could take 12 minutes or 50, depending on the hour, the route, and whether the city decided to repave something. That drive is invisible to every mainstream calendar. It does not appear as an event. It does not get a time block. Nothing warns you that the 25 minutes between your 11:15 and your 1:30 is not actually 25 minutes of free time. It is 25 minutes that will be entirely consumed by a drive, plus loading the truck, plus finding parking at the next site.</p>
 
-        <p>For a tradesperson driving between service calls, distance is the entire day. A 10 AM job in one neighborhood and an 11 AM job in another are not an hour apart. They are 47 minutes of work plus 18 minutes of driving plus a 15-minute gap that someone labeled "buffer," except the buffer is not actually a buffer. It is drive time wearing a disguise. The real workday has no slack in it at all, and nobody involved in scheduling it was aware of that.</p>
+        <p>The result is predictable. The morning starts on time. By noon, the schedule has drifted. By 3 PM, every remaining appointment is running behind. Not because anything went wrong, but because the calendar never accounted for the thing that takes the most time in a mobile tradesperson's day: moving between jobs.</p>
 
-        <p>This is why so many service techs end up apologizing at 10:47 for a 10:30 appointment. The calendar they were using does not know where anything is.</p>
+        <h2>What that actually costs</h2>
 
-        <h2>Drive time estimates come from feel, not from the road</h2>
+        <p>The obvious cost is late arrivals. A customer who was told "between 1 and 2" and sees you at 2:35 does not know that your previous job ran long and the drive took 40 minutes instead of 25. They just know you are late. That becomes a review. It becomes a referral that does not happen. Over months, it becomes revenue that quietly disappears.</p>
 
-        <p>The second structural issue is that nearly all drive time estimates in a typical service schedule come from memory. The tech has done the route a hundred times. The office staff booking the next job knows it takes "about half an hour." Those estimates are accurate on a good day, at a quiet hour, with no construction. They are wildly wrong during afternoon rush, during school pickup, on the Friday before a long weekend, and during the six weeks every summer when the city repaves something.</p>
+        <p>The less obvious cost is the stress of managing it all in your head. Every mobile tradesperson is running a continuous mental calculation throughout the day. How long will this job take. How far is the next one. What time do I need to leave. Can I stop for lunch. Should I call ahead and push the 3 PM. That mental overhead is constant, and it runs on top of the actual technical work you are being paid to do.</p>
 
-        <p>Traffic variance in most metropolitan areas is between 40 and 80 percent on the same route depending on the hour. A drive that takes 20 minutes at 10 AM can take 35 at 4:30 PM. Nobody in the schedule's creation factored that in, because the tools used to build the schedule have no awareness of the road. The 20-minute estimate gets locked in, the real drive takes 35, and the tech is now 15 minutes behind on the next job through no action of their own.</p>
+        <p>The third cost is wasted time from poor geographic planning. Without seeing the physical layout of a day's jobs, it is easy to end up zigzagging across a metro area. A job on the north side at 10 AM, the south side at noon, and the north side again at 2 PM. The drive time between those three stops might eat 90 minutes of unbillable time that could have been 30 minutes if the order were different.</p>
 
-        <h2>Job duration is a guess that pretends to be a plan</h2>
+        <h2>What CalenJob does differently</h2>
 
-        <p>Compounding the drive-time issue is the reality of how service work actually unfolds on site. A water heater replacement booked for 90 minutes runs to two and a half hours because the shutoff valve is seized, the previous installer used non-standard fittings, or the customer asks about a leaking faucet upstairs and it turns into a second job. An electrical service call scheduled as a 30-minute diagnostic becomes a panel replacement once the tech sees what is actually behind the cover.</p>
+        <p>CalenJob is a calendar app built for people who drive between jobs. Every appointment includes a real street address. When you add a job, the app pulls the actual drive time from Google Maps based on the hour you will be making that drive. Not an average. Not a guess from memory. The real number, with traffic, for the time of day you will be on the road.</p>
 
-        <p>Every experienced tradesperson knows job duration is a best-case estimate, not a prediction. But the calendar treats it as a hard commitment, and the next appointment is booked against that commitment. When the job runs long, which is what service work does, the schedule has no elasticity to absorb it. The delay compounds at every stop. By early afternoon, a 12-minute overrun at the first job has become a 45-minute delay at the third.</p>
+        <p>That drive time gets inserted into your schedule as its own event, visually blocked off so you can see exactly how much of your day is work and how much is windshield time. If two jobs are too far apart to connect in the available window, you see it immediately, not at 2 PM when the day falls apart.</p>
 
-        <div class="pull-quote">The schedule assumes a perfect day. A perfect day has never happened.</div>
+        <p>The app also sends a leave-by notification while you are still on the current job. If you need to leave by 12:55 to make your 1:30 on time, your phone tells you at 12:55. You do not have to track it yourself while you are under a sink or up a ladder or in the middle of a conversation with a customer.</p>
 
-        <h2>What the industry's response has been, and why it has not helped</h2>
+        <h2>Mileage tracking that happens automatically</h2>
 
-        <p>The field service industry's answer to this problem over the past decade has been to build larger and more complex scheduling software. Route optimization platforms, territory management tools, and full-service dispatch systems promise to solve scheduling chaos by replacing the calendar entirely with something more sophisticated.</p>
+        <p>Because CalenJob already knows every address you are driving between, it calculates your estimated mileage for the day, the week, the month, and the year. That number is available as a running total and can be exported as a CSV for your accountant or your tax records.</p>
 
-        <p>For a 50-truck HVAC operation, those tools make sense. For the solo plumber, the independent electrician, the one-person pest control route, the handyman running a two-van shop, they do not. They are priced for enterprise, they require administrative labor to maintain, and they assume a scheduling department exists somewhere to operate them. The tradesperson who needs help the most, the owner-operator driving the truck and answering the phone, has been routed around entirely.</p>
+        <p>This is not GPS-based real-time tracking. It is an estimate based on the route distances between your scheduled stops. For most independent tradespeople, this is more useful than an after-the-fact mileage log because the data is generated from the schedule you are already using. There is nothing extra to turn on, no separate app to run in the background, and no battery drain from continuous location tracking.</p>
 
-        <p>What most of these techs have, in practice, is Google Calendar. Or a paper planner. Or a shared family calendar app that a spouse uses to keep the kids' schedules in order. None of those know what a truck is, where the next job is, or how long it takes to get there at 4:15 PM on a Friday.</p>
+        <h2>What CalenJob is not</h2>
 
-        <h2>What a calendar for the trades would actually look like</h2>
+        <p>CalenJob is not field service management software. It does not do invoicing, client relationship management, quoting, or dispatching. It does not try to replace Jobber or ServiceTitan or Housecall Pro. Those platforms serve a different audience and solve a different set of problems.</p>
 
-        <p>The mechanical fix is not complicated. A scheduling tool built for service technicians would need to do four things that no mainstream calendar currently does.</p>
+        <p>CalenJob is a calendar. It does one thing that no other calendar does: it treats the drive between your jobs as real. It gives that drive a time block, a distance, and a notification. Everything else in the app exists to support that single function.</p>
 
-        <p>It would treat every appointment as a location, not just a time. When a job is entered, its address becomes a first-class fact about the event, and the calendar knows where every appointment is relative to every other one.</p>
+        <h2>Who it is for</h2>
 
-        <p>It would pull live drive time from a mapping service at the hour of travel, not an average. If the drive from the 2 PM job to the 3:30 PM job takes 50 minutes during afternoon rush, the calendar reflects 50 minutes, not a memory-based 30.</p>
+        <p>Plumbers, electricians, HVAC technicians, pest control techs, handymen, appliance repair pros, locksmiths, cleaning service operators, mobile notaries, home inspectors, and anyone else whose workday is built around driving from one address to the next. If you schedule three or more stops in a day and the space between those stops matters, CalenJob was built for you.</p>
 
-        <p>It would render that drive as its own event on the schedule, visible and time-blocked, so that nobody (including the tech themselves) can accidentally book a third job on top of the drive that was supposed to connect the first two.</p>
+        <p>CalenJob is launching soon on iPhone. $14.99 per month or $119.99 per year, with a 14-day free trial and no credit card required to start.</p>
 
-        <p>It would flag impossibilities before they become problems. If a 2 PM on one side of the metro and a 3:30 PM on the other are physically unreachable in that window, the calendar should say so at the moment the second job is being booked, not after the day has already fallen apart.</p>
+    </article>
 
-        <p>None of that is ambitious technology. Google Maps has offered traffic-aware drive time via API since 2013. The reason no mainstream calendar has integrated it is that the people building calendars do not drive between appointments, and the people who do drive between appointments have been treated as too niche to build for.</p>
-
-        <h2>Why this matters for independent trades</h2>
-
-        <p>There are roughly half a million plumbers and 400,000 HVAC technicians working in the United States, plus electricians, handymen, pest control techs, appliance repair pros, locksmiths, cleaning services, mobile notaries, and everyone else whose workday revolves around driving between appointments. The calendar infrastructure those workers have been using was not designed for them. Late arrivals, customer frustration, and lost referrals are the compounding cost of that gap. The fix is not better time management. The fix is a calendar that understands the road.</p>
-
-        <h2>The version we are building</h2>
-
-        <p>CalenJob is a scheduling app built specifically for people who drive between jobs. Every appointment has an address. Drive time between jobs is pulled live from Google Maps based on the hour the drive will actually happen. That drive time is rendered as its own event on the calendar, visible and protected. The app sends a leave-by notification while the tech is still on the current job, so the reminder to wrap up comes from the phone instead of from an overworked internal clock.</p>
-
-        <p>It will not solve every late arrival. Seized valves and surprise panel replacements are going to keep happening. But the scheduling math will stop working against you, which is where most late arrivals in this industry actually originate.</p>
-
-    </div>
-</article>
-
-<!-- CTA -->
-<section class="cta-section" id="signup">
-    <div class="cta-inner">
-        <div class="cta-eyebrow">Built for the truck, not the conference room</div>
-        <h2 class="cta-title">Get on the CalenJob waitlist</h2>
-        <p class="cta-sub">A calendar that treats your drive as real. Live traffic-aware drive times between jobs, drive blocks that can't be accidentally overwritten, and leave-by notifications from your phone. Launching soon on iPhone. Waitlist members get founding-member pricing.</p>
-
-        <form class="signup-form" id="signupForm" onsubmit="submitSignup(); return false;">
-            <input type="email" id="emailInput" placeholder="you@yourcompany.com" required>
-            <button type="submit" id="signupBtn">Join Waitlist</button>
-        </form>
-        <div class="signup-success" id="signupSuccess">
-            You are on the list. We will email you as soon as the app is live.
+    <section class="cta-section" id="signup">
+        <div class="cta-inner">
+            <div class="cta-label">Built for the truck, not the conference room</div>
+            <h2 class="cta-heading">Get on the CalenJob waitlist</h2>
+            <p class="cta-sub">A calendar that treats your drive as real. Live traffic-aware drive times between jobs, drive blocks that protect your schedule, and leave-by notifications from your phone. Launching soon on iPhone.</p>
+            <div class="signup-form" id="signupForm">
+                <input type="email" id="emailInput" placeholder="you@company.com" required>
+                <button type="button" id="signupBtn" onclick="submitSignup()">Join Waitlist</button>
+            </div>
+            <div class="signup-success" id="signupSuccess">
+                &#10003; You're on the list. We will be in touch when CalenJob is ready to go.
+            </div>
+            <p class="signup-note">One email when we launch. You can reply and unsubscribe anytime.</p>
         </div>
-        <div class="signup-fine">14-day free trial at launch. Cancel any time.</div>
-    </div>
-</section>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-    <div class="footer-inner">
-        <div class="footer-copy">&copy; 2026 CalenJob. All rights reserved.</div>
-        <div class="footer-links">
-            <a href="/#features">Features</a>
-            <a href="/#pricing">Pricing</a>
-            <a href="/about.html">About</a>
-            <a href="/blog.html">Blog</a>
-            <a href="#" id="contactLink" onclick="return false;">Contact</a>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; 2026 CalenJob. All rights reserved.</div>
+            <div class="footer-links">
+                <a href="/#features">Features</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/about.html">About</a>
+                <a href="/blog.html">Blog</a>
+                <a href="#" id="contactLink" onclick="return false;">Contact</a>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<script>
-    // Email obfuscation
-    (function() {
-        var u = 'hel' + 'lo';
-        var d = 'calen' + 'job' + '.com';
-        var link = document.getElementById('contactLink');
-        link.href = 'mai' + 'lto:' + u + '@' + d;
-        link.onclick = null;
-    })();
+    <script>
+        (function() {
+            var u = 'hel' + 'lo';
+            var d = 'calen' + 'job' + '.com';
+            var link = document.getElementById('contactLink');
+            link.href = 'mai' + 'lto:' + u + '@' + d;
+            link.onclick = null;
+        })();
 
-    // Nav scroll effect
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        });
 
-    // WAITLIST SIGNUP
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxf5xzA49nGNZrs7LXZ69oy_d5Sc_dn94QiJH07Sjj_RyGTTEuQ5f7TBdrU0NHKEMggBg/exec';
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxf5xzA49nGNZrs7LXZ69oy_d5Sc_dn94QiJH07Sjj_RyGTTEuQ5f7TBdrU0NHKEMggBg/exec';
 
-    function submitSignup() {
-        const input = document.getElementById('emailInput');
-        const email = input.value.trim();
-        const btn = document.getElementById('signupBtn');
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email || !emailRegex.test(email)) {
-            input.style.borderColor = '#ef4444';
-            input.focus();
-            return;
+        function submitSignup() {
+            const input = document.getElementById('emailInput');
+            const email = input.value.trim();
+            const btn = document.getElementById('signupBtn');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                input.style.borderColor = '#ef4444';
+                input.focus();
+                return;
+            }
+            btn.disabled = true;
+            btn.textContent = 'Joining...';
+            fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ email: email, source: 'blog-running-late' }).toString()
+            })
+            .then(() => showSuccess())
+            .catch(() => showSuccess());
         }
 
-        btn.disabled = true;
-        btn.textContent = 'Joining...';
+        function showSuccess() {
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('signupSuccess').classList.add('show');
+        }
 
-        const body = new URLSearchParams({
-            email: email,
-            source: 'blog-running-late'
-        }).toString();
-
-        fetch(APPS_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: body
-        })
-        .then(() => showSuccess())
-        .catch(() => showSuccess());
-    }
-
-    function showSuccess() {
-        document.getElementById('signupForm').style.display = 'none';
-        const success = document.getElementById('signupSuccess');
-        success.classList.add('show');
-    }
-
-    document.getElementById('emailInput').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') { e.preventDefault(); submitSignup(); }
-        this.style.borderColor = '';
-    });
-</script>
+        document.getElementById('emailInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') submitSignup();
+            this.style.borderColor = 'rgba(255,255,255,0.15)';
+        });
+    </script>
 
 </body>
 </html>
