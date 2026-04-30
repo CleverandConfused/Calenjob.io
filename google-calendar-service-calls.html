@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Google Calendar Doesn't Work for Service Calls (And What to Do About It) | CalenJob</title>
+    <meta name="description" content="The five gaps in Google Calendar that cost contractors time every day, free workarounds you can use right now, honest alternatives at every price point, and the app built to fill the gap.">
+    <meta name="keywords" content="google calendar for contractors, best calendar app for service calls, contractor scheduling app, google calendar alternative for plumbers, scheduling app for HVAC technicians, drive time calendar">
+    <link rel="canonical" href="https://calenjob.com/google-calendar-service-calls.html">
+
+```
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=4">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=4">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=4">
+<meta name="theme-color" content="#166534">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://calenjob.com/google-calendar-service-calls.html">
+<meta property="og:title" content="Why Google Calendar Doesn't Work for Service Calls">
+<meta property="og:description" content="Google Calendar was built for meetings, not for driving between jobs. Here are the gaps that make it a poor fit for contractors.">
+<meta property="og:site_name" content="CalenJob">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Google Calendar Doesn't Work for Service Calls">
+<meta name="twitter:description" content="Five gaps in Google Calendar that cost contractors time every day, and the alternative built for the road.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Google Calendar Doesn't Work for Service Calls",
+  "description": "Google Calendar was built for meetings, not for driving between jobs. Here are the gaps that make it a poor fit for contractors.",
+  "datePublished": "2026-04-28",
+  "author": { "@type": "Organization", "name": "CalenJob" },
+  "publisher": { "@type": "Organization", "name": "CalenJob" },
+  "url": "https://calenjob.com/google-calendar-service-calls.html",
+  "mainEntityOfPage": "https://calenjob.com/google-calendar-service-calls.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --ink: #1c1917;
+        --ink-light: #44403c;
+        --ink-muted: #78716c;
+        --surface: #ffffff;
+        --surface-warm: #fffbeb;
+        --surface-cool: #fef3c7;
+        --accent: #166534;
+        --accent-dark: #14532d;
+        --accent-light: #dfebe0;
+        --accent-glow: #f0fdf4;
+        --cta: #2f7d32;
+        --cta-dark: #256428;
+        --success: #2f7d32;
+        --success-light: #dfebe0;
+        --copper: #d97706;
+        --copper-light: #fef3c7;
+        --border: #e7e5e4;
+        --border-light: #f5f5f4;
+        --radius: 10px;
+        --radius-lg: 16px;
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+        --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+        --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        font-family: 'DM Sans', sans-serif;
+        color: var(--ink);
+        background: var(--surface-warm);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-light);
+        transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: var(--shadow-sm); }
+    .nav-inner {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 24px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--ink);
+    }
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background-image: url('/nav-logo-64.png');
+        background-size: cover;
+        background-position: center;
+        flex-shrink: 0;
+    }
+    .logo-text {
+        font-family: 'Source Serif 4', serif;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: -0.02em;
+    }
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+    .nav-link {
+        font-size: 14px;
+        color: var(--ink-light);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--ink); }
+    .nav-link.current { color: var(--ink); font-weight: 600; }
+    .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 20px;
+        background: var(--ink);
+        color: white;
+        border: none;
+        border-radius: var(--radius);
+        font-family: 'DM Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover {
+        background: #000;
+        transform: translateY(-1px);
+    }
+
+    /* ARTICLE HEADER */
+    .article-header {
+        padding: 120px 24px 0;
+        max-width: 720px;
+        margin: 0 auto;
+    }
+    .article-breadcrumb {
+        font-size: 14px;
+        color: var(--ink-muted);
+        margin-bottom: 24px;
+    }
+    .article-breadcrumb a {
+        color: var(--ink-muted);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+    .article-breadcrumb a:hover { color: var(--ink); }
+    .article-breadcrumb-sep { opacity: 0.5; margin: 0 8px; }
+    .article-category {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--copper);
+        margin-bottom: 12px;
+    }
+    .article-header h1 {
+        font-family: 'Source Serif 4', serif;
+        font-size: clamp(32px, 5vw, 46px);
+        font-weight: 700;
+        line-height: 1.12;
+        letter-spacing: -0.03em;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+    .article-meta {
+        font-size: 14px;
+        color: var(--ink-muted);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--border);
+    }
+    .article-meta-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--ink-muted);
+        opacity: 0.4;
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 40px 24px 64px;
+    }
+    .article-body p {
+        font-size: 17px;
+        line-height: 1.75;
+        color: var(--ink-light);
+        margin-bottom: 24px;
+    }
+    .article-body .lede {
+        font-size: 19px;
+        line-height: 1.65;
+        color: var(--ink);
+    }
+    .article-body h2 {
+        font-family: 'Source Serif 4', serif;
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--ink);
+        margin: 48px 0 18px;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+    }
+    .article-body strong {
+        color: var(--ink);
+        font-weight: 600;
+    }
+    .pull-quote {
+        font-family: 'Source Serif 4', serif;
+        font-size: 22px;
+        line-height: 1.5;
+        color: var(--ink);
+        border-left: 3px solid var(--copper);
+        padding: 16px 0 16px 24px;
+        margin: 40px 0;
+        font-style: italic;
+    }
+
+    /* CTA / SIGNUP */
+    .cta-section {
+        background: var(--ink);
+        color: white;
+        text-align: center;
+        padding: 80px 24px;
+    }
+    .cta-inner {
+        max-width: 560px;
+        margin: 0 auto;
+    }
+    .cta-label {
+        font-size: 13px;
+        font-weight: 500;
+        color: rgba(255,255,255,0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 14px;
+    }
+    .cta-heading {
+        font-family: 'Source Serif 4', serif;
+        font-size: clamp(26px, 3.5vw, 36px);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: white;
+        margin-bottom: 14px;
+    }
+    .cta-sub {
+        font-size: 16px;
+        color: rgba(255,255,255,0.65);
+        margin-bottom: 32px;
+        line-height: 1.6;
+    }
+    .signup-form {
+        max-width: 480px;
+        margin: 0 auto;
+        display: flex;
+        gap: 10px;
+    }
+    .signup-form input {
+        flex: 1;
+        padding: 14px 18px;
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: var(--radius);
+        background: rgba(255,255,255,0.08);
+        color: white;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 15px;
+        outline: none;
+        transition: border-color 0.2s;
+    }
+    .signup-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .signup-form input:focus { border-color: var(--cta); }
+    .signup-form button {
+        padding: 14px 28px;
+        background: var(--cta);
+        color: white;
+        border: none;
+        border-radius: var(--radius);
+        font-family: 'DM Sans', sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+        white-space: nowrap;
+    }
+    .signup-form button:hover { background: var(--cta-dark); }
+    .signup-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .signup-note {
+        margin-top: 16px;
+        font-size: 13px;
+        color: rgba(255,255,255,0.4);
+    }
+    .signup-success {
+        display: none;
+        padding: 20px;
+        background: rgba(22, 163, 74, 0.15);
+        border: 1px solid rgba(22, 163, 74, 0.3);
+        border-radius: var(--radius);
+        color: #86efac;
+        font-size: 15px;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+    .signup-success.show { display: block; }
+
+    /* FOOTER */
+    footer {
+        padding: 48px 24px;
+        border-top: 1px solid var(--border-light);
+        text-align: center;
+        background: var(--surface-warm);
+    }
+    .footer-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .footer-copy {
+        font-size: 14px;
+        color: var(--ink-muted);
+    }
+    .footer-links {
+        display: flex;
+        gap: 24px;
+    }
+    .footer-links a {
+        font-size: 14px;
+        color: var(--ink-muted);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--ink); }
+
+    @media (max-width: 768px) {
+        .nav-links { gap: 16px; }
+        .nav-link.desktop-only { display: none; }
+        .signup-form { flex-direction: column; }
+        .footer-inner { flex-direction: column; gap: 16px; }
+        .article-header { padding: 100px 24px 0; }
+    }
+</style>
+```
+
+</head>
+<body>
+
+```
+<nav id="nav">
+    <div class="nav-inner">
+        <a href="/" class="logo">
+            <div class="logo-icon" aria-label="CalenJob icon"></div>
+            <span class="logo-text">CalenJob</span>
+        </a>
+        <div class="nav-links">
+            <a href="/#features" class="nav-link desktop-only">Features</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/blog.html" class="nav-link current">Blog</a>
+            <a href="/#signup" class="nav-cta">Join the Waitlist</a>
+        </div>
+    </div>
+</nav>
+
+<div class="article-header">
+    <div class="article-breadcrumb">
+        <a href="/">Home</a>
+        <span class="article-breadcrumb-sep">/</span>
+        <a href="/blog.html">Blog</a>
+        <span class="article-breadcrumb-sep">/</span>
+        <span>Google Calendar for Service Calls</span>
+    </div>
+    <div class="article-category">Tools and Alternatives</div>
+    <h1>Why Google Calendar Doesn't Work for Service Calls (And What to Do About It)</h1>
+    <div class="article-meta">
+        <span>April 28, 2026</span>
+        <span class="article-meta-dot"></span>
+        <span>6 min read</span>
+    </div>
+</div>
+
+<article class="article-body">
+
+    <p class="lede">Google Calendar is free, it syncs everywhere, and it handles meetings well. But it was designed for people whose commute is a walk down the hall. If your workday involves driving to four or five job sites before 5 PM, there are specific gaps that cost you time every single day. This article covers what those gaps are, workarounds you can use right now, and the alternatives worth considering.</p>
+
+    <h2>The five gaps that matter</h2>
+
+    <p><strong>No awareness of location.</strong> You can type an address into an event, but the calendar treats it as a note. It has no idea your 10 AM is 18 miles from your 11:30. It cannot calculate drive time, warn you about conflicts, or flag that two back-to-back jobs are on opposite sides of the metro.</p>
+
+    <p><strong>No drive time between stops.</strong> Google Calendar sees a 30-minute gap between two events and treats it as free time. If the drive between those addresses takes 28 minutes at that hour, you have two minutes to park, unload, and get to the door. The calendar looks fine on screen. The day does not work in practice.</p>
+
+    <p><strong>Reminders built for meetings, not driving.</strong> A 10-minute reminder before an appointment is useful when the event is down the hall. It is not useful when the job site is 25 minutes away. By the time the reminder fires, you needed to have left 15 minutes ago.</p>
+
+    <p><strong>No mileage tracking.</strong> Every stop on your calendar has an address. Every drive between them has a distance. But Google Calendar does not connect those dots. You end up running a second app (MileIQ, Everlance, a spreadsheet) to track the same workday your calendar already describes.</p>
+
+    <p><strong>No visibility into windshield time.</strong> Without drive blocks on the schedule, there is no way to see how much of the day is actual work versus time spent in the truck. This makes it hard to evaluate whether adding a fifth job is realistic or whether it will push everything behind.</p>
+
+    <h2>Workarounds that actually help (right now, for free)</h2>
+
+    <p>If you are sticking with Google Calendar for now, these adjustments make a measurable difference. None of them are perfect, but all of them are better than running a raw schedule with no drive time accounted for.</p>
+
+    <p><strong>Create manual "Drive" events between jobs.</strong> After adding your appointments for the day, open Google Maps and check the drive time from each job to the next at the hour you expect to be driving. Create a separate calendar event titled something like "Drive to [next job], 25 min" and block that time off. This takes about five minutes each morning, but it makes the gaps between jobs visible instead of invisible. You can color-code these drive events in a different color so they stand out from actual jobs.</p>
+
+    <p><strong>Set custom reminders based on drive time, not appointment time.</strong> Instead of the default 10-minute reminder, calculate when you actually need to leave the current job and set the reminder for that time. If the next job starts at 1:30 and the drive is 25 minutes, set a reminder for 1:00 PM (five minutes of buffer to wrap up and load the truck). This requires manual math for every appointment, but it solves the "reminder fired too late" problem.</p>
+
+    <p><strong>Add addresses to the location field, not the notes.</strong> Google Calendar's location field is tappable. When you put the address there, you can tap it to open Google Maps or Apple Maps directly. If you bury the address in the notes section, you have to copy and paste it manually every time. Small thing, but it saves 30 seconds per job and adds up across five stops.</p>
+
+    <p><strong>Use a second calendar layer for drive blocks.</strong> Create a separate Google Calendar called "Driving" and put all your manual drive events there. You can toggle it on and off to see your day with or without drive time. This also makes it easy to share your "Jobs" calendar with a spouse or office without cluttering it with drive blocks.</p>
+
+    <p><strong>Check your day's mileage with Google Maps multi-stop directions.</strong> At the start of the day, open Google Maps and add all your stops as waypoints in one route. The total distance gives you a rough daily mileage estimate. Screenshot it or write it down. This is not as clean as an automatic log, but it takes 60 seconds and gives you a number you can use at tax time.</p>
+
+    <h2>When the workarounds stop working</h2>
+
+    <p>The manual approach described above works if you have a consistent schedule and five minutes each morning to set it up. It breaks down when jobs get added mid-day, when a customer cancels and the schedule reshuffles, or when you are simply too busy on a Thursday morning to sit down and calculate drive times for every gap.</p>
+
+    <p>The other problem is maintenance. Every workaround above has to be redone every day, and for every schedule change. Miss one morning and you are back to running blind. The value of the workaround is real, but the consistency required is where most people fall off.</p>
+
+    <h2>Alternatives at every price point</h2>
+
+    <p><strong>Google Calendar with manual drive blocks (free).</strong> What was described above. No cost, decent results if you have the discipline to set it up daily. Best for contractors with predictable, repeating routes where drive times do not change much day to day.</p>
+
+    <p><strong>Jobber ($39 to $119/month).</strong> Full field service management. Scheduling, quoting, invoicing, client management, GPS tracking, and route optimization on higher tiers. Good for contractors with a team, office staff, or a need for client-facing features like online booking. Overkill and expensive for a solo operator who just needs a better calendar.</p>
+
+    <p><strong>Housecall Pro ($49 to $129/month).</strong> Similar to Jobber. Adds dispatching, payment processing, and marketing tools. Strong for home service businesses with employees. Same problem for solo operators: you are paying for CRM, invoicing, and dispatch features you do not use.</p>
+
+    <p><strong>ServiceTitan (custom pricing, typically $150+/month).</strong> Enterprise-grade. Built for established HVAC, plumbing, and electrical companies with multiple trucks and full office support. Not designed for independent contractors at all.</p>
+
+    <p><strong>MileIQ or Everlance ($6 to $17/month).</strong> These track mileage well but do not help with scheduling. They solve the tax documentation problem but not the drive-time-in-the-calendar problem. You still need a separate calendar app.</p>
+
+    <p><strong>CalenJob ($14.99/month or $119.99/year).</strong> This is the app being built to fill the specific gap between Google Calendar and full field service platforms. It does one thing the others do not: it treats the drive between jobs as a real, visible, time-blocked event on the schedule. Details below.</p>
+
+    <h2>What CalenJob does differently</h2>
+
+    <p><strong>Real addresses on every appointment.</strong> When you add a job, you enter a street address. The calendar knows where every stop is relative to every other one.</p>
+
+    <p><strong>Live drive time from Google Maps.</strong> CalenJob pulls actual drive time for the hour you will be making that drive. Not an average. Not a guess from memory. The real number with traffic factored in.</p>
+
+    <p><strong>Drive time as a visible event.</strong> That drive shows up as its own block on the schedule. The space between your jobs is accounted for instead of invisible. If two jobs are too far apart to connect, you see it before the day starts.</p>
+
+    <p><strong>Leave-by notifications.</strong> The app sends a notification at the moment you need to walk out the door, calculated from real traffic conditions. Not 10 minutes before the next appointment starts.</p>
+
+    <p><strong>Automatic mileage estimates.</strong> Because every stop has an address and every drive has a distance, CalenJob calculates daily, weekly, monthly, and yearly mileage automatically. Export as CSV for your accountant. No second app required.</p>
+
+    <p>CalenJob does not do invoicing, client management, or dispatching. It is a calendar that treats the drive between appointments as something that actually exists. That is the gap in Google Calendar, and it is the only thing CalenJob was built to do.</p>
+
+    <p><strong>Launching soon on iPhone.</strong> 14-day free trial, no credit card required.</p>
+
+</article>
+
+<section class="cta-section" id="signup">
+    <div class="cta-inner">
+        <div class="cta-label">The Google Calendar alternative for contractors</div>
+        <h2 class="cta-heading">A calendar that knows the road</h2>
+        <p class="cta-sub">Live drive times between jobs. Departure notifications. Automatic mileage tracking. Built for people who schedule in addresses, not conference rooms.</p>
+        <div class="signup-form" id="signupForm">
+            <input type="email" id="emailInput" placeholder="you@company.com" required>
+            <button type="button" id="signupBtn" onclick="submitSignup()">Join Waitlist</button>
+        </div>
+        <div class="signup-success" id="signupSuccess">
+            &#10003; You're on the list. We will be in touch when CalenJob is ready to go.
+        </div>
+        <p class="signup-note">One email when we launch. You can reply and unsubscribe anytime.</p>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-copy">&copy; 2026 CalenJob. All rights reserved.</div>
+        <div class="footer-links">
+            <a href="/#features">Features</a>
+            <a href="/#pricing">Pricing</a>
+            <a href="/about.html">About</a>
+            <a href="/blog.html">Blog</a>
+            <a href="#" id="contactLink" onclick="return false;">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function() {
+        var u = 'hel' + 'lo';
+        var d = 'calen' + 'job' + '.com';
+        var link = document.getElementById('contactLink');
+        link.href = 'mai' + 'lto:' + u + '@' + d;
+        link.onclick = null;
+    })();
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxf5xzA49nGNZrs7LXZ69oy_d5Sc_dn94QiJH07Sjj_RyGTTEuQ5f7TBdrU0NHKEMggBg/exec';
+
+    function submitSignup() {
+        const input = document.getElementById('emailInput');
+        const email = input.value.trim();
+        const btn = document.getElementById('signupBtn');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+            input.style.borderColor = '#ef4444';
+            input.focus();
+            return;
+        }
+        btn.disabled = true;
+        btn.textContent = 'Joining...';
+        fetch(APPS_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ email: email, source: 'blog-google-calendar' }).toString()
+        })
+        .then(() => showSuccess())
+        .catch(() => showSuccess());
+    }
+
+    function showSuccess() {
+        document.getElementById('signupForm').style.display = 'none';
+        document.getElementById('signupSuccess').classList.add('show');
+    }
+
+    document.getElementById('emailInput').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') submitSignup();
+        this.style.borderColor = 'rgba(255,255,255,0.15)';
+    });
+</script>
+```
+
+</body>
+</html>
