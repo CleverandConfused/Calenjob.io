@@ -39,7 +39,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9.40,300.700;1,9.40,300.700&family=Source+Serif+4:ital,opsz,wght@0,8.60,400.700;1,8.60,400.700&display=swap" rel="stylesheet">
     <style>
         :root {
             --ink: #1c1917; --ink-light: #44403c; --ink-muted: #78716c;
@@ -452,7 +452,7 @@
 
         <p>For a broader comparison that includes Google Calendar and Housecall Pro, see <a href="/jobber-vs-housecall-pro-vs-google-calendar.html">Jobber vs Housecall Pro vs Google Calendar: What Actually Works in the Field</a>. For a survey of all the tools available to contractors who drive between jobs, see <a href="/best-apps-contractors-drive-between-jobs.html">Best Apps for Contractors Who Drive Between Jobs</a>.</p>
 
-        <p><strong>CalenJob is launching soon on iPhone.</strong> 14-day free trial of the full Business tier, no credit card required. See the <a href="/#features">full feature breakdown</a>.</p>
+        <p><strong>CalenJob is launching soon on iPhone.</strong> 14-day free trial of the full Business tier. See the <a href="/#features">full feature breakdown</a>.</p>
 
     </article>
 
@@ -487,7 +487,7 @@
         (function(){var u='hel'+'lo';var d='calen'+'job'+'.com';var l=document.getElementById('contactLink');l.href='mai'+'lto:'+u+'@'+d;l.onclick=null;})();
         const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20);});
         const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxf5xzA49nGNZrs7LXZ69oy_d5Sc_dn94QiJH07Sjj_RyGTTEuQ5f7TBdrU0NHKEMggBg/exec';
-        function submitSignup(){const i=document.getElementById('emailInput');const e=i.value.trim();const b=document.getElementById('signupBtn');if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){i.style.borderColor='#ef4444';i.focus();return;}b.disabled=true;b.textContent='Joining...';fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({email:e,source:'blog-jobber-gorilladesk-calenjob'}).toString()}).then(()=>showSuccess()).catch(()=>showSuccess());}
+        function submitSignup(){const i=document.getElementById('emailInput');const e=i.value.trim();const b=document.getElementById('signupBtn');if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){i.style.borderColor='#ef4444';i.focus();return;}b.disabled=true;b.textContent='Joining..';fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({email:e,source:'blog-jobber-gorilladesk-calenjob'}).toString()}).then(()=>showSuccess()).catch(()=>showSuccess());}
         function showSuccess(){document.getElementById('signupForm').style.display='none';document.getElementById('signupSuccess').classList.add('show');}
         document.getElementById('emailInput').addEventListener('keydown',function(e){if(e.key==='Enter')submitSignup();this.style.borderColor='rgba(255,255,255,0.15)';});
 
