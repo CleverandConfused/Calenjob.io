@@ -1003,10 +1003,6 @@
                 grid-template-columns: 1fr !important;
             }
 
-            #heroSignupForm {
-                flex-direction: column;
-            }
-
             .nav-link.desktop-only {
                 display: none;
             }
@@ -1084,16 +1080,13 @@
         <div class="hero-badge"><span class="dot"></span> Coming soon to iPhone</div>
         <h1>Your calendar should include the drive, not just the job.</h1>
         <p>CalenJob adds real drive times between your jobs automatically. Plan your day, or let customers book into it. The commute is handled either way. Built for anyone driving from job to job.</p>
-        <div class="hero-cta-group" style="flex-direction: column; align-items: center; gap: 14px;">
-            <div class="signup-form" id="heroSignupForm" style="max-width: 480px; width: 100%; display: flex; gap: 10px;">
-                <input type="email" id="heroEmailInput" placeholder="you@company.com" required style="flex: 1; padding: 14px 18px; border: 2px solid var(--accent); border-radius: 10px; background: white; color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 15px; outline: none;">
-                <button type="button" id="heroSignupBtn" onclick="submitHeroSignup()" class="btn-primary" style="margin: 0;">Get Early Access</button>
-            </div>
-            <div id="heroSignupSuccess" style="display: none; padding: 16px 24px; background: rgba(22,163,74,0.1); border: 1px solid rgba(22,163,74,0.3); border-radius: 10px; color: var(--accent); font-size: 15px; max-width: 480px; width: 100%; text-align: center;">
-                &#10003; You're on the list.
-            </div>
-            <p style="font-size: 14px; color: var(--ink-muted); margin: 0;">The first 20 signups get free beta access. No spam, no shared emails, ever.</p>
+        <div class="hero-cta-group">
+            <a href="#signup" class="btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Get Early Access
+            </a>
             <a href="#how-it-works" class="btn-secondary">See How It Works</a>
+            <p style="font-size: 14px; color: var(--ink-muted); margin: 4px 0 0;">The first 20 signups get free beta access.</p>
         </div>
 
         <!-- REAL APP SCREENSHOTS -->
@@ -1367,18 +1360,7 @@
             success.classList.add('show');
         }
 
-        // Hero signup form
-        function submitHeroSignup() {
-            const input = document.getElementById('heroEmailInput');
-            const email = input.value.trim();
-            const btn = document.getElementById('heroSignupBtn');
-            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { input.style.borderColor = '#ef4444'; input.focus(); return; }
-            btn.disabled = true; btn.textContent = 'Joining...';
-            fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ email: email, source: 'homepage-hero' }).toString() })
-            .then(() => { document.getElementById('heroSignupForm').style.display = 'none'; document.getElementById('heroSignupSuccess').style.display = 'block'; })
-            .catch(() => { document.getElementById('heroSignupForm').style.display = 'none'; document.getElementById('heroSignupSuccess').style.display = 'block'; });
-        }
-        document.getElementById('heroEmailInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') submitHeroSignup(); this.style.borderColor = 'var(--accent)'; });
+        // Hero button scrolls to #signup section below
 
         // Enter key on email input
         document.getElementById('emailInput').addEventListener('keydown', function(e) {
