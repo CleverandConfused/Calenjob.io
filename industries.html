@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalenJob by Trade: Scheduling Built Around the Drive | CalenJob</title>
+    <meta name="description" content="CalenJob for plumbers, HVAC techs, electricians, pest control, mobile groomers and window cleaners. Real drive time between jobs and route optimization from your phone.">
+    <meta name="keywords" content="contractor scheduling software by trade, plumbing scheduling app, hvac scheduling app, pest control routing, mobile grooming software, window cleaning scheduling">
+    <link rel="canonical" href="https://calenjob.com/industries.html">
+
+    <link rel="icon" href="/favicon.ico?v=5" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/calenjob-icon.svg?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=5">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#16A34A">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calenjob.com/industries.html">
+    <meta property="og:title" content="CalenJob by Trade: Scheduling Built Around the Drive">
+    <meta property="og:description" content="CalenJob for plumbers, HVAC techs, electricians, pest control, mobile groomers and window cleaners. Real drive time between jobs and route optimization from your phone.">
+    <meta property="og:site_name" content="CalenJob">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CalenJob by Trade: Scheduling Built Around the Drive">
+    <meta name="twitter:description" content="CalenJob for plumbers, HVAC techs, electricians, pest control, mobile groomers and window cleaners. Real drive time between jobs and route optimization from your phone.">
+    <style>
+        :root {
+            /* ---- CalenJob app palette ---- */
+            /* Green is the only accent used for interactive elements */
+            --cta: #16A34A;
+            --cta-dark: #15803D;
+            --accent: #16A34A;
+            --accent-dark: #15803D;
+            --accent-light: #DCFCE7;
+            --accent-glow: #FAFAF9;
+            --success: #16A34A;
+            --success-light: #DCFCE7;
+
+            /* Calendar block tokens, lifted from the app */
+            --job-border: #1F3A5C;
+            --job-fill: #BFCCE0;
+            --job-title: #0F1E33;
+            --job-meta: #2D3D52;
+            --drive-border: #A84A1C;
+            --drive-fill: #F5DCC8;
+            --drive-label: #7A3514;
+            --drive-meta: #5C4F44;
+
+            /* Surfaces: white app background, warm near-white alt */
+            --surface: #FFFFFF;
+            --surface-warm: #FFFFFF;
+            --surface-cool: #FAFAF9;
+            --surface-alt: #FAFAF9;
+            --border: #E7E5E4;
+            --border-light: #F5F5F4;
+
+            /* Warm Stone greys, no cool greys anywhere */
+            --ink: #1C1917;
+            --ink-light: #44403C;
+            --ink-muted: #78716C;
+            --ink-placeholder: #A8A29E;
+
+            /* Dark mode surfaces, used for the signup band */
+            --dark-bg: #1A1A2E;
+            --dark-card: #222240;
+            --dark-header: #16162B;
+            --dark-input: #2A2A44;
+            --dark-text: #E0E0F0;
+            --dark-text-sub: #8080A0;
+            --dark-green: #4ADE80;
+
+            /* Status */
+            --copper: #D97706;
+            --copper-light: #F5DCC8;
+            --warning: #D97706;
+            --error: #DC2626;
+
+            --radius: 10px;
+            --radius-lg: 16px;
+
+            /* Cards are flat with light borders, no drop shadows */
+            --shadow-sm: none;
+            --shadow-md: none;
+            --shadow-lg: none;
+
+            /* System font stack, matching the app's use of San Francisco */
+            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--font); color: var(--ink); background: var(--surface-warm); line-height: 1.6; overflow-x: hidden; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-light); transition: box-shadow 0.3s; }
+        nav.scrolled { box-shadow: var(--shadow-sm); }
+        .nav-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+        .logo-icon { width: 32px; height: 32px; border-radius: 22.37%; background-image: url('/calenjob-icon.svg?v=5'); background-size: cover; flex-shrink: 0; }
+        .logo-text { font-family: var(--font); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-link { font-size: 14px; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+        .nav-link:hover { color: var(--ink); }
+        .nav-link.current { color: var(--ink); font-weight: 600; }
+        .nav-cta { display: inline-flex; align-items: center; padding: 8px 20px; background: var(--cta); color: white; border: none; border-radius: var(--radius); font-family: var(--font); font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+        .nav-cta:hover { background: var(--cta-dark); transform: translateY(-1px); }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 1px; transition: transform 0.2s, opacity 0.2s; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 24px; flex-direction: column; gap: 20px; z-index: 99; box-shadow: var(--shadow-md); }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-size: 16px; color: var(--ink-light); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border-light); }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu .mobile-cta { display: inline-block; text-align: center; padding: 12px 24px; background: var(--cta); color: white; border-radius: var(--radius); font-size: 15px; font-weight: 500; text-decoration: none; margin-top: 4px; }
+        .article-header { padding: 120px 24px 0; max-width: 720px; margin: 0 auto; }
+        .article-breadcrumb { font-size: 14px; color: var(--ink-muted); margin-bottom: 24px; }
+        .article-breadcrumb a { color: var(--ink-muted); text-decoration: none; }
+        .article-breadcrumb a:hover { color: var(--ink); }
+        .article-breadcrumb-sep { opacity: 0.5; margin: 0 8px; }
+        .article-category { font-size: 12px; font-weight: 600; color: var(--copper); margin-bottom: 12px; }
+        .article-header h1 { font-family: var(--font); font-size: clamp(32px, 5vw, 46px); font-weight: 700; line-height: 1.12; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 16px; }
+        .article-meta { font-size: 14px; color: var(--ink-muted); display: flex; align-items: center; gap: 10px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+        .article-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--ink-muted); opacity: 0.4; }
+        .article-body { max-width: 720px; margin: 0 auto; padding: 40px 24px 64px; }
+        .article-body p { font-size: 17px; line-height: 1.75; color: var(--ink-light); margin-bottom: 20px; }
+        .article-body .lede { font-size: 19px; line-height: 1.65; color: var(--ink); }
+        .article-body h2 { font-family: var(--font); font-size: 26px; font-weight: 700; color: var(--ink); margin: 48px 0 18px; letter-spacing: -0.02em; line-height: 1.25; }
+        .article-body h3 { font-family: var(--font); font-size: 20px; font-weight: 700; color: var(--ink); margin: 32px 0 12px; letter-spacing: -0.01em; }
+        .article-body strong { color: var(--ink); font-weight: 600; }
+        .article-body ul, .article-body ol { margin: 0 0 20px 20px; font-size: 17px; line-height: 1.75; color: var(--ink-light); }
+        .article-body li { margin-bottom: 8px; }
+        .article-body a { color: var(--accent); text-decoration: underline; }
+        .callout { background: var(--copper-light); border-left: 3px solid var(--copper); padding: 20px 24px; border-radius: 0 var(--radius) var(--radius) 0; margin: 32px 0; }
+        .callout p { margin-bottom: 0; font-size: 16px; color: var(--ink); }
+        .compare-table { width: 100%; border-collapse: collapse; margin: 28px 0 32px; font-size: 15px; }
+        .compare-table th { text-align: left; font-weight: 600; color: var(--ink); padding: 12px 14px; border-bottom: 2px solid var(--border); font-size: 14px; }
+        .compare-table td { padding: 10px 14px; border-bottom: 1px solid var(--border-light); color: var(--ink-light); vertical-align: top; font-size: 14px; line-height: 1.5; }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table .label-col { font-weight: 600; color: var(--ink); }
+        .compare-table .total-row td { border-top: 2px solid var(--border); font-weight: 600; color: var(--ink); }
+        .yes { color: var(--accent); font-weight: 600; }
+        .no { color: var(--ink-muted); }
+        .table-note { font-size: 13px; color: var(--ink-muted); margin: -18px 0 32px; line-height: 1.5; }
+        @media (max-width: 600px) { .compare-table { font-size: 13px; } .compare-table th, .compare-table td { padding: 8px 6px; } }
+        .cta-section { background: var(--dark-bg); color: var(--dark-text); text-align: center; padding: 80px 24px; }
+        .cta-inner { max-width: 560px; margin: 0 auto; }
+        .cta-label { font-size: 13px; font-weight: 500; color: var(--dark-green); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
+        .cta-heading { font-family: var(--font); font-size: clamp(26px, 3.5vw, 36px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: white; margin-bottom: 14px; }
+        .cta-sub { font-size: 16px; color: var(--dark-text-sub); margin-bottom: 32px; line-height: 1.6; }
+        .signup-form { max-width: 480px; margin: 0 auto; display: flex; gap: 10px; }
+        .signup-form input { flex: 1; padding: 14px 18px; border: 1px solid #3A3A5C; border-radius: var(--radius); background: var(--dark-input); color: white; font-family: var(--font); font-size: 15px; outline: none; }
+        .signup-form input::placeholder { color: var(--dark-text-sub); }
+        .signup-form input:focus { border-color: var(--dark-green); }
+        .signup-form button { padding: 14px 28px; background: var(--cta); color: white; border: none; border-radius: var(--radius); font-family: var(--font); font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+        .signup-form button:hover { background: var(--cta-dark); }
+        .signup-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+        .signup-note { margin-top: 16px; font-size: 13px; color: var(--dark-text-sub); }
+        .signup-success { display: none; padding: 20px; background: var(--dark-card); border: 1px solid var(--dark-green); border-radius: var(--radius); color: var(--dark-green); font-size: 15px; max-width: 480px; margin: 0 auto; }
+        .signup-success.show { display: block; }
+        footer { padding: 48px 24px; border-top: 1px solid var(--border-light); background: var(--surface-warm); }
+        .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .footer-copy { font-size: 14px; color: var(--ink-muted); }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { font-size: 14px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--ink); }
+        @media (max-width: 768px) { .nav-links { display: none !important; } .hamburger { display: flex; } .signup-form { flex-direction: column; } .footer-inner { flex-direction: column; gap: 16px; } .article-header { padding: 100px 24px 0; } }
+
+        .lp-hero { max-width: 760px; margin: 0 auto; padding: 130px 24px 0; text-align: center; }
+        .lp-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cta-dark); margin-bottom: 14px; }
+        .lp-hero h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 700; line-height: 1.14; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 18px; }
+        .lp-hero p { font-size: 19px; line-height: 1.6; color: var(--ink-muted); max-width: 620px; margin: 0 auto 30px; }
+        .lp-cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; align-items: center; }
+        .lp-btn { display: inline-flex; align-items: center; padding: 14px 30px; background: var(--cta); color: #fff; border-radius: var(--radius); font-size: 16px; font-weight: 600; text-decoration: none; transition: background 0.15s; }
+        .lp-btn:hover { background: var(--cta-dark); }
+        .lp-btn-alt { display: inline-flex; align-items: center; padding: 14px 26px; background: var(--surface); color: var(--ink); border: 1px solid var(--border); border-radius: var(--radius); font-size: 16px; font-weight: 600; text-decoration: none; }
+        .lp-btn-alt:hover { border-color: var(--cta); color: var(--cta-dark); }
+        .lp-price { font-size: 14px; color: var(--ink-muted); margin-top: 14px; }
+        .lp-section { max-width: 760px; margin: 0 auto; padding: 56px 24px 0; }
+        .lp-section h2 { font-size: 27px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.22; color: var(--ink); margin-bottom: 16px; }
+        .lp-section p { font-size: 17px; line-height: 1.75; color: var(--ink-light); margin-bottom: 18px; }
+        .lp-section strong { color: var(--ink); font-weight: 600; }
+        .lp-section a { color: var(--accent); text-decoration: underline; }
+        .lp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+        .lp-card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; background: var(--surface); transition: border-color 0.2s; }
+        .lp-card:hover { border-color: var(--cta); }
+        .lp-card h3 { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 7px; line-height: 1.3; }
+        .lp-card p { font-size: 14.5px; line-height: 1.6; color: var(--ink-muted); margin: 0; }
+        .lp-note { background: var(--copper-light); border-left: 3px solid var(--copper); padding: 20px 24px; border-radius: 0 var(--radius) var(--radius) 0; margin: 10px 0 0; }
+        .lp-note p { margin: 0; font-size: 16px; color: var(--ink); }
+        .lp-faq { border-top: 1px solid var(--border-light); padding: 18px 0; }
+        .lp-faq:last-of-type { border-bottom: 1px solid var(--border-light); }
+        .lp-faq h3 { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 7px; }
+        .lp-faq p { font-size: 16px; color: var(--ink-light); margin: 0; line-height: 1.65; }
+        .lp-reading { list-style: none; margin: 0; padding: 0; }
+        .lp-reading li { padding: 11px 0; border-bottom: 1px solid var(--border-light); font-size: 16px; }
+        .lp-reading li:last-child { border-bottom: none; }
+        .lp-trades { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+        .lp-trade { display: block; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; background: var(--surface); text-decoration: none; transition: border-color 0.2s; }
+        .lp-trade:hover { border-color: var(--cta); }
+        .lp-trade strong { display: block; font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+        .lp-trade span { font-size: 14px; color: var(--ink-muted); line-height: 1.55; }
+        @media (max-width: 720px) { .lp-grid { grid-template-columns: 1fr; } .lp-trades { grid-template-columns: 1fr; } .lp-hero { padding: 110px 24px 0; } }
+        .mobile-menu { max-height: calc(100vh - 64px); overflow-y: auto; -webkit-overflow-scrolling: touch; gap: 0; padding: 16px 24px 28px; }
+        .mobile-menu .mm-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-muted); padding: 16px 0 6px; border-bottom: none; }
+        .mobile-menu a { font-size: 15px; padding: 9px 0; }
+        .mobile-menu a.mm-sub { font-size: 14px; color: var(--ink-muted); padding: 7px 0 7px 12px; }
+        .mobile-menu .mobile-cta { margin-top: 16px; }
+    </style>
+</head>
+<body>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo"><div class="logo-icon" aria-label="CalenJob icon"></div><span class="logo-text">CalenJob</span></a>
+            <div class="nav-links">
+                <a href="/#features" class="nav-link desktop-only">Features</a>
+                <a href="/industries.html" class="nav-link current">Industries</a>
+                <a href="/about.html" class="nav-link">About</a>
+                <a href="/blog.html" class="nav-link">Blog</a>
+                <a href="/#signup" class="nav-cta">Join the Waitlist</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/">Home</a>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/about.html">About</a>
+        <div class="mm-label">Industries</div>
+        <a href="/industries.html" class="mm-sub">All industries</a>
+        <a href="/plumbing-scheduling-software.html" class="mm-sub">Plumbing</a>
+        <a href="/hvac-scheduling-software.html" class="mm-sub">HVAC</a>
+        <a href="/electrician-scheduling-software.html" class="mm-sub">Electrical</a>
+        <a href="/pest-control-scheduling-software.html" class="mm-sub">Pest Control</a>
+        <a href="/mobile-grooming-scheduling-software.html" class="mm-sub">Mobile Grooming</a>
+        <a href="/window-cleaning-scheduling-software.html" class="mm-sub">Window Cleaning</a>
+        <div class="mm-label">Articles</div>
+        <a href="/blog.html" class="mm-sub">All articles</a>
+        <a href="/who-should-use-calenjob.html" class="mm-sub">Who Should Use CalenJob, and Who Should Pick Jobber or Housecall Pro Instead</a>
+        <a href="/jobber-vs-servicetitan-vs-calenjob.html" class="mm-sub">Jobber vs ServiceTitan vs CalenJob: 12 Features Compared for Solo Contractors</a>
+        <a href="/contractor-hourly-rate-drive-time.html" class="mm-sub">The Hourly Rate Mistake That Costs Contractors $30,000 a Year</a>
+        <a href="/how-to-start-roofing-business-2026.html" class="mm-sub">How to Start a Roofing Business in 2026: Costs, Licensing, and Real Profit Numbers</a>
+        <a href="/5-apps-every-solo-contractor-needs.html" class="mm-sub">The 5 Apps Every Solo Contractor Should Have on Their Phone (And Nothing Else)</a>
+        <a href="/how-to-start-hvac-business-2026.html" class="mm-sub">How to Start an HVAC Business in 2026 as a Solo Technician</a>
+        <a href="/best-apps-pest-control-business-2026.html" class="mm-sub">Best Apps for Running a Solo Pest Control Business in 2026</a>
+        <a href="/group-service-calls-by-area.html" class="mm-sub">How to Group Service Calls by Area to Save Hours Every Week</a>
+        <a href="/how-to-start-a-plumbing-business-2026.html" class="mm-sub">How to Start a Plumbing Business in 2026: The Solo Operator's Guide</a>
+        <a href="/kickserv-service-fusion-fieldedge-workiz-vs-calenjob.html" class="mm-sub">Kickserv vs Service Fusion vs FieldEdge vs Workiz: How They Compare to CalenJob</a>
+        <a href="/jobber-vs-gorilladesk-vs-calenjob.html" class="mm-sub">Jobber vs GorillaDesk vs CalenJob: Which One Fits a Growing Contractor?</a>
+        <a href="/track-mileage-without-separate-app.html" class="mm-sub">How Independent Contractors Track Mileage Without a Separate App</a>
+        <a href="/what-is-drive-time-scheduling.html" class="mm-sub">What Is Drive Time Scheduling (And Why Most Calendars Don't Do It)</a>
+        <a href="/jobber-pricing-2026.html" class="mm-sub">How Much Does Jobber Cost in 2026? (Full Pricing Breakdown)</a>
+        <a href="/best-apps-contractors-drive-between-jobs.html" class="mm-sub">Best Apps for Contractors Who Drive Between Jobs</a>
+        <a href="/jobber-vs-housecall-pro-vs-google-calendar.html" class="mm-sub">Jobber vs Housecall Pro vs Google Calendar: What Actually Works in the Field</a>
+        <a href="/google-calendar-service-calls.html" class="mm-sub">Why Google Calendar Doesn't Work for Service Calls (And What to Do About It)</a>
+        <a href="/why-contractors-run-late.html" class="mm-sub">Your Calendar Doesn't Know Where Your Jobs Are. That's the Whole Problem.</a>
+        <a href="/#signup" class="mobile-cta">Join the Waitlist</a>
+    </div>
+
+    <div class="lp-hero">
+        <div class="lp-eyebrow">Industries</div>
+        <h1>Different trades, the same unpaid hour in the truck</h1>
+        <p>CalenJob works the same way whatever you do for a living. What changes is how much of your day goes to driving, and what a better sequence is worth. Here is the version written for your trade.</p>
+        <div class="lp-cta-row">
+            <a href="#signup" class="lp-btn">Get Early Access</a>
+            <a href="/#features" class="lp-btn-alt">See How It Works</a>
+        </div>
+        <p class="lp-price">$14.99 a month. The first 20 signups get free beta access.</p>
+    </div>
+
+    <div class="lp-section">
+        <h2>Pick your trade</h2>
+        <div class="lp-trades">
+            <a href="/plumbing-scheduling-software.html" class="lp-trade"><strong>Plumbing</strong><span>Four to eight scattered calls and the emergency that reshuffles the afternoon.</span></a>
+            <a href="/hvac-scheduling-software.html" class="lp-trade"><strong>HVAC</strong><span>Three to six calls, swinging with the season, with durations from 30 minutes to a full day.</span></a>
+            <a href="/electrician-scheduling-software.html" class="lp-trade"><strong>Electrical</strong><span>Fewer stops spread further apart, plus quote visits and supply runs that cost a full drive.</span></a>
+            <a href="/pest-control-scheduling-software.html" class="lp-trade"><strong>Pest Control</strong><span>Route density is the business. Cut the drive from 20 minutes to 7 and the route holds 15 stops instead of 10.</span></a>
+            <a href="/mobile-grooming-scheduling-software.html" class="lp-trade"><strong>Mobile Grooming</strong><span>Six grooms, under 90 minutes of drive, no more than 15 minutes between stops.</span></a>
+            <a href="/window-cleaning-scheduling-software.html" class="lp-trade"><strong>Window Cleaning</strong><span>The trade where driving most often outlasts the work. 45 minutes on site, 50 in the truck.</span></a>
+        </div>
+    </div>
+
+    <div class="lp-section">
+        <h2>Not on the list?</h2>
+        <p>CalenJob is not built around any one trade. If your workday is a string of addresses, it fits. Appliance repair, locksmiths, garage door, mobile detailing, home inspection, carpet cleaning, junk removal, handyman work, in-home care and mobile notaries all run the same shape of day: a handful of stops, scattered, in an order nobody optimized.</p>
+        <p>The app does not care what happens when you arrive. It cares how long it takes to get there, when you need to leave, and whether a different order would have saved you an hour. A fuller explanation is in <a href="/what-is-drive-time-scheduling.html">What Is Drive Time Scheduling</a>, and an honest account of who should and should not use it is in <a href="/who-should-use-calenjob.html">Who Should Use CalenJob</a>.</p>
+    </div>
+
+    <div style="height: 64px;"></div>
+
+    <section class="cta-section" id="signup">
+        <div class="cta-inner">
+            <div class="cta-label">Early Access</div>
+            <h2 class="cta-heading">Put the drive on your calendar</h2>
+            <p class="cta-sub">Live drive times between every job, route optimization from your phone, leave-by alerts and automatic mileage totals. Starting at $14.99 a month.</p>
+            <div class="signup-form" id="signupForm">
+                <input type="email" id="emailInput" placeholder="you@company.com" required>
+                <button type="button" id="signupBtn" onclick="submitSignup()">Join Waitlist</button>
+            </div>
+            <div class="signup-success" id="signupSuccess">&#10003; You're on the list.</div>
+            <p class="signup-note">The first 20 signups get free beta access. No spam, no shared emails, ever.</p>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; 2026 CalenJob. All rights reserved.</div>
+            <div class="footer-links">
+                <a href="/#features">Features</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/about.html">About</a>
+                <a href="/blog.html">Blog</a>
+                <a href="#" id="contactLink" onclick="return false;">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function(){var u='hel'+'lo';var d='calen'+'job'+'.com';var l=document.getElementById('contactLink');l.href='mai'+'lto:'+u+'@'+d;l.onclick=null;})();
+        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20);});
+        const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');if(hamburger&&mobileMenu){hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');});mobileMenu.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');});});}
+        const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxf5xzA49nGNZrs7LXZ69oy_d5Sc_dn94QiJH07Sjj_RyGTTEuQ5f7TBdrU0NHKEMggBg/exec';
+        function submitSignup(){const i=document.getElementById('emailInput');const e=i.value.trim();const b=document.getElementById('signupBtn');if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){i.style.borderColor='#DC2626';i.focus();return;}b.disabled=true;b.textContent='Joining...';fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({email:e,source:'lp-industries'}).toString()}).then(()=>showSuccess()).catch(()=>showSuccess());}
+        function showSuccess(){document.getElementById('signupForm').style.display='none';document.getElementById('signupSuccess').classList.add('show');}
+        document.getElementById('emailInput').addEventListener('keydown',function(e){if(e.key==='Enter')submitSignup();this.style.borderColor='#3A3A5C';});
+    </script>
+
+</body>
+</html>

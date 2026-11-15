@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobber vs ServiceTitan vs CalenJob: 12 Features Compared for Solo Contractors | CalenJob</title>
+    <meta name="description" content="A feature-by-feature comparison of Jobber, ServiceTitan, and CalenJob for contractors who drive between jobs all day. Pricing, routing, drive time, and who each one is really built for.">
+    <meta name="keywords" content="jobber vs servicetitan, jobber alternative, servicetitan pricing, jobber pricing 2026, best scheduling app for contractors, field service software comparison, route optimization contractor app, drive time scheduling">
+    <link rel="canonical" href="https://calenjob.com/jobber-vs-servicetitan-vs-calenjob.html">
+
+    <link rel="icon" href="/favicon.ico?v=5" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/calenjob-icon.svg?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=5">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#16A34A">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://calenjob.com/jobber-vs-servicetitan-vs-calenjob.html">
+    <meta property="og:title" content="Jobber vs ServiceTitan vs CalenJob: 12 Features Compared for Solo Contractors">
+    <meta property="og:description" content="Jobber and ServiceTitan manage the job. Neither one manages the drive between jobs. Here is the full comparison.">
+    <meta property="og:site_name" content="CalenJob">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jobber vs ServiceTitan vs CalenJob: 12 Features Compared">
+    <meta name="twitter:description" content="Jobber and ServiceTitan manage the job. Neither one manages the drive between jobs.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Jobber vs ServiceTitan vs CalenJob: 12 Features Compared for Solo Contractors",
+      "description": "A feature-by-feature comparison of Jobber, ServiceTitan, and CalenJob for contractors who drive between jobs all day.",
+      "datePublished": "2026-11-10",
+      "author": { "@type": "Organization", "name": "CalenJob" },
+      "publisher": { "@type": "Organization", "name": "CalenJob" },
+      "url": "https://calenjob.com/jobber-vs-servicetitan-vs-calenjob.html",
+      "mainEntityOfPage": "https://calenjob.com/jobber-vs-servicetitan-vs-calenjob.html"
+    }
+    </script>
+    <style>
+        :root {
+            /* ---- CalenJob app palette ---- */
+            /* Green is the only accent used for interactive elements */
+            --cta: #16A34A;
+            --cta-dark: #15803D;
+            --accent: #16A34A;
+            --accent-dark: #15803D;
+            --accent-light: #DCFCE7;
+            --accent-glow: #FAFAF9;
+            --success: #16A34A;
+            --success-light: #DCFCE7;
+
+            /* Calendar block tokens, lifted from the app */
+            --job-border: #1F3A5C;
+            --job-fill: #BFCCE0;
+            --job-title: #0F1E33;
+            --job-meta: #2D3D52;
+            --drive-border: #A84A1C;
+            --drive-fill: #F5DCC8;
+            --drive-label: #7A3514;
+            --drive-meta: #5C4F44;
+
+            /* Surfaces: white app background, warm near-white alt */
+            --surface: #FFFFFF;
+            --surface-warm: #FFFFFF;
+            --surface-cool: #FAFAF9;
+            --surface-alt: #FAFAF9;
+            --border: #E7E5E4;
+            --border-light: #F5F5F4;
+
+            /* Warm Stone greys, no cool greys anywhere */
+            --ink: #1C1917;
+            --ink-light: #44403C;
+            --ink-muted: #78716C;
+            --ink-placeholder: #A8A29E;
+
+            /* Dark mode surfaces, used for the signup band */
+            --dark-bg: #1A1A2E;
+            --dark-card: #222240;
+            --dark-header: #16162B;
+            --dark-input: #2A2A44;
+            --dark-text: #E0E0F0;
+            --dark-text-sub: #8080A0;
+            --dark-green: #4ADE80;
+
+            /* Status */
+            --copper: #D97706;
+            --copper-light: #F5DCC8;
+            --warning: #D97706;
+            --error: #DC2626;
+
+            --radius: 10px;
+            --radius-lg: 16px;
+
+            /* Cards are flat with light borders, no drop shadows */
+            --shadow-sm: none;
+            --shadow-md: none;
+            --shadow-lg: none;
+
+            /* System font stack, matching the app's use of San Francisco */
+            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--font); color: var(--ink); background: var(--surface-warm); line-height: 1.6; overflow-x: hidden; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-light); transition: box-shadow 0.3s; }
+        nav.scrolled { box-shadow: var(--shadow-sm); }
+        .nav-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+        .logo-icon { width: 32px; height: 32px; border-radius: 22.37%; background-image: url('/calenjob-icon.svg?v=5'); background-size: cover; flex-shrink: 0; }
+        .logo-text { font-family: var(--font); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-link { font-size: 14px; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+        .nav-link:hover { color: var(--ink); }
+        .nav-link.current { color: var(--ink); font-weight: 600; }
+        .nav-cta { display: inline-flex; align-items: center; padding: 8px 20px; background: var(--cta); color: white; border: none; border-radius: var(--radius); font-family: var(--font); font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+        .nav-cta:hover { background: var(--cta-dark); transform: translateY(-1px); }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 1px; transition: transform 0.2s, opacity 0.2s; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 24px; flex-direction: column; gap: 20px; z-index: 99; box-shadow: var(--shadow-md); }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-size: 16px; color: var(--ink-light); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border-light); }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu .mobile-cta { display: inline-block; text-align: center; padding: 12px 24px; background: var(--cta); color: white; border-radius: var(--radius); font-size: 15px; font-weight: 500; text-decoration: none; margin-top: 4px; }
+        .article-header { padding: 120px 24px 0; max-width: 720px; margin: 0 auto; }
+        .article-breadcrumb { font-size: 14px; color: var(--ink-muted); margin-bottom: 24px; }
+        .article-breadcrumb a { color: var(--ink-muted); text-decoration: none; }
+        .article-breadcrumb a:hover { color: var(--ink); }
+        .article-breadcrumb-sep { opacity: 0.5; margin: 0 8px; }
+        .article-category { font-size: 12px; font-weight: 600; color: var(--copper); margin-bottom: 12px; }
+        .article-header h1 { font-family: var(--font); font-size: clamp(32px, 5vw, 46px); font-weight: 700; line-height: 1.12; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 16px; }
+        .article-meta { font-size: 14px; color: var(--ink-muted); display: flex; align-items: center; gap: 10px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+        .article-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--ink-muted); opacity: 0.4; }
+        .article-body { max-width: 720px; margin: 0 auto; padding: 40px 24px 64px; }
+        .article-body p { font-size: 17px; line-height: 1.75; color: var(--ink-light); margin-bottom: 20px; }
+        .article-body .lede { font-size: 19px; line-height: 1.65; color: var(--ink); }
+        .article-body h2 { font-family: var(--font); font-size: 26px; font-weight: 700; color: var(--ink); margin: 48px 0 18px; letter-spacing: -0.02em; line-height: 1.25; }
+        .article-body h3 { font-family: var(--font); font-size: 20px; font-weight: 700; color: var(--ink); margin: 32px 0 12px; letter-spacing: -0.01em; }
+        .article-body strong { color: var(--ink); font-weight: 600; }
+        .article-body ul, .article-body ol { margin: 0 0 20px 20px; font-size: 17px; line-height: 1.75; color: var(--ink-light); }
+        .article-body li { margin-bottom: 8px; }
+        .article-body a { color: var(--accent); text-decoration: underline; }
+        .callout { background: var(--copper-light); border-left: 3px solid var(--copper); padding: 20px 24px; border-radius: 0 var(--radius) var(--radius) 0; margin: 32px 0; }
+        .callout p { margin-bottom: 0; font-size: 16px; color: var(--ink); }
+        .compare-table { width: 100%; border-collapse: collapse; margin: 28px 0 32px; font-size: 15px; }
+        .compare-table th { text-align: left; font-weight: 600; color: var(--ink); padding: 12px 14px; border-bottom: 2px solid var(--border); font-size: 14px; }
+        .compare-table td { padding: 10px 14px; border-bottom: 1px solid var(--border-light); color: var(--ink-light); vertical-align: top; font-size: 14px; line-height: 1.5; }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table .label-col { font-weight: 600; color: var(--ink); }
+        .compare-table .total-row td { border-top: 2px solid var(--border); font-weight: 600; color: var(--ink); }
+        .yes { color: var(--accent); font-weight: 600; }
+        .no { color: var(--ink-muted); }
+        .table-note { font-size: 13px; color: var(--ink-muted); margin: -18px 0 32px; line-height: 1.5; }
+        @media (max-width: 600px) { .compare-table { font-size: 13px; } .compare-table th, .compare-table td { padding: 8px 6px; } }
+        .cta-section { background: var(--dark-bg); color: var(--dark-text); text-align: center; padding: 80px 24px; }
+        .cta-inner { max-width: 560px; margin: 0 auto; }
+        .cta-label { font-size: 13px; font-weight: 500; color: var(--dark-green); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
+        .cta-heading { font-family: var(--font); font-size: clamp(26px, 3.5vw, 36px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: white; margin-bottom: 14px; }
+        .cta-sub { font-size: 16px; color: var(--dark-text-sub); margin-bottom: 32px; line-height: 1.6; }
+        .signup-form { max-width: 480px; margin: 0 auto; display: flex; gap: 10px; }
+        .signup-form input { flex: 1; padding: 14px 18px; border: 1px solid #3A3A5C; border-radius: var(--radius); background: var(--dark-input); color: white; font-family: var(--font); font-size: 15px; outline: none; }
+        .signup-form input::placeholder { color: var(--dark-text-sub); }
+        .signup-form input:focus { border-color: var(--dark-green); }
+        .signup-form button { padding: 14px 28px; background: var(--cta); color: white; border: none; border-radius: var(--radius); font-family: var(--font); font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+        .signup-form button:hover { background: var(--cta-dark); }
+        .signup-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+        .signup-note { margin-top: 16px; font-size: 13px; color: var(--dark-text-sub); }
+        .signup-success { display: none; padding: 20px; background: var(--dark-card); border: 1px solid var(--dark-green); border-radius: var(--radius); color: var(--dark-green); font-size: 15px; max-width: 480px; margin: 0 auto; }
+        .signup-success.show { display: block; }
+        footer { padding: 48px 24px; border-top: 1px solid var(--border-light); background: var(--surface-warm); }
+        .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .footer-copy { font-size: 14px; color: var(--ink-muted); }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { font-size: 14px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--ink); }
+        @media (max-width: 768px) { .nav-links { display: none !important; } .hamburger { display: flex; } .signup-form { flex-direction: column; } .footer-inner { flex-direction: column; gap: 16px; } .article-header { padding: 100px 24px 0; } }
+        .mobile-menu { max-height: calc(100vh - 64px); overflow-y: auto; -webkit-overflow-scrolling: touch; gap: 0; padding: 16px 24px 28px; }
+        .mobile-menu .mm-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-muted); padding: 16px 0 6px; border-bottom: none; }
+        .mobile-menu a { font-size: 15px; padding: 9px 0; }
+        .mobile-menu a.mm-sub { font-size: 14px; color: var(--ink-muted); padding: 7px 0 7px 12px; }
+        .mobile-menu .mobile-cta { margin-top: 16px; }
+    </style>
+</head>
+<body>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo"><div class="logo-icon" aria-label="CalenJob icon"></div><span class="logo-text">CalenJob</span></a>
+            <div class="nav-links">
+                <a href="/#features" class="nav-link desktop-only">Features</a>
+                <a href="/industries.html" class="nav-link">Industries</a>
+                <a href="/about.html" class="nav-link">About</a>
+                <a href="/blog.html" class="nav-link current">Blog</a>
+                <a href="/#signup" class="nav-cta">Join the Waitlist</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/">Home</a>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/about.html">About</a>
+        <div class="mm-label">Industries</div>
+        <a href="/industries.html" class="mm-sub">All industries</a>
+        <a href="/plumbing-scheduling-software.html" class="mm-sub">Plumbing</a>
+        <a href="/hvac-scheduling-software.html" class="mm-sub">HVAC</a>
+        <a href="/electrician-scheduling-software.html" class="mm-sub">Electrical</a>
+        <a href="/pest-control-scheduling-software.html" class="mm-sub">Pest Control</a>
+        <a href="/mobile-grooming-scheduling-software.html" class="mm-sub">Mobile Grooming</a>
+        <a href="/window-cleaning-scheduling-software.html" class="mm-sub">Window Cleaning</a>
+        <div class="mm-label">Articles</div>
+        <a href="/blog.html" class="mm-sub">All articles</a>
+        <a href="/who-should-use-calenjob.html" class="mm-sub">Who Should Use CalenJob, and Who Should Pick Jobber or Housecall Pro Instead</a>
+        <a href="/jobber-vs-servicetitan-vs-calenjob.html" class="mm-sub">Jobber vs ServiceTitan vs CalenJob: 12 Features Compared for Solo Contractors</a>
+        <a href="/contractor-hourly-rate-drive-time.html" class="mm-sub">The Hourly Rate Mistake That Costs Contractors $30,000 a Year</a>
+        <a href="/how-to-start-roofing-business-2026.html" class="mm-sub">How to Start a Roofing Business in 2026: Costs, Licensing, and Real Profit Numbers</a>
+        <a href="/5-apps-every-solo-contractor-needs.html" class="mm-sub">The 5 Apps Every Solo Contractor Should Have on Their Phone (And Nothing Else)</a>
+        <a href="/how-to-start-hvac-business-2026.html" class="mm-sub">How to Start an HVAC Business in 2026 as a Solo Technician</a>
+        <a href="/best-apps-pest-control-business-2026.html" class="mm-sub">Best Apps for Running a Solo Pest Control Business in 2026</a>
+        <a href="/group-service-calls-by-area.html" class="mm-sub">How to Group Service Calls by Area to Save Hours Every Week</a>
+        <a href="/how-to-start-a-plumbing-business-2026.html" class="mm-sub">How to Start a Plumbing Business in 2026: The Solo Operator's Guide</a>
+        <a href="/kickserv-service-fusion-fieldedge-workiz-vs-calenjob.html" class="mm-sub">Kickserv vs Service Fusion vs FieldEdge vs Workiz: How They Compare to CalenJob</a>
+        <a href="/jobber-vs-gorilladesk-vs-calenjob.html" class="mm-sub">Jobber vs GorillaDesk vs CalenJob: Which One Fits a Growing Contractor?</a>
+        <a href="/track-mileage-without-separate-app.html" class="mm-sub">How Independent Contractors Track Mileage Without a Separate App</a>
+        <a href="/what-is-drive-time-scheduling.html" class="mm-sub">What Is Drive Time Scheduling (And Why Most Calendars Don't Do It)</a>
+        <a href="/jobber-pricing-2026.html" class="mm-sub">How Much Does Jobber Cost in 2026? (Full Pricing Breakdown)</a>
+        <a href="/best-apps-contractors-drive-between-jobs.html" class="mm-sub">Best Apps for Contractors Who Drive Between Jobs</a>
+        <a href="/jobber-vs-housecall-pro-vs-google-calendar.html" class="mm-sub">Jobber vs Housecall Pro vs Google Calendar: What Actually Works in the Field</a>
+        <a href="/google-calendar-service-calls.html" class="mm-sub">Why Google Calendar Doesn't Work for Service Calls (And What to Do About It)</a>
+        <a href="/why-contractors-run-late.html" class="mm-sub">Your Calendar Doesn't Know Where Your Jobs Are. That's the Whole Problem.</a>
+        <a href="/#signup" class="mobile-cta">Join the Waitlist</a>
+    </div>
+
+    <div class="article-header">
+        <div class="article-breadcrumb">
+            <a href="/">Home</a><span class="article-breadcrumb-sep">/</span>
+            <a href="/blog.html">Blog</a><span class="article-breadcrumb-sep">/</span>
+            <span>Jobber vs ServiceTitan vs CalenJob</span>
+        </div>
+        <div class="article-category">Software Comparison</div>
+        <h1>Jobber vs ServiceTitan vs CalenJob: 12 Features Compared for Solo Contractors</h1>
+        <div class="article-meta">
+            <span>November 10, 2026</span>
+            <span class="article-meta-dot"></span>
+            <span>11 min read</span>
+        </div>
+    </div>
+
+    <article class="article-body">
+
+        <p class="lede">Jobber and ServiceTitan are the two names that come up in every conversation about field service software, and for good reason. Jobber is the default pick for small residential service businesses, and ServiceTitan is what those businesses graduate to when they have twenty trucks and a dispatcher. Both are serious products built by serious companies. Neither one does the thing a solo contractor spends two hours a day doing, which is driving from one job to the next.</p>
+
+        <p>This comparison puts Jobber, ServiceTitan, and CalenJob side by side on price, on who they are built for, and on twelve specific scheduling and routing features. The verdict is not that Jobber is bad. The verdict is that Jobber and ServiceTitan solve the office problem, and the drive between jobs is a truck problem that neither platform was designed to touch.</p>
+
+        <h2>What each one costs</h2>
+
+        <p>Price is where the three products separate most obviously, and it tells you a lot about who each one expects as a customer.</p>
+
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Jobber</th>
+                    <th>ServiceTitan</th>
+                    <th>CalenJob</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="label-col">Entry price</td>
+                    <td>$39/month (Core, 1 user)</td>
+                    <td>Roughly $250 per user/month</td>
+                    <td>$14.99/month</td>
+                </tr>
+                <tr>
+                    <td class="label-col">Mid tier</td>
+                    <td>$119/month (Connect)</td>
+                    <td>Roughly $350 per user/month</td>
+                    <td>One plan at launch</td>
+                </tr>
+                <tr>
+                    <td class="label-col">Top tier</td>
+                    <td>$199 to $599/month (Grow and Plus)</td>
+                    <td>$400 to $500 per user/month</td>
+                    <td>Second tier planned</td>
+                </tr>
+                <tr>
+                    <td class="label-col">Setup or onboarding fee</td>
+                    <td class="no">None</td>
+                    <td>Commonly $5,000 to $50,000</td>
+                    <td class="no">None</td>
+                </tr>
+                <tr>
+                    <td class="label-col">Contract</td>
+                    <td>Monthly or annual</td>
+                    <td>Typically 2 years</td>
+                    <td>Monthly, cancel anytime</td>
+                </tr>
+                <tr>
+                    <td class="label-col">Free trial</td>
+                    <td class="yes">14 days</td>
+                    <td class="no">No, demo only</td>
+                    <td class="yes">14 days, full features</td>
+                </tr>
+                <tr class="total-row">
+                    <td>Built for</td>
+                    <td>1 to 15 person shops</td>
+                    <td>20+ techs with a dispatcher</td>
+                    <td>Solo and 2 to 3 person crews</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="table-note">Pricing as published by each vendor in late 2026. ServiceTitan does not publish a public price list, so its figures reflect commonly reported quotes rather than official rates. Confirm current pricing directly with each company.</p>
+
+        <p>The gap is not subtle. A solo plumber running <a href="https://www.servicetitan.com" target="_blank" rel="noopener">ServiceTitan</a> would pay more in a single month than CalenJob costs for a year and a half, plus an implementation fee that can exceed the price of a work truck. That is not ServiceTitan overcharging. It is ServiceTitan correctly pricing a product built for a company with a call center, an accounting department, and a dispatcher coordinating twenty technicians. If you are that company, the price makes sense. If you are one person in a van, it never will.</p>
+
+        <p><a href="https://getjobber.com" target="_blank" rel="noopener">Jobber</a> sits in the middle and is genuinely the right answer for a lot of small shops. Its Core plan at $39 covers quoting, scheduling, invoicing, and client records for one user. A full breakdown of what each Jobber plan includes is in <a href="/jobber-pricing-2026.html">Jobber Pricing in 2026</a>.</p>
+
+        <h2>The twelve features that decide your day</h2>
+
+        <p>Quoting and invoicing matter, but they happen at the kitchen table after work. The features below are the ones that determine whether a Tuesday runs smoothly or falls apart by 11 AM. Here is how Jobber, ServiceTitan, and CalenJob compare on each.</p>
+
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Jobber</th>
+                    <th>ServiceTitan</th>
+                    <th>CalenJob</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="label-col">1. Real drive time between jobs, live traffic</td>
+                    <td class="no">No</td>
+                    <td>Dispatcher-side estimates only</td>
+                    <td class="yes">Yes, on every job</td>
+                </tr>
+                <tr>
+                    <td class="label-col">2. Route optimization for your own day</td>
+                    <td class="no">No</td>
+                    <td>Dispatch-level, not self-serve</td>
+                    <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                    <td class="label-col">3. Drive blocks on the calendar timeline</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                    <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                    <td class="label-col">4. Map view of today's jobs</td>
+                    <td>Yes, on higher plans</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                    <td class="label-col">5. One-tap navigation to Google Maps, Apple Maps, or Waze</td>
+                    <td>Opens the address</td>
+                    <td>Opens the address</td>
+                    <td class="yes">Yes, with toll avoidance</td>
+                </tr>
+                <tr>
+                    <td class="label-col">6. Distance and minutes shown from the previous stop</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                    <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                    <td class="label-col">7. "Leave by" time on every drive</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                    <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                    <td class="label-col">8. Home base as route start and end point</td>
+                    <td class="no">No</td>
+                    <td>Shop-based, fleet level</td>
+                    <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                    <td class="label-col">9. Day, 3-day, week, and month views</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                    <td class="label-col">10. Quote builder with PDF export</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                    <td class="label-col">11. Drag to reschedule with automatic drive recalculation</td>
+                    <td>Drag yes, recalculation no</td>
+                    <td>Drag yes, recalculation no</td>
+                    <td class="yes">Yes, both</td>
+                </tr>
+                <tr>
+                    <td class="label-col">12. Lunch break protected by the optimizer</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                    <td class="yes">Yes, flexible or strict</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="table-note">Based on each vendor's published feature documentation as of late 2026. Field service platforms ship updates frequently, so check current capabilities before deciding.</p>
+
+        <p>The pattern in that table is the whole argument. On rows 9 and 10, all three products do the same job, because calendars and quotes are solved problems. On rows 1, 3, 6, 7, and 12, Jobber and ServiceTitan have nothing, because those rows describe the space between jobs rather than the jobs themselves.</p>
+
+        <h2>Why Jobber and ServiceTitan skip the drive</h2>
+
+        <p>This is not an oversight. It follows directly from the model both platforms were built around.</p>
+
+        <p>Jobber and ServiceTitan are built on <strong>the dispatch assumption</strong>, which is that somebody who is not driving decides where the trucks go. In that world, the useful feature is a board showing which technician is assigned to which job and whether the job is done. The drive is handled by the technician, who gets an address and figures out the rest. Software that assigns work has no reason to model the gap between assignments, because the person using the software is not the person sitting in that gap.</p>
+
+        <p>For a company with twenty trucks, that model is correct. ServiceTitan's dispatch board, capacity planning, and call-booking tools exist because coordinating twenty technicians is a genuinely hard problem that justifies a $400 per user price tag and a two-month implementation.</p>
+
+        <p>For a solo contractor, the model breaks down completely, because <strong>the dispatcher and the driver are the same person</strong>. Nobody is handing you an optimized list. You booked the jobs yourself, in the order the phone rang, and the result is a Tuesday with a job in Westminster at 9, a job in Aurora at 11, and a job back in Westminster at 2. Jobber will display that schedule cleanly. It will not tell you that the sequence costs you 95 minutes of driving that a different order would have cut to 40.</p>
+
+        <div class="callout">
+            <p><strong>The core difference:</strong> Jobber and ServiceTitan show you what you agreed to do. CalenJob shows you what it will cost you to get there. Those are different questions, and only one of them changes how you build your day.</p>
+        </div>
+
+        <h2>What CalenJob does with the drive</h2>
+
+        <p>CalenJob starts from the opposite end. The job list is not the schedule. The schedule is the job list plus every drive between the stops, and the drives are treated as real, time-blocked events rather than empty space.</p>
+
+        <h3>Drive blocks on the calendar</h3>
+
+        <p>Every job carries a street address, and the drive from the previous stop is calculated through Google Maps using live traffic for the hour the drive will actually happen. That drive appears on the daily timeline above the job it leads to, showing duration, distance, and a leave-by time. A Tuesday with four jobs does not look like four appointments with gaps. It looks like four jobs and four drives, and the amount of the day spent in the truck is visible before the day starts.</p>
+
+        <h3>Route optimization built for one person</h3>
+
+        <p>Run the optimizer and CalenJob reorders the day to minimize total drive time, packs the jobs consecutively, sets the leave-by time for each one, and reports how many minutes the new order saved. This is not a dispatcher tool that needs a back office to configure it. It runs from the phone in your hand, in the time it takes to decide whether the afternoon can be rearranged.</p>
+
+        <p>Arrival windows constrain it where they need to. If a customer is only available between 9 and 11, set that window on the job and the optimizer will not move it outside that range. Everything else gets sequenced around the fixed points.</p>
+
+        <h3>Map view and live route preview</h3>
+
+        <p>Every stop for the day sits as a pin on a map, which makes geographic clusters obvious in a way a list never does. Three jobs on the north side and one across the metro is a pattern you see instantly on a map and never see on a calendar. The optimized route draws on the same map before you leave, so the day can be checked visually rather than trusted blindly. The method behind grouping work this way is covered in <a href="/group-service-calls-by-area.html">How to Group Service Calls by Area</a>.</p>
+
+        <h3>Navigation, tolls, and the commute home</h3>
+
+        <p>Tapping a job opens turn-by-turn directions in Google Maps, Apple Maps, or <a href="https://www.waze.com" target="_blank" rel="noopener">Waze</a>. Toll avoidance is a setting that applies to both the optimizer and the handoff to the navigation app, so the route you were shown is the route you actually drive. Set a home base and the optimizer builds the day outward from it and shows the commute home after the last job, which is the drive most contractors forget to account for when they say yes to a 4 PM call forty minutes out.</p>
+
+        <h3>Tasks, buffer time, and the rest of the real day</h3>
+
+        <p>A supply house run is not a job, but it takes the same forty minutes a job takes. CalenJob handles these as tasks that sit on the calendar in a different color and get included in route optimization, so the day reflects reality rather than just billable work. Buffer time adds padding between stops for loading tools or wrapping up, and the <strong>coming from</strong> field lets you tell the app you are making a side stop so the drive time updates instead of quietly going wrong.</p>
+
+        <h3>Mileage without a second app</h3>
+
+        <p>Because every drive is already measured, the mileage total is a byproduct rather than a separate chore. Export a CSV for the month or the year for tax purposes. That removes one more subscription from the stack, which is covered in detail in <a href="/track-mileage-without-separate-app.html">How to Track Mileage Without a Separate App</a>.</p>
+
+        <h2>Where Jobber and ServiceTitan win</h2>
+
+        <p>An honest comparison has to say what the other two do better, and the list is not short.</p>
+
+        <p><strong>Jobber wins on business operations.</strong> Online booking, automated appointment reminders to customers, a client self-service hub, invoicing with payment processing, QuickBooks sync, job costing, and a customer communication history all live inside Jobber. CalenJob does none of that. If you need customers to book themselves online, or you want invoices and payments handled in the same place as the schedule, Jobber is the better product and it is not close.</p>
+
+        <p><strong>ServiceTitan wins on scale.</strong> Multi-technician dispatch, call center tooling, inventory, payroll integration, membership programs, marketing attribution reporting, and the depth of reporting a general manager needs to run a $10 million operation. If you have twenty trucks, the price is justified and the alternatives are not serious competitors.</p>
+
+        <p><strong>Both win on team features.</strong> CalenJob is built for one person's day. There is no technician assignment, no team visibility, no crew dispatching. A three-person shop can run three copies, but a twelve-person shop needs a dispatch platform, and that is a real limitation rather than a philosophical choice.</p>
+
+        <p>There are also smaller players worth knowing about. GorillaDesk and the lighter tier of field service tools sit between Jobber and CalenJob on both price and feature depth. Those are compared in <a href="/jobber-vs-gorilladesk-vs-calenjob.html">Jobber vs GorillaDesk vs CalenJob</a> and in <a href="/kickserv-service-fusion-fieldedge-workiz-vs-calenjob.html">Kickserv, Service Fusion, FieldEdge, and Workiz compared</a>.</p>
+
+        <h2>Who should pick which</h2>
+
+        <p><strong>Pick ServiceTitan</strong> if you have fifteen or more technicians, a dedicated dispatcher, and revenue that can absorb both the per-user cost and a five-figure implementation. Below that threshold the platform will consume more of your time and money than it returns.</p>
+
+        <p><strong>Pick Jobber</strong> if you need the full business layer in one place. Customers booking online, quotes going out automatically, invoices and payments handled, books synced to QuickBooks. For a growing two to ten person shop, Jobber is the sensible default, and plenty of businesses run on it for years without wanting anything else.</p>
+
+        <p><strong>Pick CalenJob</strong> if your scheduling problem is a driving problem. You are one person or a very small crew, you already have a way to invoice, and what is actually costing you money is the two hours a day spent crossing town in an order nobody optimized. CalenJob is $14.99 rather than $39 because it does less, deliberately, and what it does is the part Jobber and ServiceTitan leave blank.</p>
+
+        <p>There is also a case for running both. Jobber at $39 for quoting, invoicing, and customer records, and CalenJob at $14.99 for the daily route. That is $54 a month for a solo operation that is both professionally run and efficiently driven, which is still a fraction of a single ServiceTitan seat.</p>
+
+        <h2>What it costs to change your mind</h2>
+
+        <p>Switching cost is the part of a software decision nobody thinks about until they want out, and it is where these three differ most sharply.</p>
+
+        <p>ServiceTitan is the hardest to leave. A two-year contract plus an implementation fee in the thousands means the decision is locked in for two years, and the implementation money is spent whether the platform works out or not. Jobber is month to month, which is far better, but after a year of use your quotes, invoices, customer history, and payment records all live inside it, and moving means an export and a rebuild somewhere else.</p>
+
+        <p>CalenJob is $14.99 a month with no contract and nothing to implement. You can be running by the end of your first coffee. Jobs and customer records are backed up automatically, so a lost or broken phone does not cost you your schedule and your data follows you to a new device. The commitment is one month at a time, which is the appropriate level of commitment for a product that costs less than a tank of fuel.</p>
+
+        <h2>The short version</h2>
+
+        <p>ServiceTitan is enterprise dispatch software and prices accordingly. Jobber is the small business operations platform and does that job well. Neither one models the drive between jobs, because both were designed around a dispatcher who is not the one driving.</p>
+
+        <p>If you are the dispatcher and the driver and the invoicer and the one answering the phone, the gap between your jobs is not empty space on a calendar. It is the largest unmanaged cost in your week. CalenJob exists to put a number on it and then shrink it.</p>
+
+        <p><strong>CalenJob is launching soon on iPhone.</strong> $14.99 per month with a 14-day free trial. See the <a href="/#features">full feature breakdown</a>.</p>
+
+    </article>
+
+    <section class="cta-section" id="signup">
+        <div class="cta-inner">
+            <div class="cta-label">Built for the truck, not the office</div>
+            <h2 class="cta-heading">Put the drive on your calendar</h2>
+            <p class="cta-sub">Live drive times between every job, route optimization that cuts your daily drive, leave-by alerts, and automatic mileage totals. Starting at $14.99 a month.</p>
+            <div class="signup-form" id="signupForm">
+                <input type="email" id="emailInput" placeholder="you@company.com" required>
+                <button type="button" id="signupBtn" onclick="submitSignup()">Join Waitlist</button>
+            </div>
+            <div class="signup-success" id="signupSuccess">&#10003; You're on the list.</div>
+            <p class="signup-note">The first 20 signups get free beta access. No spam, no shared emails, ever.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; 2026 CalenJob. All rights reserved.</div>
+            <div class="footer-links">
+                <a href="/#features">Features</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/about.html">About</a>
+                <a href="/blog.html">Blog</a>
+                <a href="#" id="contactLink" onclick="return false;">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function(){var u='hel'+'lo';var d='calen'+'job'+'.com';var l=document.getElementById('contactLink');l.href='mai'+'lto:'+u+'@'+d;l.onclick=null;})();
+        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20);});
+        const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');if(hamburger&&mobileMenu){hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');});mobileMenu.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');});});}
+        const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxf5xzA49nGNZrs7LXZ69oy_d5Sc_dn94QiJH07Sjj_RyGTTEuQ5f7TBdrU0NHKEMggBg/exec';
+        function submitSignup(){const i=document.getElementById('emailInput');const e=i.value.trim();const b=document.getElementById('signupBtn');if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){i.style.borderColor='#DC2626';i.focus();return;}b.disabled=true;b.textContent='Joining...';fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({email:e,source:'blog-jobber-servicetitan'}).toString()}).then(()=>showSuccess()).catch(()=>showSuccess());}
+        function showSuccess(){document.getElementById('signupForm').style.display='none';document.getElementById('signupSuccess').classList.add('show');}
+        document.getElementById('emailInput').addEventListener('keydown',function(e){if(e.key==='Enter')submitSignup();this.style.borderColor='#3A3A5C';});
+    </script>
+
+</body>
+</html>

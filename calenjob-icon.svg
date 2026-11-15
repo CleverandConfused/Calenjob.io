@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <clipPath id="r"><rect width="1024" height="1024" rx="229" ry="229"/></clipPath>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E6F4E2"/>
+      <stop offset="1" stop-color="#CBE9CF"/>
+    </linearGradient>
+    <path id="pin" d="M355 666 C 330 636 307 612 307 582 A 48 48 0 0 1 403 582 C 403 612 380 636 355 666 Z"/>
+  </defs>
+  <g clip-path="url(#r)">
+  <rect width="1024" height="1024" fill="url(#body)"/>
+  <rect width="1024" height="236" fill="#28933F"/>
+  <circle cx="236" cy="118" r="52" fill="#28933F" stroke="#ffffff" stroke-width="13"/>
+  <circle cx="788" cy="118" r="52" fill="#28933F" stroke="#ffffff" stroke-width="13"/>
+  <path d="M210 874 C 330 906 372 790 422 718 S 540 588 622 614 S 722 690 782 660 S 838 612 838 580" fill="none" stroke="#28933F" stroke-width="29" stroke-linecap="round" stroke-dasharray="36 48"/>
+  <g transform="translate(190 700) scale(1.62) translate(-355 -580)">
+    <use href="#pin" fill="#28933F"/><circle cx="355" cy="580" r="21" fill="#DAEFDA"/>
+  </g>
+  <g transform="translate(838 432) scale(1.62) translate(-355 -580)">
+    <use href="#pin" fill="#28933F"/><circle cx="355" cy="580" r="21" fill="#D5EDD6"/>
+  </g>
+<rect x="18.0" y="18.0" width="988.0" height="988.0" rx="211.0688" ry="211.0688" fill="none" stroke="#28933F" stroke-width="32"/>
+  </g>
+</svg>

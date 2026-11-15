@@ -9,9 +9,11 @@
     <link rel="canonical" href="https://calenjob.com/">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=4">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=4">
+    <link rel="icon" href="/favicon.ico?v=5" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/calenjob-icon.svg?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=5">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5">
+    <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#16A34A">
 
     <!-- Open Graph -->
@@ -153,8 +155,8 @@
         .logo-icon {
             width: 32px;
             height: 32px;
-            border-radius: 8px;
-            background-image: url('/nav-logo-64.png');
+            border-radius: 22.37%;
+            background-image: url('/calenjob-icon.svg?v=5');
             background-size: cover;
             background-position: center;
             flex-shrink: 0;
@@ -303,6 +305,20 @@
             border-color: var(--cta);
             color: var(--cta-dark);
         }
+
+        /* App icon in the hero. 22.37% corner radius matches the iOS icon shape. */
+        .hero-app-icon {
+            display: block;
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 22px;
+            border-radius: 22.37%;
+            box-shadow: 0 1px 2px rgba(28,25,23,0.08), 0 8px 24px rgba(22,101,52,0.16);
+            animation: fadeUp 0.6s ease both;
+        }
+        /* Official App Store badge. Shown only once the app is live: see the comment in the hero. */
+        .store-badge { display: inline-block; line-height: 0; }
+        .store-badge img { height: 48px; width: auto; }
 
         /* HERO VISUAL */
         .hero-visual {
@@ -939,6 +955,7 @@
 
     <!-- HERO -->
     <section class="hero">
+        <img src="/calenjob-icon-192.png?v=5" srcset="/calenjob-icon-192.png?v=5 1x, /calenjob-icon-512.png?v=5 2x" width="96" height="96" class="hero-app-icon" alt="CalenJob app icon">
         <div class="hero-badge"><span class="dot"></span> Coming soon to iPhone</div>
         <h1>Your calendar should include the drive, not just the job.</h1>
         <p>CalenJob adds real drive times between your jobs automatically, then reorders the day to put them in the smartest order so you spend less of it behind the wheel. Built for anyone driving from job to job.</p>
@@ -949,6 +966,16 @@
             </a>
             <a href="#how-it-works" class="btn-secondary">See How It Works</a>
             <p style="font-size: 14px; color: var(--ink-muted); margin: 4px 0 0;">The first 20 signups get free beta access.</p>
+            <!--
+              APP STORE BADGE: uncomment at launch, once the App Store product page exists.
+              1. Download the official badge from https://tools.applemarketingtools.com
+                 (Download on the App Store, black, English). Save it as app-store-badge.svg at the repo root.
+              2. Replace APP_ID below with the number from your App Store URL.
+              3. Do not recolour, crop or redraw the badge. Apple's guidelines require it unaltered.
+            <a class="store-badge" href="https://apps.apple.com/app/idAPP_ID" aria-label="Download CalenJob on the App Store">
+                <img src="/app-store-badge.svg" alt="Download on the App Store">
+            </a>
+            -->
         </div>
 
         <!-- REAL APP SCREENSHOTS -->
