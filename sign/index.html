@@ -1,1 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Review and Sign Your Quote</title>
+<link rel="icon" href="/favicon.ico">
+<style>
+  :root { --navy: #1F3A5C; --green: #16A34A; --green-dark: #166534; --ink: #1C1917; --sub: #57534E; --muted: #78716C; --line: #E7E5E4; --bg: #F5F5F4; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; }
+  main { max-width: 680px; margin: 0 auto; padding: 18px 14px 40px; }
+  .hello { font-size: 14px; color: var(--muted); margin: 4px 2px 2px; }
+  h1 { font-size: 22px; margin: 0 2px 14px; line-height: 1.25; }
+  .card { background: #fff; border-radius: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); padding: 16px; margin-bottom: 14px; }
+  .doc-wrap { background: #fff; border-radius: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); overflow: hidden; margin-bottom: 10px; }
+  .doc-scale { transform-origin: 0 0; }
+  .doc-scale iframe { width: 612px; border: 0; display: block; background: #fff; }
+  .doc-pad { padding: 14px; }
+  .tools { display: flex; justify-content: flex-end; margin: 0 2px 16px; }
+  .link-btn { background: none; border: 0; color: var(--navy); font-weight: 700; font-size: 14px; padding: 6px 2px; cursor: pointer; }
+  h2 { font-size: 17px; margin: 0 0 12px; }
+  .label { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .3px; margin: 14px 0 6px; text-transform: uppercase; }
+  .choice { display: flex; align-items: center; gap: 10px; border: 1.5px solid var(--line); border-radius: 10px; padding: 12px; margin-bottom: 8px; cursor: pointer; }
+  .choice input { width: 20px; height: 20px; accent-color: var(--green); margin: 0; }
+  .choice .t { flex: 1; font-size: 15px; color: var(--sub); }
+  .choice .v { font-size: 17px; font-weight: 700; color: var(--ink); }
+  .choice.on { border-color: var(--green); background: #F0FDF4; }
+  .choice.on .t { color: var(--ink); font-weight: 600; }
+  .total-only { display: flex; justify-content: space-between; align-items: center; background: var(--bg); border-radius: 10px; padding: 12px 14px; }
+  .total-only b { font-size: 20px; color: var(--navy); }
+  input[type=text] { width: 100%; font-size: 17px; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px; color: var(--ink); background: #fff; }
+  input[type=text]:focus { outline: none; border-color: var(--green); }
+  .pad { position: relative; height: 190px; border: 1.5px solid #D6D3D1; border-radius: 12px; overflow: hidden; background: #fff; }
+  .pad canvas { width: 100%; height: 100%; display: block; touch-action: none; }
+  .pad .hint { position: absolute; left: 0; right: 0; top: 40%; text-align: center; color: #A8A29E; font-size: 15px; pointer-events: none; }
+  .pad .base { position: absolute; left: 18px; right: 18px; bottom: 34px; height: 1px; background: #D6D3D1; pointer-events: none; }
+  .pad-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .clear { background: none; border: 0; color: #DC2626; font-weight: 700; font-size: 14px; cursor: pointer; padding: 0; }
+  .consent { display: flex; gap: 10px; align-items: flex-start; margin: 16px 0 6px; font-size: 14px; color: var(--sub); line-height: 1.45; }
+  .consent input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--green); flex-shrink: 0; }
+  .statement { font-size: 14px; color: var(--sub); line-height: 1.45; margin: 10px 0 14px; }
+  .go { width: 100%; font-size: 17px; font-weight: 700; color: #fff; background: var(--green); border: 0; border-radius: 12px; padding: 15px; cursor: pointer; }
+  .go:disabled { background: #A7D7B5; cursor: default; }
+  .err { color: #B91C1C; font-size: 14px; margin-top: 10px; min-height: 1px; }
+  .done { text-align: center; padding: 26px 16px; }
+  .done .check { width: 56px; height: 56px; border-radius: 28px; background: #DCFCE7; color: var(--green-dark); font-size: 30px; line-height: 56px; margin: 0 auto 12px; }
+  .done h2 { margin-bottom: 6px; }
+  .done p { color: var(--sub); margin: 4px 0; line-height: 1.45; }
+  .contact { font-size: 15px; color: var(--sub); line-height: 1.6; }
+  .contact a { color: var(--navy); font-weight: 600; text-decoration: none; }
+  footer { text-align: center; color: #A8A29E; font-size: 12px; margin-top: 18px; line-height: 1.5; }
+  .spinner { width: 34px; height: 34px; border: 3px solid var(--line); border-top-color: var(--navy); border-radius: 50%; margin: 60px auto; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main id="app"><div class="spinner" aria-label="Loading"></div></main>
+<script>
+(function () {
+  // Supabase project (the publishable key is meant to be public; the quote_links rules and
+  // functions decide what this page can see or change)
+  var API = 'https://hiyixanaeulghirlhlfg.supabase.co';
+  var KEY = 'sb_publishable_lds_wJqOEalYDiuKwxUSAQ_S6oM5dlt';
 
+  var app = document.getElementById('app');
+  var token = new URLSearchParams(location.search).get('t') || '';
+  var info = null, quoteHtml = '', strokes = [], cur = null;
+
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function money(n) { return '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function when(iso) { var d = new Date(iso); return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) + ' at ' + d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }); }
+  function biz() { return (info && info.business_name) || 'the business'; }
+  function rpc(name, body) {
+    return fetch(API + '/rest/v1/rpc/' + name, { method: 'POST', headers: { apikey: KEY, 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+  }
+  function contactHtml() {
+    if (!info) return '';
+    var bits = [];
+    if (info.business_phone) bits.push('<a href="tel:' + esc(info.business_phone.replace(/[^0-9+]/g, '')) + '">' + esc(info.business_phone) + '</a>');
+    if (info.business_email) bits.push('<a href="mailto:' + esc(info.business_email) + '">' + esc(info.business_email) + '</a>');
+    return bits.length ? '<p class="contact">Questions? Contact ' + esc(biz()) + ': ' + bits.join(' &middot; ') + '</p>' : '';
+  }
+  function footer() { return '<footer>Sent with CalenJob</footer>'; }
+
+  function message(title, text) {
+    app.innerHTML = '<div class="card done"><h2>' + esc(title) + '</h2><p>' + text + '</p>' + contactHtml() + '</div>' + footer();
+  }
+
+  // The quote, exactly as sent, scaled to fit the screen
+  function docBlock() {
+    return '<div class="doc-wrap" id="docWrap"><div class="doc-scale" id="docScale"><iframe id="doc" title="Quote" sandbox="allow-same-origin allow-modals"></iframe></div></div>' +
+      '<div class="tools"><button class="link-btn" id="printBtn" type="button">Print or save a copy</button></div>';
+  }
+  function mountDoc() {
+    var f = document.getElementById('doc'), wrap = document.getElementById('docWrap'), sc = document.getElementById('docScale');
+    if (!f) return;
+    function fit() {
+      var doc = f.contentDocument; if (!doc || !doc.body) return;
+      var pad = 36, inner = 612 + pad * 2;
+      doc.body.style.padding = pad + 'px';
+      var h = Math.max(doc.documentElement.scrollHeight, doc.body.scrollHeight);
+      f.style.width = inner + 'px'; f.style.height = h + 'px';
+      var s = Math.min(1, wrap.clientWidth / inner);
+      sc.style.transform = 'scale(' + s + ')';
+      sc.style.width = inner + 'px';
+      wrap.style.height = Math.ceil(h * s) + 'px';
+    }
+    f.onload = function () { fit(); setTimeout(fit, 300); };
+    f.srcdoc = quoteHtml;
+    window.addEventListener('resize', fit);
+    document.getElementById('printBtn').onclick = function () { try { f.contentWindow.focus(); f.contentWindow.print(); } catch (e) { window.print(); } };
+  }
+
+  function showSigned(name, signedAt, total) {
+    app.innerHTML = '<div class="card done"><div class="check">&#10003;</div><h2>Quote signed</h2>' +
+      '<p>' + esc(name) + ' signed this quote on ' + esc(when(signedAt)) + ' for ' + money(total) + '.</p>' +
+      '<p>' + esc(biz()) + ' will see it the next time they open their app.</p>' + contactHtml() + '</div>' +
+      (quoteHtml ? docBlock() : '') + footer();
+    if (quoteHtml) mountDoc();
+  }
+
+  function showSignForm() {
+    var hasBase = info.base_total != null;
+    var first = String(info.customer_name || '').trim().split(/\s+/)[0];
+    app.innerHTML =
+      '<p class="hello">' + (first ? 'Hi ' + esc(first) + ',' : 'Hello,') + '</p>' +
+      '<h1>' + esc(biz()) + ' sent you quote ' + esc(info.quote_number || '') + '</h1>' +
+      docBlock() +
+      '<div class="card" id="form"><h2>Accept this quote</h2>' +
+        (hasBase
+          ? '<label class="choice on"><input type="radio" name="opt" value="full" checked><span class="t">Full quote</span><span class="v">' + money(info.total) + '</span></label>' +
+            '<label class="choice"><input type="radio" name="opt" value="base"><span class="t">' + esc(String(info.base_label || '').replace(/^Total without/, 'Without')) + '</span><span class="v">' + money(info.base_total) + '</span></label>'
+          : '<div class="total-only"><span>Total</span><b>' + money(info.total) + '</b></div>') +
+        '<div class="label">Your full name</div>' +
+        '<input type="text" id="name" autocomplete="name" autocapitalize="words" value="' + esc(info.customer_name || '') + '">' +
+        '<div class="pad-head"><div class="label">Signature</div><button class="clear" id="clear" type="button" hidden>Clear</button></div>' +
+        '<div class="pad"><canvas id="pad"></canvas><div class="hint" id="hint">Sign here with your finger</div><div class="base"></div></div>' +
+        '<label class="consent"><input type="checkbox" id="consent"><span>I agree to sign and receive this quote electronically. I can ask ' + esc(biz()) + ' for a paper copy at any time.</span></label>' +
+        '<p class="statement" id="statement"></p>' +
+        '<button class="go" id="go" type="button" disabled>Accept &amp; Sign</button>' +
+        '<div class="err" id="err"></div>' +
+      '</div>' + contactHtml() + footer();
+    mountDoc();
+    setupPad();
+
+    var nameEl = document.getElementById('name'), consent = document.getElementById('consent'), go = document.getElementById('go');
+    function opt() { var r = document.querySelector('input[name=opt]:checked'); return r ? r.value : 'full'; }
+    function amount() { return opt() === 'base' && hasBase ? info.base_total : info.total; }
+    function refresh() {
+      document.querySelectorAll('.choice').forEach(function (c) { c.classList.toggle('on', c.querySelector('input').checked); });
+      document.getElementById('statement').textContent = 'By signing, I accept ' + (opt() === 'base' && hasBase ? 'this quote without the tagged items' : 'this quote') + ' for ' + money(amount()) + ' and agree to its terms and conditions.';
+      go.disabled = !(strokes.length && nameEl.value.trim().length > 1 && consent.checked);
+    }
+    document.querySelectorAll('input[name=opt]').forEach(function (r) { r.onchange = refresh; });
+    nameEl.oninput = refresh; consent.onchange = refresh;
+    window.__padChanged = refresh;
+    refresh();
+
+    go.onclick = function () {
+      go.disabled = true; go.textContent = 'Signing...';
+      document.getElementById('err').textContent = '';
+      var pad = document.getElementById('pad'), r = pad.getBoundingClientRect();
+      var sig = { w: Math.round(r.width), h: Math.round(r.height), d: strokes.map(path).join('') };
+      var consentText = document.querySelector('.consent span').textContent + ' ' + document.getElementById('statement').textContent;
+      rpc('sign_quote_link', { p_token: token, p_name: nameEl.value.trim(), p_signature: sig, p_option: opt(), p_consent: consentText })
+        .then(function (res) {
+          if (res && res.ok) { showSigned(nameEl.value.trim(), res.signed_at, res.accepted_total); window.scrollTo(0, 0); return; }
+          var e = res && res.error;
+          if (e === 'already_signed') { load(); return; }
+          if (e === 'expired' || e === 'missing') { message('This link is no longer active', 'Contact ' + esc(biz()) + ' for a new link.'); return; }
+          throw new Error(e || 'failed');
+        })
+        .catch(function () {
+          go.disabled = false; go.innerHTML = 'Accept &amp; Sign';
+          document.getElementById('err').textContent = 'That didn\'t go through. Check your connection and try again.';
+        });
+    };
+  }
+
+  // Finger signature on a canvas, kept as strokes (an SVG path) so it prints sharp
+  function path(s) {
+    if (!s.length) return '';
+    if (s.length === 1) return 'M' + s[0][0] + ' ' + s[0][1] + 'l0.1 0';
+    var d = 'M' + s[0][0] + ' ' + s[0][1];
+    for (var i = 1; i < s.length - 1; i++) {
+      d += 'Q' + s[i][0] + ' ' + s[i][1] + ' ' + ((s[i][0] + s[i + 1][0]) / 2).toFixed(1) + ' ' + ((s[i][1] + s[i + 1][1]) / 2).toFixed(1);
+    }
+    var l = s[s.length - 1];
+    return d + 'L' + l[0] + ' ' + l[1];
+  }
+  function setupPad() {
+    var c = document.getElementById('pad'), x = c.getContext('2d'), dpr = window.devicePixelRatio || 1;
+    var hint = document.getElementById('hint'), clear = document.getElementById('clear');
+    function size() { var r = c.getBoundingClientRect(); c.width = r.width * dpr; c.height = r.height * dpr; x.setTransform(dpr, 0, 0, dpr, 0, 0); draw(); }
+    function draw() {
+      x.clearRect(0, 0, c.width, c.height); x.lineWidth = 2.6; x.lineCap = 'round'; x.lineJoin = 'round'; x.strokeStyle = '#0F172A';
+      strokes.concat(cur ? [cur] : []).forEach(function (s) { x.stroke(new Path2D(path(s))); });
+      hint.hidden = !!(strokes.length || cur); clear.hidden = !strokes.length;
+    }
+    function pt(e) { var t = e.touches ? e.touches[0] : e, r = c.getBoundingClientRect(); return [Math.round((t.clientX - r.left) * 10) / 10, Math.round((t.clientY - r.top) * 10) / 10]; }
+    function start(e) { e.preventDefault(); if (document.activeElement) document.activeElement.blur(); cur = [pt(e)]; draw(); }
+    function move(e) { if (!cur) return; e.preventDefault(); var p = pt(e), l = cur[cur.length - 1]; if (Math.abs(p[0] - l[0]) + Math.abs(p[1] - l[1]) < 1.2) return; cur.push(p); draw(); }
+    function end() { if (!cur) return; strokes.push(cur); cur = null; draw(); window.__padChanged && window.__padChanged(); }
+    c.addEventListener('touchstart', start, { passive: false }); c.addEventListener('touchmove', move, { passive: false });
+    c.addEventListener('touchend', end); c.addEventListener('touchcancel', end);
+    c.addEventListener('mousedown', start); c.addEventListener('mousemove', function (e) { if (e.buttons) move(e); });
+    window.addEventListener('mouseup', end);
+    clear.onclick = function () { strokes = []; cur = null; draw(); window.__padChanged && window.__padChanged(); };
+    window.addEventListener('resize', size); size();
+  }
+
+  function load() {
+    if (!/^[a-f0-9]{20,}$/i.test(token)) { message('Link not found', 'Check that the whole link was copied, or ask for a new one.'); return; }
+    rpc('get_quote_link', { p_token: token }).then(function (res) {
+      info = res || {};
+      if (info.status === 'missing') { message('This link is no longer active', 'The quote may have been updated and sent again. Check for a newer link, or contact the business that sent it.'); return; }
+      if (info.status === 'expired') { message('This link has expired', 'Contact ' + esc(biz()) + ' for a new link.'); return; }
+      var get = info.html_path
+        ? fetch(API + '/storage/v1/object/public/quote-pages/' + info.html_path.split('/').map(encodeURIComponent).join('/')).then(function (r) { if (!r.ok) throw new Error('page'); return r.text(); })
+        : Promise.reject(new Error('page'));
+      return get.then(function (h) { quoteHtml = h; }, function () { quoteHtml = ''; }).then(function () {
+        if (info.status === 'signed') { showSigned(info.signed_name, info.signed_at, info.accepted_total); return; }
+        if (!quoteHtml) { message('This quote can\'t be shown right now', 'Try again in a minute, or contact ' + esc(biz()) + '.'); return; }
+        showSignForm();
+      });
+    }).catch(function () {
+      message('Couldn\'t load the quote', 'Check your connection and reload this page.');
+    });
+  }
+  load();
+})();
+</script>
+</body>
+</html>
