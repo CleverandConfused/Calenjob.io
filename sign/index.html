@@ -116,8 +116,43 @@
     document.getElementById('printBtn').onclick = function () { try { f.contentWindow.focus(); f.contentWindow.print(); } catch (e) { window.print(); } };
   }
 
-  function showSigned(name, signedAt, total) {
-    app.innerHTML = '<div class="card done"><h2>Quote signed</h2>' + contactHtml() + '</div>' +
+  // The signature as an SVG sized to the ink (same as the app's utils/quoteHtml.js)
+  function sigSvg(sig) {
+    if (!sig || typeof sig.d !== 'string' || !/^[MQLle0-9 .+-]+$/.test(sig.d) || sig.d.length < 10) return '';
+    var nums = sig.d.replace(/l0\.1 0/g, '').match(/-?\d+(\.\d+)?/g) || [];
+    var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (var i = 0; i + 1 < nums.length; i += 2) { var x = +nums[i], y = +nums[i + 1]; if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+    if (!isFinite(x0)) return '';
+    var pad = 4, w = Math.max(10, x1 - x0 + pad * 2), h = Math.max(10, y1 - y0 + pad * 2);
+    return '<svg class="sig-ink" viewBox="' + (x0 - pad).toFixed(1) + ' ' + (y0 - pad).toFixed(1) + ' ' + w.toFixed(1) + ' ' + h.toFixed(1) + '" preserveAspectRatio="xMinYMax meet"><path d="' + esc(sig.d) + '" fill="none" stroke="#0F172A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+  // Put the signature, name and date into the quote's Acceptance section, the same way the
+  // app shows a signed quote, so "Print or save a copy" is the signed copy
+  function signedQuoteHtml(h, s) {
+    var when = new Date(s.signedAt || Date.now());
+    var day = when.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    var time = when.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    var which = s.option === 'base' && info.base_label ? String(info.base_label).replace(/^Total/, 'the quote') : 'the full quote';
+    var block = '<div class="accept"><h3>Acceptance</h3>' +
+      '<p>' + esc(s.name) + ' accepted ' + esc(which) + ' for ' + money(s.total) + ' and agreed to its terms. Signed electronically on ' + day + ' at ' + time + '.</p>' +
+      '<div class="sig signed"><div class="wide">' + sigSvg(s.sig) + '<span class="line">Signature</span></div>' +
+      '<div class="wide"><div class="typed">' + esc(s.name) + '</div><span class="line">Printed Name</span></div>' +
+      '<div><div class="typed">' + day + '</div><span class="line">Date</span></div></div>' +
+      '<div class="thanks">Thank you for your business.</div></div>';
+    if (h.indexOf('<!--accept-->') >= 0) return h.replace(/<!--accept-->[\s\S]*?<!--\/accept-->/, block);
+    // Quotes sent before the markers existed
+    return h.replace(/<div class="accept">[\s\S]*?<div class="thanks">[^<]*<\/div>\s*<\/div>/, block);
+  }
+
+  // s: { name, signedAt, total, option, sig }
+  function showSigned(s) {
+    var when = s.signedAt ? new Date(s.signedAt) : new Date();
+    var day = when.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    if (quoteHtml) quoteHtml = signedQuoteHtml(quoteHtml, s);
+    app.innerHTML = '<div class="card done"><h2>Quote signed</h2>' +
+      '<p>Signed by ' + esc(s.name) + ' on ' + day + ' for ' + money(s.total) + '.</p>' +
+      (quoteHtml ? '<p>Your signed copy is below. Use Print or save a copy to keep it.</p>' : '') +
+      contactHtml() + '</div>' +
       (quoteHtml ? docBlock() : '') + footer();
     if (quoteHtml) mountDoc();
   }
@@ -167,7 +202,7 @@
       var consentText = document.querySelector('.consent span').textContent + ' ' + document.getElementById('statement').textContent;
       rpc('sign_quote_link', { p_token: token, p_name: nameEl.value.trim(), p_signature: sig, p_option: opt(), p_consent: consentText })
         .then(function (res) {
-          if (res && res.ok) { showSigned(nameEl.value.trim(), res.signed_at, res.accepted_total); window.scrollTo(0, 0); return; }
+          if (res && res.ok) { showSigned({ name: nameEl.value.trim(), signedAt: res.signed_at, total: res.accepted_total, option: opt(), sig: sig }); window.scrollTo(0, 0); return; }
           var e = res && res.error;
           if (e === 'already_signed') { load(); return; }
           if (e === 'expired' || e === 'missing') { message('This link is no longer active', 'Contact ' + esc(biz()) + ' for a new link.'); return; }
@@ -222,7 +257,7 @@
         ? fetch(API + '/storage/v1/object/public/quote-pages/' + info.html_path.split('/').map(encodeURIComponent).join('/')).then(function (r) { if (!r.ok) throw new Error('page'); return r.text(); })
         : Promise.reject(new Error('page'));
       return get.then(function (h) { quoteHtml = h; }, function () { quoteHtml = ''; }).then(function () {
-        if (info.status === 'signed') { showSigned(info.signed_name, info.signed_at, info.accepted_total); return; }
+        if (info.status === 'signed') { showSigned({ name: info.signed_name, signedAt: info.signed_at, total: info.accepted_total, option: info.accepted_option, sig: info.signature }); return; }
         if (!quoteHtml) { message('This quote can\'t be shown right now', 'Try again in a minute, or contact ' + esc(biz()) + '.'); return; }
         showSignForm();
       });
