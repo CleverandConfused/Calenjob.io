@@ -34,13 +34,13 @@
 <div class="card">
 <a class="brand" href="/">CalenJob</a>
 <h1>Privacy Policy</h1>
-<p class="updated">Last updated November 16, 2026</p>
+<p class="updated">Last updated November 17, 2026</p>
 
 <div class="summary">
 <p><b>The short version.</b> CalenJob keeps your schedule, customers and quotes in your account so they're on every device you sign in on. We use your information to run the app, never to advertise. We don't sell it, we don't track you across other apps or websites, and the app has no advertising or analytics tools.</p>
 </div>
 
-<p>This policy covers the CalenJob iPhone app, the quote signing pages at calenjob.com, and the calenjob.com website ("CalenJob", "we", "us"). If you use CalenJob for your business, you also enter information about your own customers. That section is below too.</p>
+<p>This policy covers the CalenJob iPhone app, the quote signing pages at calenjob.com, and the calenjob.com website, all run by CalenJob LLC ("CalenJob", "we", "us"). If you use CalenJob for your business, you also enter information about your own customers. That section is below too.</p>
 
 <h2>What we collect</h2>
 
@@ -89,7 +89,6 @@
 <li>the name they type and their drawn signature</li>
 <li>which option they accepted and the total</li>
 <li>the date and time, the consent statement they agreed to, and when they first opened the page</li>
-<li>the internet address (IP address) and browser type of the device they signed on</li>
 <li>a fingerprint of the quote page they saw, so it can be shown later that the page wasn't changed</li>
 </ul>
 <p>This is a record of the signature, and you, the business that sent the quote, can see it. We don't use it for anything else.</p>
@@ -100,7 +99,7 @@
 <li>To send quotes for signing and tell you when they're signed.</li>
 <li>To sign you in and keep your account secure.</li>
 <li>To answer you when you contact us.</li>
-<li>To keep usage within fair limits (for example, how many route optimizations an account runs each week).</li>
+<li>To keep usage within fair limits (for example, how many route optimizations an account runs each week, and how many address and map requests it makes each day). We keep these daily counts for 60 days.</li>
 </ul>
 <p>We do not sell your information, use it for advertising, or share it for others to advertise to you.</p>
 
@@ -109,8 +108,8 @@
 <table>
 <thead><tr><th>Service</th><th>What it does</th><th>What it receives</th></tr></thead>
 <tbody>
-<tr><td>Supabase</td><td>Stores your account and data, signs you in, hosts quote files for signing</td><td>Your account and everything you save to it</td></tr>
-<tr><td>Google Maps Platform</td><td>Address search, drive times, routes and map images</td><td>Addresses and search text you type, stop locations, and your location or Home Base to rank nearby search results</td></tr>
+<tr><td>Supabase</td><td>Stores your account and data, signs you in, hosts quote files for signing, and passes address and map requests to Google</td><td>Your account and everything you save to it, and the address and map requests on their way to Google (not stored)</td></tr>
+<tr><td>Google Maps Platform</td><td>Address search, drive times, routes and map images</td><td>Addresses and search text you type, stop locations, and your location or Home Base to rank nearby search results. Requests pass through our server, so Google doesn't see your iPhone's internet address, except for map images, which download straight from Google.</td></tr>
 <tr><td>Apple</td><td>Sign in with Apple, the map on the Map screen, push notification delivery, subscription payments, and finding addresses and time zones for locations</td><td>Your Apple sign-in, the map area being shown, notification content, purchase details, and locations being looked up</td></tr>
 <tr><td>Expo</td><td>Delivers the "Quote signed" notification to your iPhone</td><td>Your notification token and the notification text (customer name and quote number)</td></tr>
 <tr><td>Open-Meteo</td><td>Weather on your Dashboard</td><td>Your Home Base map location only, with no name or account</td></tr>
@@ -151,7 +150,7 @@
 <h2>Contact</h2>
 <p>Questions or requests: <a href="mailto:support@calenjob.com">support@calenjob.com</a></p>
 </div>
-<footer>CalenJob</footer>
+<footer>&copy; CalenJob LLC</footer>
 </main>
 </body>
 </html>
