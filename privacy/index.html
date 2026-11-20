@@ -57,7 +57,6 @@
 <li>Customers: names, phone numbers, email addresses, addresses, tags and notes.</li>
 <li>Quotes: line items, prices, terms, and signatures.</li>
 <li>Follow-up reminders and your app settings.</li>
-<li>A picture of each day's route map from your Dashboard, so past days still show their route. These are kept for 15 days.</li>
 </ul>
 <p>This is saved on your iPhone and in your CalenJob account, so it backs up and appears on your other devices.</p>
 
@@ -83,7 +82,7 @@
 
 <h3>Anonymous usage numbers</h3>
 <p>To see which features get used and what goes wrong, the app counts things like how many jobs, tasks and reminders are added, how many quotes are sent, how many route optimizations run, which screens are opened, when a usage limit is reached, and problems such as a backup that failed or time without a connection. With those counts it sends your trade, whether you're in your free trial, whether Drive Time Scheduling is on, which permissions (notifications, location, camera, photos) are on, and the app and iOS version.</p>
-<p>These numbers are sent once a day under a random ID made by your iPhone. They are not linked to your name, email or account, and they never include customer details, addresses, notes, quote contents or amounts, or anything you type. We keep them for about 13 months. To turn this off, go to Settings &gt; Data &gt; Share Usage Stats.</p>
+<p>These numbers are sent once a day under a random ID made by your iPhone. They are not linked to your name, email or account, and they never include customer details, addresses, notes, quote contents or amounts, or anything you type. We keep them for about 13 months. To turn this off, go to Settings, tap the account icon at the top, and turn off Share anonymous usage stats under Terms &amp; Policies.</p>
 
 <h2>Your customers' information</h2>
 <p>When you use CalenJob for your business, you decide what information about your customers to enter. We store and process it only to provide the app to you, and we don't use it for anything else or contact your customers ourselves. You're responsible for having your customers' permission to keep their details and to send them quotes.</p>
@@ -103,7 +102,7 @@
 <li>To run the app: calculate drive times, show maps, schedule alerts, back up your data and keep your devices in sync.</li>
 <li>To send quotes for signing and tell you when they're signed.</li>
 <li>To sign you in and keep your account secure.</li>
-<li>To answer you when you contact us.</li>
+<li>To answer you when you contact us, and to email you about your account and the service: support, important changes, outages, billing and beta news. We don't send marketing emails unless you choose to get them, and any we send have an unsubscribe link.</li>
 <li>To understand, anonymously, which features get used and what goes wrong, so we can improve the app.</li>
 <li>To keep usage within fair limits (for example, how many route optimizations an account runs each week, and how many address and map requests it makes each day). We keep these daily counts for 60 days.</li>
 </ul>
@@ -115,15 +114,15 @@
 <thead><tr><th>Service</th><th>What it does</th><th>What it receives</th></tr></thead>
 <tbody>
 <tr><td>Supabase</td><td>Stores your account and data, signs you in, hosts quote files for signing, passes address and map requests to Google, and stores the anonymous usage numbers</td><td>Your account and everything you save to it, the address and map requests on their way to Google (not stored), and the anonymous usage numbers</td></tr>
-<tr><td>Google Maps Platform</td><td>Address search, drive times, routes and map images</td><td>Addresses and search text you type, stop locations, and your location or Home Base to rank nearby search results. Requests pass through our server, so Google doesn't see your iPhone's internet address, except for map images, which download straight from Google.</td></tr>
-<tr><td>Apple</td><td>Sign in with Apple, the map on the Map screen, push notification delivery, subscription payments, and finding addresses and time zones for locations</td><td>Your Apple sign-in, the map area being shown, notification content, purchase details, and locations being looked up</td></tr>
+<tr><td>Google Maps Platform</td><td>Address search, drive times, routes, and the maps in the app</td><td>Addresses and search text you type, stop locations, and your location or Home Base to rank nearby search results. Address and drive-time requests pass through our server, so Google doesn't see your iPhone's internet address for those. The maps in the app come straight from Google's map software, which also collects device and usage information (such as crash reports, performance data and a device identifier) to run and improve its service.</td></tr>
+<tr><td>Apple</td><td>Sign in with Apple, push notification delivery, subscription payments, and finding addresses and time zones for locations</td><td>Your Apple sign-in, notification content, purchase details, and locations being looked up</td></tr>
 <tr><td>Expo</td><td>Delivers the "Quote signed" notification to your iPhone</td><td>Your notification token and the notification text (customer name and quote number)</td></tr>
 <tr><td>Apple Weather (WeatherKit)</td><td>Weather on your Dashboard</td><td>Your Home Base location, rounded to about half a mile, through our server, with no name or account</td></tr>
 <tr><td>Email delivery provider</td><td>Sends sign-in and password reset codes</td><td>Your email address</td></tr>
 <tr><td>calenjob.com web host</td><td>Serves this website and the quote signing pages</td><td>Standard web request details, such as IP address and browser type</td></tr>
 </tbody>
 </table>
-<p>Each of these companies handles information under its own privacy policy. For Google, see <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
+<p>Each of these companies handles information under its own privacy policy. CalenJob uses Google Maps; Google's use of information is covered by the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>, which is part of this policy by reference.</p>
 <p>We may also share information if the law requires it, to protect people's safety or our rights, or as part of a sale or merger of the business. If CalenJob changes owners, this policy continues to apply to your information.</p>
 
 <h2>How long we keep it</h2>
@@ -131,7 +130,7 @@
 <li><b>Your account data:</b> while your account is open.</li>
 <li><b>After you delete your account:</b> your data is kept for 30 days in case you change your mind (sign back in to restore it), then permanently deleted. Quote pages are taken off the web right away.</li>
 <li><b>Quote signing pages:</b> a link expires 60 days after it's sent. If it wasn't signed, the page is deleted 30 days after that. Signed quotes stay with your account. Photos on quote pages older than 6 months are stored at a smaller size.</li>
-<li><b>Dashboard route map pictures:</b> 15 days.</li>
+<li><b>Map locations from Google</b> (the map points found for addresses, and saved route lines): 30 days at most, then looked up again when they're needed or deleted. The addresses themselves stay with your data.</li>
 <li><b>Backed-up photos and files:</b> while the job, customer or quote they belong to exists, then removed within about a week.</li>
 <li><b>Anonymous usage numbers:</b> about 13 months.</li>
 <li><b>Backups:</b> copies in our hosting provider's backups are replaced on a rolling schedule and are gone within a short time after deletion.</li>
