@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Your Invoice</title>
+<link rel="icon" href="/favicon.ico">
+<style>
+  :root { --navy: #1F3A5C; --green: #16A34A; --green-dark: #166534; --ink: #1C1917; --sub: #57534E; --muted: #78716C; --line: #E7E5E4; --bg: #F5F5F4; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; }
+  main { max-width: 680px; margin: 0 auto; padding: 18px 14px 40px; }
+  .hello { font-size: 14px; color: var(--muted); margin: 4px 2px 2px; }
+  h1 { font-size: 22px; margin: 0 2px 14px; line-height: 1.25; }
+  .card { background: #fff; border-radius: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); padding: 16px; margin-bottom: 14px; }
+  .doc-wrap { background: #fff; border-radius: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); overflow: hidden; margin-bottom: 10px; }
+  .doc-scale { transform-origin: 0 0; }
+  .doc-scale iframe { width: 612px; border: 0; display: block; background: #fff; }
+  .tools { display: flex; justify-content: flex-end; margin: 0 2px 16px; }
+  .link-btn { background: none; border: 0; color: var(--navy); font-weight: 700; font-size: 14px; padding: 6px 2px; cursor: pointer; }
+  h2 { font-size: 17px; margin: 0 0 6px; }
+  .due { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .due .amt { font-size: 26px; font-weight: 800; color: var(--navy); }
+  .due .when { font-size: 14px; color: var(--sub); }
+  .paid-card { border: 1.5px solid #BBF7D0; background: #F0FDF4; }
+  .paid-card h2 { color: var(--green-dark); }
+  .sub { font-size: 14px; color: var(--sub); line-height: 1.45; margin: 6px 0 0; }
+  .go { display: block; width: 100%; text-align: center; text-decoration: none; font-size: 17px; font-weight: 700; color: #fff; background: var(--green); border: 0; border-radius: 12px; padding: 15px; margin-top: 14px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.4; }
+  .done { text-align: center; padding: 26px 16px; }
+  .done p { color: var(--sub); margin: 4px 0; line-height: 1.45; }
+  .contact { font-size: 15px; color: var(--sub); line-height: 1.6; }
+  .contact a { color: var(--navy); font-weight: 600; text-decoration: none; }
+  footer { text-align: center; color: #A8A29E; font-size: 12px; margin-top: 18px; line-height: 1.5; }
+  .spinner { width: 34px; height: 34px; border: 3px solid var(--line); border-top-color: var(--navy); border-radius: 50%; margin: 60px auto; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<main id="app"><div class="spinner" aria-label="Loading"></div></main>
+<script>
+(function () {
+  // Supabase project (the publishable key is meant to be public; invoice_links rules and
+  // get_invoice_link decide what this page can see)
+  var API = 'https://hiyixanaeulghirlhlfg.supabase.co';
+  var KEY = 'sb_publishable_lds_wJqOEalYDiuKwxUSAQ_S6oM5dlt';
 
+  var app = document.getElementById('app');
+  var token = new URLSearchParams(location.search).get('t') || '';
+  var info = null, pageHtml = '';
+
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function money(n) { return '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function day(s) {
+    var m = String(s || '').match(/^(\d{4})-(\d{2})-(\d{2})/);
+    var d = m ? new Date(+m[1], +m[2] - 1, +m[3], 12) : (s ? new Date(s) : null);
+    return d && !isNaN(d) ? d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : '';
+  }
+  function today() { var d = new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  function biz() { return (info && info.business_name) || 'the business'; }
+  function rpc(name, body) {
+    return fetch(API + '/rest/v1/rpc/' + name, { method: 'POST', headers: { apikey: KEY, 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+  }
+  function contactHtml() {
+    if (!info) return '';
+    var bits = [];
+    if (info.business_phone) bits.push('<a href="tel:' + esc(info.business_phone.replace(/[^0-9+]/g, '')) + '">' + esc(info.business_phone) + '</a>');
+    if (info.business_email) bits.push('<a href="mailto:' + esc(info.business_email) + '">' + esc(info.business_email) + '</a>');
+    return bits.length ? '<p class="contact">Questions? Contact ' + esc(biz()) + ': ' + bits.join(' &middot; ') + '</p>' : '';
+  }
+  function footer() { return '<footer>Sent with CalenJob. Payments go to ' + esc(biz()) + ', not to CalenJob.</footer>'; }
+  function message(title, text) {
+    app.innerHTML = '<div class="card done"><h2>' + esc(title) + '</h2><p>' + text + '</p>' + contactHtml() + '</div>' + footer();
+  }
+  // Only a real https address becomes the Pay online button
+  function payUrl() {
+    var u = String((info && info.pay_link) || '');
+    return /^https:\/\/[^\s"'<>]+$/i.test(u) ? u : '';
+  }
+
+  function docBlock() {
+    return '<div class="doc-wrap" id="docWrap"><div class="doc-scale" id="docScale"><iframe id="doc" title="Invoice" sandbox="allow-same-origin allow-modals"></iframe></div></div>' +
+      '<div class="tools"><button class="link-btn" id="printBtn" type="button">Print or save a copy</button></div>';
+  }
+  function mountDoc() {
+    var f = document.getElementById('doc'), wrap = document.getElementById('docWrap'), sc = document.getElementById('docScale');
+    if (!f) return;
+    function fit() {
+      var doc = f.contentDocument; if (!doc || !doc.body) return;
+      var pad = 36, inner = 612 + pad * 2;
+      doc.body.style.padding = pad + 'px';
+      var h = Math.max(doc.documentElement.scrollHeight, doc.body.scrollHeight);
+      f.style.width = inner + 'px'; f.style.height = h + 'px';
+      var s = Math.min(1, wrap.clientWidth / inner);
+      sc.style.transform = 'scale(' + s + ')';
+      sc.style.width = inner + 'px';
+      wrap.style.height = Math.ceil(h * s) + 'px';
+    }
+    f.onload = function () { fit(); setTimeout(fit, 300); };
+    f.srcdoc = pageHtml;
+    window.addEventListener('resize', fit);
+    document.getElementById('printBtn').onclick = function () { try { f.contentWindow.focus(); f.contentWindow.print(); } catch (e) { window.print(); } };
+  }
+
+  function show() {
+    var first = String(info.customer_name || '').trim().split(/\s+/)[0];
+    var paid = info.status === 'paid' || Number(info.balance) <= 0.005;
+    var top;
+    if (paid) {
+      top = '<div class="card paid-card"><h2>Paid in full</h2>' +
+        '<p class="sub">' + (info.paid_at ? 'Paid ' + esc(day(info.paid_at)) + '. ' : '') + 'Thank you! This invoice is your receipt. Use Print or save a copy to keep it.</p></div>';
+    } else {
+      var overdue = info.due_date && info.due_date < today();
+      var dueLine = info.due_date ? (overdue ? 'Was due ' : 'Due ') + esc(day(info.due_date)) : 'Due on receipt';
+      var pay = payUrl();
+      top = '<div class="card"><div class="due"><div><h2>' + (Number(info.amount_paid) > 0 ? 'Balance due' : 'Amount due') + '</h2><div class="when">' + dueLine + '</div></div><div class="amt">' + money(info.balance) + '</div></div>' +
+        (Number(info.amount_paid) > 0 ? '<p class="sub">' + money(info.amount_paid) + ' already paid. Thank you.</p>' : '') +
+        (pay ? '<a class="go" href="' + esc(pay) + '" target="_blank" rel="noopener noreferrer">Pay online</a><p class="note">Opens ' + esc(biz()) + '\'s own payment page.</p>'
+             : '<p class="sub">How to pay is on the invoice below.</p>') +
+        '</div>';
+    }
+    app.innerHTML = '<p class="hello">' + (first ? 'Hi ' + esc(first) + ',' : 'Hello,') + '</p>' +
+      '<h1>' + esc(biz()) + ' sent you invoice ' + esc(info.invoice_number || '') + '</h1>' +
+      top + (pageHtml ? docBlock() : '') + contactHtml() + footer();
+    if (pageHtml) mountDoc();
+  }
+
+  function load() {
+    if (!/^[a-f0-9]{20,}$/i.test(token)) { message('Link not found', 'Check that the whole link was copied, or ask for a new one.'); return; }
+    rpc('get_invoice_link', { p_token: token }).then(function (res) {
+      info = res || {};
+      if (info.status === 'missing') { message('This link is no longer active', 'The invoice may have been replaced. Check for a newer link, or contact the business that sent it.'); return; }
+      var get = info.html_path
+        ? fetch(API + '/storage/v1/object/public/quote-pages/' + info.html_path.split('/').map(encodeURIComponent).join('/') + '?v=' + Date.now()).then(function (r) { if (!r.ok) throw new Error('page'); return r.text(); })
+        : Promise.reject(new Error('page'));
+      return get.then(function (h) { pageHtml = h; }, function () { pageHtml = ''; }).then(function () {
+        // A paid invoice's page comes off the web after a year: the Paid card still shows
+        if (!pageHtml && info.status !== 'paid') { message('This invoice can\'t be shown right now', 'Try again in a minute, or contact ' + esc(biz()) + '.'); return; }
+        show();
+      });
+    }).catch(function () {
+      message('Couldn\'t load the invoice', 'Check your connection and reload this page.');
+    });
+  }
+  load();
+})();
+</script>
+</body>
+</html>
