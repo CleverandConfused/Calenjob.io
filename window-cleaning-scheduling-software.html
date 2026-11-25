@@ -8,10 +8,10 @@
     <meta name="keywords" content="window cleaning scheduling software, window cleaning route planning, window washing business app, window cleaner scheduling, drive time window cleaning">
     <link rel="canonical" href="https://calenjob.com/window-cleaning-scheduling-software.html">
 
-    <link rel="icon" href="/favicon.ico?v=6" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="/calenjob-icon.svg?v=6">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=6">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=6">
+    <link rel="icon" href="/favicon.ico?v=7" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/calenjob-icon.svg?v=7">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=7">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=7">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#16A34A">
 
@@ -93,7 +93,7 @@
         nav.scrolled { box-shadow: var(--shadow-sm); }
         .nav-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
         .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
-        .logo-icon { width: 32px; height: 32px; border-radius: 22.37%; background-image: url('/calenjob-icon.svg?v=6'); background-size: cover; flex-shrink: 0; }
+        .logo-icon { width: 32px; height: 32px; border-radius: 22.37%; background-image: url('/calenjob-icon.svg?v=7'); background-size: cover; flex-shrink: 0; }
         .logo-text { font-family: var(--font); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; }
         .nav-links { display: flex; align-items: center; gap: 24px; }
         .nav-link { font-size: 14px; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
@@ -204,6 +204,7 @@
         .mobile-menu a { font-size: 15px; padding: 9px 0; }
         .mobile-menu a.mm-sub { font-size: 14px; color: var(--ink-muted); padding: 7px 0 7px 12px; }
         .mobile-menu .mobile-cta { margin-top: 16px; }
+            .footer-links { flex-wrap: wrap; justify-content: center; row-gap: 10px; }
     </style>
 </head>
 <body>
@@ -280,7 +281,7 @@
     <div class="lp-section">
         <h2>What CalenJob does about it</h2>
         <div class="lp-grid">
-            <div class="lp-card"><h3>Real drive time between every stop</h3><p>Calculated through Google Maps with live traffic for the hour the drive actually happens, shown on the timeline with distance and duration.</p></div>
+            <div class="lp-card"><h3>Real drive time between every stop</h3><p>Calculated through Google Maps with the traffic expected for the hour the drive actually happens, shown on the timeline with distance and duration.</p></div>
             <div class="lp-card"><h3>A leave-by time on every drive</h3><p>Each drive block says exactly when to walk out the door to arrive on schedule, so you stop doing the arithmetic in your head.</p></div>
             <div class="lp-card"><h3>Route optimization from the phone</h3><p>Reorder the whole day to cut total drive time, standing in a parking lot, and see how many minutes the new order saved.</p></div>
             <div class="lp-card"><h3>Arrival windows that hold</h3><p>Jobs with a fixed window stay inside it while everything else sequences around them, so optimizing does not break your promises.</p></div>
@@ -312,7 +313,7 @@
         <div class="cta-inner">
             <div class="cta-label">For Window Cleaners</div>
             <h2 class="cta-heading">Put the drive on your calendar</h2>
-            <p class="cta-sub">Live drive times between every job, route optimization from your phone, leave-by alerts, automatic mileage totals, and quotes and invoices. Starting at $18.99 a month.</p>
+            <p class="cta-sub">Real drive times between every job, route optimization from your phone, leave-by alerts, automatic mileage totals, and quotes and invoices. Starting at $18.99 a month.</p>
             <div class="signup-form" id="signupForm">
                 <input type="email" id="emailInput" placeholder="you@company.com" required>
                 <button type="button" id="signupBtn" onclick="submitSignup()">Join Waitlist</button>
@@ -331,13 +332,16 @@
                 <a href="/#pricing">Pricing</a>
                 <a href="/about.html">About</a>
                 <a href="/blog.html">Blog</a>
-                <a href="#" id="contactLink" onclick="return false;">Contact</a>
+                <a href="/support">Contact</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
+                <a href="/support">Support</a>
             </div>
         </div>
     </footer>
 
     <script>
-        (function(){var u='hel'+'lo';var d='calen'+'job'+'.com';var l=document.getElementById('contactLink');l.href='mai'+'lto:'+u+'@'+d;l.onclick=null;})();
+        (function(){var u='sup'+'port';var d='calen'+'job'+'.com';var l=(document.getElementById('contactLink')||{});l.href='mai'+'lto:'+u+'@'+d;l.onclick=null;})();
         const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20);});
         const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');if(hamburger&&mobileMenu){hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');});mobileMenu.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');});});}
         const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxf5xzA49nGNZrs7LXZ69oy_d5Sc_dn94QiJH07Sjj_RyGTTEuQ5f7TBdrU0NHKEMggBg/exec';
